@@ -1063,6 +1063,14 @@
                 const message = multiplayerChatInput.value.trim();
                 if (message === '') return;
                 
+                // Check if user is subscribed to YouTube channel
+                const isSubscribed = localStorage.getItem('youtubeSubscribed') === 'true';
+                
+                if (!isSubscribed) {
+                    alert('You need to subscribe to our YouTube channel to send messages!');
+                    return;
+                }
+                
                 // Apply profanity filter if enabled
                 let filteredMessage = message;
                 if (profanityFilter.checked) {
