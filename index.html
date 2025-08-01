@@ -3,563 +3,1484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gambling Guys</title>
+    <title>Game Menu - Gambling Guys</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #ffffff;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .game-menu-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .game-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ffd700;
+        }
+        .menu-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .menu-option {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        .menu-option:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+            transform: translateY(-5px);
+        }
+        .menu-option i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+        .menu-option h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .menu-option p {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+        }
+        .main-menu-btn {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .main-menu-btn:hover {
+            background: linear-gradient(145deg, #c0392b, #a93226);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Demo styles */
+        .demo-container {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .demo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .demo-title {
+            font-size: 2rem;
+            color: #ffd700;
+        }
+        .demo-close {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .demo-game {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        .demo-players {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .demo-player {
+            text-align: center;
+        }
+        .demo-player-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 10px;
+        }
+        .demo-player-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .demo-player-score {
+            color: #ffd700;
+        }
+        .demo-status {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+        .demo-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .demo-btn {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .demo-btn:hover {
+            background: linear-gradient(145deg, #2980b9, #1a5276);
+        }
+        
+        /* Rules styles */
+        .rules-container {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .rules-content {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .rules-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .rules-title {
+            font-size: 2rem;
+            color: #ffd700;
+        }
+        .rules-close {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .rules-section {
+            margin-bottom: 20px;
+        }
+        .rules-section h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        .rules-section ul {
+            padding-left: 20px;
+        }
+        .rules-section li {
+            margin-bottom: 5px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            background-color: #1a1a2e;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #ffd700;
+        }
+        
+        /* Multiplayer Lobby Modal Styles */
+        .multiplayer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .youtube-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+        .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        .subscribe-btn {
+            background: linear-gradient(145deg, #FF0000, #CC0000);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+            align-self: center;
+        }
+        .subscribe-btn:hover {
+            background: linear-gradient(145deg, #CC0000, #990000);
+            transform: scale(1.05);
+        }
+        .game-tips {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .game-tips h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .game-tips ul {
+            padding-left: 20px;
+        }
+        .game-tips li {
+            margin-bottom: 5px;
+        }
+        .chat-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .chat-container h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .chat-filter {
+            margin-bottom: 10px;
+        }
+        .chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .chat-message {
+            margin-bottom: 5px;
+        }
+        .chat-input-container {
+            display: flex;
+        }
+        .chat-input {
+            flex-grow: 1;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px 0 0 5px;
+            color: white;
+        }
+        .chat-send {
+            padding: 8px 15px;
+            background: #3498db;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Tournaments Modal Styles */
+        .tournaments-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tournaments-tab {
+            background: none;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .tournaments-tab.active {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+        }
+        .tournaments-tab-content {
+            display: none;
+        }
+        .tournaments-tab-content.active {
+            display: block;
+        }
+        .tournament-list {
+            margin-bottom: 20px;
+        }
+        .tournament-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .tournament-info h4 {
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+        .tournament-info p {
+            margin: 3px 0;
+            font-size: 0.9rem;
+        }
+        .join-tournament-btn {
+            background: linear-gradient(145deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .join-tournament-btn:hover {
+            background: linear-gradient(145deg, #27ae60, #1e8449);
+            transform: scale(1.05);
+        }
+        .tournament-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tournament-search {
+            flex-grow: 1;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+        .tournament-filter-select {
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+        .create-tournament-btn {
+            background: linear-gradient(145deg, #9b59b6, #8e44ad);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .create-tournament-btn:hover {
+            background: linear-gradient(145deg, #8e44ad, #7d3c98);
+            transform: scale(1.05);
+        }
+        
+        /* Create Tournament Modal Styles */
+        .create-tournament-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+        .create-tournament-submit-btn {
+            background: linear-gradient(145deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            align-self: center;
+        }
+        .create-tournament-submit-btn:hover {
+            background: linear-gradient(145deg, #27ae60, #1e8449);
+            transform: scale(1.05);
+        }
+        
+        /* Profile Settings Modal Styles */
+        .profile-settings-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .settings-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .settings-section h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .setting-item {
+            margin-bottom: 15px;
+        }
+        .setting-label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .setting-input {
+            width: 100%;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+        .setting-select {
+            width: 100%;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+        .setting-slider {
+            width: 100%;
+        }
+        .setting-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .setting-toggle input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+        .settings-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .settings-btn {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .settings-btn:hover {
+            background: linear-gradient(145deg, #2980b9, #1a5276);
+            transform: scale(1.05);
+        }
+        .settings-btn.cancel {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+        }
+        .settings-btn.cancel:hover {
+            background: linear-gradient(145deg, #c0392b, #a93226);
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 40px 20px 20px;
+            margin-top: auto;
+            position: relative;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            gap: 30px;
+        }
+        .visitor-counters {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .counter-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .counter-label {
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .odometer-counter {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+        }
+        .odometer-digit {
+            background: #111;
+            border-radius: 6px;
+            padding: 6px 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-column h3 {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-column ul li a:hover {
+            color: #ffd700;
+        }
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .language-dropdown {
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 10px 15px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .language-dropdown:hover {
+            background: #333;
+            border-color: #ffd700;
+        }
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-icon {
+            font-size: 1.5rem;
+            color: #fff;
+            transition: color 0.3s;
+        }
+        .social-icon:hover {
+            color: #ffd700;
+        }
+        .mobile-app {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mobile-app h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .app-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .app-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .app-button:hover {
+            background: #ffd700;
+            color: #111;
+        }
+        
+        /* Footer Section Colors */
+        .footer-column.accessibility h3 {
+            color: #4499FF; /* blue */
+        }
+        .footer-column.company h3 {
+            color: #FF8000; /* orange */
+        }
+        .footer-column.competitions h3 {
+            color: #C259FF; /* purple */
+        }
+        .footer-column.legal h3 {
+            color: #00E676; /* green */
+        }
+        .footer-column.support h3 {
+            color: #FF6666; /* red */
+        }
+        
+        /* Dropdown Styling */
+        .dropdown-content {
+            background-color: #1a1a2e; /* Same as modal background */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+    </style>
 </head>
-<body class="lang-en">
-    <!-- Header -->
-    <header>
-        <div class="title-container">
-            <h1 class="animated-title" id="animated-title">
-                <span style="color: #ff0000;" data-color="#ff0000">G</span>
-                <span style="color: #ff7f00;" data-color="#ff7f00">a</span>
-                <span style="color: #ffff00;" data-color="#ffff00">m</span>
-                <span style="color: #00ff00;" data-color="#00ff00">b</span>
-                <span style="color: #0000ff;" data-color="#0000ff">l</span>
-                <span style="color: #4b0082;" data-color="#4b0082">i</span>
-                <span style="color: #9400d3;" data-color="#9400d3">n</span>
-                <span style="color: #ff0000;" data-color="#ff0000">g</span>
-                <span style="color: #ff7f00;" data-color="#ff7f00"> </span>
-                <span style="color: #ffff00;" data-color="#ffff00">G</span>
-                <span style="color: #00ff00;" data-color="#00ff00">u</span>
-                <span style="color: #0000ff;" data-color="#0000ff">y</span>
-                <span style="color: #4b0082;" data-color="#4b0082">s</span>
-            </h1>
+<body>
+    <div class="game-menu-container">
+        <h1 class="game-title" id="game-title">Game Title</h1>
+        
+        <div class="menu-options">
+            <div class="menu-option" id="demo-option">
+                <i class="fas fa-robot"></i>
+                <h3>Demo</h3>
+                <p>AI play against each other in demo style</p>
+            </div>
+            
+            <div class="menu-option" id="rules-option">
+                <i class="fas fa-book"></i>
+                <h3>Rules</h3>
+                <p>Learn the rules of the game</p>
+            </div>
+            
+            <div class="menu-option" id="multiplayer-option">
+                <i class="fas fa-users"></i>
+                <h3>Multiplayer</h3>
+                <p>Play with friends online</p>
+            </div>
+            
+            <div class="menu-option" id="tournaments-option">
+                <i class="fas fa-trophy"></i>
+                <h3>Tournaments</h3>
+                <p>Join competitive tournaments</p>
+            </div>
         </div>
-    </header>
-    <!-- Navigation -->
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Games</a>
-        <a href="#">Tournaments</a>
-        <a href="#">Leaderboard</a>
-        <a href="#">Community</a>
-        <a href="#">Support</a>
-    </nav>
-    <!-- Main Content -->
-    <main>
-        <!-- Profile Section -->
-        <section class="profile-section">
-            <div class="profile-avatar">👤</div>
-            <div class="profile-info">
-                <h2>Player123</h2>
-                <p>Level <span id="user-level">1</span> | <span id="user-xp">0</span> XP</p>
-            </div>
-            <div class="profile-stats">
-                <div class="stat">
-                    <div class="stat-value">1,250</div>
-                    <div class="stat-label">Points</div>
+        
+        <button class="main-menu-btn" id="main-menu-btn">Main Menu</button>
+    </div>
+    
+    <!-- Demo Container -->
+    <div class="demo-container" id="demo-container">
+        <div class="demo-header">
+            <div class="demo-title">AI Demo</div>
+            <button class="demo-close" id="demo-close">Close</button>
+        </div>
+        <div class="demo-game">
+            <h2 id="demo-game-title">Game Demo</h2>
+            <div class="demo-players">
+                <div class="demo-player">
+                    <div class="demo-player-avatar">🤖</div>
+                    <div class="demo-player-name">AI Player 1</div>
+                    <div class="demo-player-score" id="ai1-score">0</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-value">42</div>
-                    <div class="stat-label">Games</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">15</div>
-                    <div class="stat-label">Achievements</div>
+                <div class="demo-player">
+                    <div class="demo-player-avatar">🤖</div>
+                    <div class="demo-player-name">AI Player 2</div>
+                    <div class="demo-player-score" id="ai2-score">0</div>
                 </div>
             </div>
-        </section>
-        <!-- Game of the Week and Day Section -->
-        <section class="featured-games">
-            <div class="featured-game">
-                <div class="week-timer" id="week-timer">Next Week: Loading...</div>
-                <h2>Game of the Week</h2>
-                <img src="https://picsum.photos/seed/week31/400/180.jpg" alt="Game of the Week">
-                <h3>Olympic Games Glory</h3>
-                <p>International sports competition</p>
-                <button>Play Now</button>
+            <div class="demo-status" id="demo-status">Ready to start demo...</div>
+            <div class="demo-actions">
+                <button class="demo-btn" id="start-demo-btn">Start Demo</button>
+                <button class="demo-btn" id="reset-demo-btn">Reset</button>
             </div>
-            <div class="featured-game">
-                <h2>Game of the Day</h2>
-                <img src="https://picsum.photos/seed/gameday/400/180.jpg" alt="Game of the Day">
-                <h3 id="game-of-day">Loading...</h3>
-                <p>Selected from our 5x5 grid</p>
-                <button>Play Now</button>
+        </div>
+    </div>
+    
+    <!-- Rules Container -->
+    <div class="rules-container" id="rules-container">
+        <div class="rules-content">
+            <div class="rules-header">
+                <div class="rules-title">Game Rules</div>
+                <button class="rules-close" id="rules-close">Close</button>
             </div>
-        </section>
-        <!-- Weekly Rotation Horizontal Scroll -->
-        <section class="weekly-rotation">
-            <h2>🗓️ Full Weekly Game Rotation List (Weeks 1–52)</h2>
-            <div class="rotation-container">
-                <div class="rotation-item">
-                    <div class="week-number">Week 1</div>
-                    <div class="game-title">🎆 New Year's Eve Showdown</div>
-                    <div class="event-label">New Year's Week</div>
-                    <button class="play-now-btn">Play Now</button>
+            <div class="rules-section">
+                <h3>Objective</h3>
+                <p id="game-objective">The objective of this game is to defeat your opponent by achieving the highest score.</p>
+            </div>
+            <div class="rules-section">
+                <h3>How to Play</h3>
+                <ul id="game-rules">
+                    <li>Each player takes turns making moves</li>
+                    <li>Points are awarded for successful actions</li>
+                    <li>The game ends when a player reaches the target score</li>
+                    <li>The player with the highest score wins</li>
+                </ul>
+            </div>
+            <div class="rules-section">
+                <h3>Scoring</h3>
+                <ul id="game-scoring">
+                    <li>Basic move: 10 points</li>
+                    <li>Special move: 25 points</li>
+                    <li>Bonus action: 50 points</li>
+                </ul>
+            </div>
+            <div class="rules-section">
+                <h3>Tips & Strategies</h3>
+                <ul id="game-tips">
+                    <li>Plan your moves ahead of time</li>
+                    <li>Watch your opponent's patterns</li>
+                    <li>Use special moves strategically</li>
+                    <li>Control the center of the board when possible</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Multiplayer Lobby Modal -->
+    <div id="multiplayer-lobby-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Multiplayer Lobby</h2>
+            <div class="multiplayer-container">
+                <div class="youtube-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 2</div>
-                    <div class="game-title">⛷️ Winter Olympics Prep</div>
-                    <div class="event-label">Winter Sports Season</div>
-                    <button class="play-now-btn">Play Now</button>
+                <button class="subscribe-btn" id="subscribe-btn">Subscribe to Our Channel</button>
+                <div class="game-tips">
+                    <h3>Game Tips</h3>
+                    <ul>
+                        <li>Practice makes perfect - play against AI to improve your skills</li>
+                        <li>Watch your opponent's moves to predict their strategy</li>
+                        <li>Use power-ups wisely - they can turn the tide of battle</li>
+                        <li>Join tournaments for bigger rewards and recognition</li>
+                    </ul>
                 </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 3</div>
-                    <div class="game-title">❄️ Snowball Syndicate</div>
-                    <div class="event-label">Peak Winter</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 4</div>
-                    <div class="game-title">🐿️ Groundhog Day Predictions</div>
-                    <div class="event-label">Groundhog Day</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 5</div>
-                    <div class="game-title">🏈 Super Bowl Spectacle</div>
-                    <div class="event-label">Super Bowl Week</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 6</div>
-                    <div class="game-title">💕 Pet Empire: Valentine Edition</div>
-                    <div class="event-label">Valentine's Week</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 7</div>
-                    <div class="game-title">☕ Espresso Wars</div>
-                    <div class="event-label">Winter X Games</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 8</div>
-                    <div class="game-title">🎪 Winter Carnival Chaos</div>
-                    <div class="event-label">Winter Festivals</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 9</div>
-                    <div class="game-title">🏛️ US Presidents Day Politics</div>
-                    <div class="event-label">President's Day</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 10</div>
-                    <div class="game-title">🏀 March Madness: Bracket Brawl</div>
-                    <div class="event-label">March Madness Begins</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 11</div>
-                    <div class="game-title">⚾ Spring Training Stadium</div>
-                    <div class="event-label">Spring Training</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 12</div>
-                    <div class="game-title">🍀 St. Patrick's Pub Empire</div>
-                    <div class="event-label">St. Patrick's Day</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 13</div>
-                    <div class="game-title">🐰 Bunny Run: Easter Sprint</div>
-                    <div class="event-label">Easter Preparation</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 14</div>
-                    <div class="game-title">🌊 Underwater Empire</div>
-                    <div class="event-label">Tsunami Awareness Month</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 15</div>
-                    <div class="game-title">🏌️ Masters Golf Tournament</div>
-                    <div class="event-label">Masters Tournament</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 16</div>
-                    <div class="game-title">📝 Tax Season Survival</div>
-                    <div class="event-label">Tax Deadline Week</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 17</div>
-                    <div class="game-title">🏗️ Spring Builders Fest</div>
-                    <div class="event-label">Spring Construction</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 18</div>
-                    <div class="game-title">🌍 Earth Day Eco Empire</div>
-                    <div class="event-label">Earth Day</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 19</div>
-                    <div class="game-title">🐎 Derby Day Racing</div>
-                    <div class="event-label">Kentucky Derby</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 20</div>
-                    <div class="game-title">👩‍👧‍👦 Mother's Day Marketplace</div>
-                    <div class="event-label">Mother's Day</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 21</div>
-                    <div class="game-title">🏎️ Indy 500 Racing Empire</div>
-                    <div class="event-label">Indianapolis 500</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 22</div>
-                    <div class="game-title">🇺🇸 Memorial Day BBQ Bash</div>
-                    <div class="event-label">Memorial Day</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 23</div>
-                    <div class="game-title">🏖️ Beach Blitz</div>
-                    <div class="event-label">Beach Season Begins</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 24</div>
-                    <div class="game-title">🏃 Summer Sports Rush</div>
-                    <div class="event-label">Summer Sports Season</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 25</div>
-                    <div class="game-title">👨‍👧‍👦 Father's Day Workshop</div>
-                    <div class="event-label">Father's Day</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 26</div>
-                    <div class="game-title">🎓 Graduation Ceremony Central</div>
-                    <div class="event-label">Graduation Season</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 27</div>
-                    <div class="game-title">🎆 Independence Day Fireworks</div>
-                    <div class="event-label">4th of July</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 28</div>
-                    <div class="game-title">⛺ Summer Camp Adventures</div>
-                    <div class="event-label">Summer Camp Season</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 29</div>
-                    <div class="game-title">🚗 Car Passing</div>
-                    <div class="event-label">Summer Road Trips</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 30</div>
-                    <div class="game-title">🎡 State Fair Carnival</div>
-                    <div class="event-label">State Fair Season</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 31</div>
-                    <div class="game-title">🏅 Olympic Games Glory</div>
-                    <div class="event-label">Summer Olympics (off-year)</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 32</div>
-                    <div class="game-title">📚 Back to School Brawl</div>
-                    <div class="event-label">Back to School</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 33</div>
-                    <div class="game-title">🛠️ Labor Day Weekend Rush</div>
-                    <div class="event-label">Labor Day</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 34</div>
-                    <div class="game-title">🏈 Football Season Kickoff</div>
-                    <div class="event-label">NFL Season Begins</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 35</div>
-                    <div class="game-title">🌕 Harvest Moon Festival</div>
-                    <div class="event-label">Harvest Season</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 36</div>
-                    <div class="game-title">🍺 Oktoberfest Brewery</div>
-                    <div class="event-label">Oktoberfest</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 37</div>
-                    <div class="game-title">🎃 Halloween Horror Empire</div>
-                    <div class="event-label">Halloween Preparation</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 38</div>
-                    <div class="game-title">⚾ World Series Baseball</div>
-                    <div class="event-label">World Series</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 39</div>
-                    <div class="game-title">🦃 Thanksgiving Turkey Tycoon</div>
-                    <div class="event-label">Thanksgiving Prep</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 40</div>
-                    <div class="game-title">🛍️ Black Friday Shopping Spree</div>
-                    <div class="event-label">Black Friday</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 41</div>
-                    <div class="game-title">💻 Cyber Monday Tech Empire</div>
-                    <div class="event-label">Cyber Monday</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 42</div>
-                    <div class="game-title">🎄 Holiday Decoration Dynasty</div>
-                    <div class="event-label">Holiday Season Begins</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 43</div>
-                    <div class="game-title">⛄ Winter Wonderland Workshop</div>
-                    <div class="event-label">Holiday Shopping</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 44</div>
-                    <div class="game-title">🎅 Santa's Toy Factory</div>
-                    <div class="event-label">Christmas Week</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 45</div>
-                    <div class="game-title">🗣️ Trash Talk Rumble</div>
-                    <div class="event-label">Anti-Bullying Week</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 46</div>
-                    <div class="game-title">❄️ Winter Storm Survival</div>
-                    <div class="event-label">Winter Weather</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 47</div>
-                    <div class="game-title">✈️ Holiday Travel Chaos</div>
-                    <div class="event-label">Holiday Travel</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 48</div>
-                    <div class="game-title">💪 New Year Resolution Gym</div>
-                    <div class="event-label">New Year Prep</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 49</div>
-                    <div class="game-title">🌙 Winter Solstice Celebration</div>
-                    <div class="event-label">Winter Solstice</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 50</div>
-                    <div class="game-title">💰 Year-End Financial Empire</div>
-                    <div class="event-label">Year-End Business</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 51</div>
-                    <div class="game-title">🎄 Christmas Eve Magic</div>
-                    <div class="event-label">Christmas Eve</div>
-                    <button class="play-now-btn">Play Now</button>
-                </div>
-                <div class="rotation-item">
-                    <div class="week-number">Week 52</div>
-                    <div class="game-title">🎊 New Year's Resolution Reset</div>
-                    <div class="event-label">New Year's Eve</div>
-                    <button class="play-now-btn">Play Now</button>
+                <div class="chat-container">
+                    <h3>Chat</h3>
+                    <div class="chat-filter">
+                        <label>
+                            <input type="checkbox" id="profanity-filter" checked>
+                            Profanity Filter
+                        </label>
+                    </div>
+                    <div class="chat-messages" id="multiplayer-chat">
+                        <div class="chat-message">Welcome to the multiplayer lobby!</div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-input" id="multiplayer-chat-input" placeholder="Type your message...">
+                        <button class="chat-send" id="multiplayer-chat-send">Send</button>
+                    </div>
                 </div>
             </div>
-        </section>
-        <!-- Action Buttons -->
-        <section class="action-buttons">
-            <div class="action-button" id="default-btn">Default</div>
-            <div class="action-button" id="name-btn">Name</div>
-            <div class="action-button" id="use-btn">Use</div>
-            <div class="action-button" id="color-btn">Color</div>
-        </section>
-        <!-- 5x5 Game Grid with new games -->
-        <section class="game-grid" id="game-grid">
-            <div class="game-card" draggable="true" data-name="Blob Bots" data-uses="42" data-color="#FF6B6B">
-                <div class="game-icon">🤖</div>
-                <h3 style="color: #ffffff;">Blob Bots</h3>
-                <p style="color: #e0e0e0;">Eat, grow, dominate. Battle other players in this quick-play blob game.</p>
-                <button class="play-now-btn">Play Now</button>
+        </div>
+    </div>
+    
+    <!-- Subscribe Confirmation Modal -->
+    <div id="subscribe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subscribe to Our YouTube Channel</h2>
+            <p>Please subscribe to our YouTube channel to unlock multiplayer features.</p>
+            <p>After subscribing, click the button below to confirm.</p>
+            <button id="confirm-subscribe-btn" class="settings-btn">I've Subscribed</button>
+        </div>
+    </div>
+    
+    <!-- Tournaments Modal -->
+    <div id="tournaments-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tournaments</h2>
+            <div class="tournaments-tabs">
+                <button class="tournaments-tab active" data-tab="official">Official</button>
+                <button class="tournaments-tab" data-tab="unofficial">Unofficial</button>
             </div>
-            <div class="game-card" draggable="true" data-name="Castle Siege" data-uses="38" data-color="#4ECDC4">
-                <div class="game-icon">🏰</div>
-                <h3 style="color: #ffffff;">Castle Siege</h3>
-                <p style="color: #e0e0e0;">4-player RTS battle! Build your army and destroy towers!</p>
-                <button class="play-now-btn">Play Now</button>
+            <div class="tournaments-tab-content active" id="official-tab">
+                <h3>Official Tournaments</h3>
+                <p>Official tournaments happen twice a year per game and are double elimination.</p>
+                <div class="tournament-list">
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Blob Bots Championship</h4>
+                            <p>Starts in: 3 days</p>
+                            <p>Participants: 64/128</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Castle Siege Masters</h4>
+                            <p>Starts in: 10 days</p>
+                            <p>Participants: 32/64</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Classic War Elite</h4>
+                            <p>Starts in: 17 days</p>
+                            <p>Participants: 128/256</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Cosmic Jackpot Showdown</h4>
+                            <p>Starts in: 24 days</p>
+                            <p>Participants: 64/128</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Big Fish Battle Royale</h4>
+                            <p>Starts in: 31 days</p>
+                            <p>Participants: 256/512</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                </div>
             </div>
-            <div class="game-card" draggable="true" data-name="Classic War" data-uses="55" data-color="#FFD166">
-                <div class="game-icon">⚔️</div>
-                <h3 style="color: #ffffff;">Classic War</h3>
-                <p style="color: #e0e0e0;">Pure luck card battle! Flip cards to beat your opponent.</p>
-                <button class="play-now-btn">Play Now</button>
+            <div class="tournaments-tab-content" id="unofficial-tab">
+                <h3>Unofficial Tournaments</h3>
+                <p>Player-created tournaments with custom rules.</p>
+                <div class="tournament-filters">
+                    <input type="text" class="tournament-search" placeholder="Search tournaments...">
+                    <select class="tournament-filter-select">
+                        <option>All Games</option>
+                        <option>Blob Bots</option>
+                        <option>Castle Siege</option>
+                        <option>Classic War</option>
+                        <option>Cosmic Jackpot</option>
+                        <option>Big Fish</option>
+                    </select>
+                </div>
+                <div class="tournament-list">
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Weekend Warriors</h4>
+                            <p>Game: Classic War</p>
+                            <p>Creator: PlayerX</p>
+                            <p>Participants: 8/16</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Newbie Challenge</h4>
+                            <p>Game: Rock Paper Scissors</p>
+                            <p>Creator: NewPlayer</p>
+                            <p>Participants: 4/8</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Pro League</h4>
+                            <p>Game: Blob Bots</p>
+                            <p>Creator: ProGamer123</p>
+                            <p>Participants: 16/32</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Speed Runners</h4>
+                            <p>Game: Lunar Lander: Horizon</p>
+                            <p>Creator: SpeedDemon</p>
+                            <p>Participants: 8/16</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Strategy Masters</h4>
+                            <p>Game: Castle Siege</p>
+                            <p>Creator: Tactician</p>
+                            <p>Participants: 32/64</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                </div>
+                <button class="create-tournament-btn">Create Tournament</button>
             </div>
-            <div class="game-card" draggable="true" data-name="Cosmic Jackpot" data-uses="67" data-color="#6A0572">
-                <div class="game-icon">🎰</div>
-                <h3 style="color: #ffffff;">Cosmic Jackpot</h3>
-                <p style="color: #e0e0e0;">Spin for massive rewards! Hit the mega stack jackpot.</p>
-                <button class="play-now-btn">Play Now</button>
+        </div>
+    </div>
+    
+    <!-- Create Tournament Modal -->
+    <div id="create-tournament-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create Tournament</h2>
+            <div class="create-tournament-form">
+                <div class="form-group">
+                    <label for="tournament-name">Tournament Name (max 30 characters)</label>
+                    <input type="text" id="tournament-name" maxlength="30" required>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-game">Game</label>
+                    <select id="tournament-game" required>
+                        <option value="">Select a game</option>
+                        <option value="Blob Bots">Blob Bots</option>
+                        <option value="Castle Siege">Castle Siege</option>
+                        <option value="Classic War">Classic War</option>
+                        <option value="Cosmic Jackpot">Cosmic Jackpot</option>
+                        <option value="Big Fish">Big Fish</option>
+                        <option value="Escape Prison">Escape Prison</option>
+                        <option value="Rock Paper Scissors">Rock Paper Scissors</option>
+                        <option value="Get On Top">Get On Top</option>
+                        <option value="Hangman">Hangman</option>
+                        <option value="Header Hustle">Header Hustle</option>
+                        <option value="Puzzles">Puzzles</option>
+                        <option value="Lunar Lander: Horizon">Lunar Lander: Horizon</option>
+                        <option value="Math Works">Math Works</option>
+                        <option value="Memory Match">Memory Match</option>
+                        <option value="Mini Basketball">Mini Basketball</option>
+                        <option value="One in a Million">One in a Million</option>
+                        <option value="Platform Jump">Platform Jump</option>
+                        <option value="Pixel Python Arena">Pixel Python Arena</option>
+                        <option value="QuizKnows">QuizKnows</option>
+                        <option value="Sea Square">Sea Square</option>
+                        <option value="Snakes & Ladders – Gamble">Snakes & Ladders – Gamble</option>
+                        <option value="Stickman Fight">Stickman Fight</option>
+                        <option value="Stickman Racer">Stickman Racer</option>
+                        <option value="Wolverine">Wolverine</option>
+                        <option value="WordWeaver">WordWeaver</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-size">Tournament Size</label>
+                    <select id="tournament-size" required>
+                        <option value="8">8 Players</option>
+                        <option value="16">16 Players</option>
+                        <option value="32">32 Players</option>
+                        <option value="64">64 Players</option>
+                        <option value="128">128 Players</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-signup">Sign-up Period (hours)</label>
+                    <input type="number" id="tournament-signup" min="1" max="168" value="24" required>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-wins">Wins to Win</label>
+                    <input type="number" id="tournament-wins" min="1" max="10" value="3" required>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-move-time">Move Time (seconds)</label>
+                    <input type="number" id="tournament-move-time" min="10" max="300" value="30" required>
+                </div>
+                <button class="create-tournament-submit-btn">Create Tournament</button>
             </div>
-            <div class="game-card" draggable="true" data-name="Big Fish" data-uses="29" data-color="#1A936F">
-                <div class="game-icon">🐟</div>
-                <h3 style="color: #ffffff;">Big Fish</h3>
-                <p style="color: #e0e0e0;">Eat to grow. Become the biggest fish in the ocean to win!</p>
-                <button class="play-now-btn">Play Now</button>
+        </div>
+    </div>
+    
+    <!-- Profile Settings Modal -->
+    <div id="profile-settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Profile Settings</h2>
+            <div class="profile-settings-container">
+                <!-- Visual Settings -->
+                <div class="settings-section">
+                    <h3>🎨 Visual Settings</h3>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <div class="setting-label">Theme / Color Scheme</div>
+                            <select class="setting-select">
+                                <option>Light</option>
+                                <option>Dark</option>
+                                <option>Classic</option>
+                                <option>Custom</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">UI Scale</div>
+                            <input type="range" class="setting-slider" min="50" max="150" value="100">
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Text Size</div>
+                            <select class="setting-select">
+                                <option>Small</option>
+                                <option>Medium</option>
+                                <option>Large</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Font Style</div>
+                            <select class="setting-select">
+                                <option>Default</option>
+                                <option>Rounded</option>
+                                <option>Mono</option>
+                                <option>Retro</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Animation Speed</div>
+                            <select class="setting-select">
+                                <option>Off</option>
+                                <option>Low</option>
+                                <option>Normal</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Motion Effects</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="motion-effects" checked>
+                                <label for="motion-effects">On</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Background Visuals</div>
+                            <select class="setting-select">
+                                <option>Static</option>
+                                <option>Subtle Animated</option>
+                                <option>Fully Dynamic</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Character Outline Glow</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="outline-glow" checked>
+                                <label for="outline-glow">On</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Menu & Map Transparency</div>
+                            <input type="range" class="setting-slider" min="0" max="100" value="70">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Audio Settings -->
+                <div class="settings-section">
+                    <h3>🔊 Audio Settings</h3>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <div class="setting-label">Master Volume</div>
+                            <input type="range" class="setting-slider" min="0" max="100" value="70">
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Music Volume</div>
+                            <input type="range" class="setting-slider" min="0" max="100" value="60">
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">SFX Volume</div>
+                            <input type="range" class="setting-slider" min="0" max="100" value="80">
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Voice Chat Volume</div>
+                            <input type="range" class="setting-slider" min="0" max="100" value="75">
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Mute All</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="mute-all">
+                                <label for="mute-all">On</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Ambient Sounds</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="ambient-sounds" checked>
+                                <label for="ambient-sounds">On</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Notification Sounds</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="notification-sounds" checked>
+                                <label for="notification-sounds">On</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Music Style</div>
+                            <select class="setting-select">
+                                <option>Default</option>
+                                <option>Lo-fi</option>
+                                <option>Retro</option>
+                                <option>Custom</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profile Settings -->
+                <div class="settings-section">
+                    <h3>👤 Profile Settings</h3>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <div class="setting-label">Display Name</div>
+                            <input type="text" class="setting-input" value="Player123">
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Username</div>
+                            <input type="text" class="setting-input" value="player123" disabled>
+                            <small>Can be changed once every 7 days</small>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Profile Picture / Avatar</div>
+                            <button class="settings-btn">Change Avatar</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Pronouns</div>
+                            <select class="setting-select">
+                                <option>He/Him</option>
+                                <option>She/Her</option>
+                                <option>They/Them</option>
+                                <option>Custom</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Bio</div>
+                            <textarea class="setting-input" rows="3" maxlength="200">I love playing games!</textarea>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Friend Requests</div>
+                            <select class="setting-select">
+                                <option>Everyone</option>
+                                <option>Friends of Friends</option>
+                                <option>No One</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Show Online Status</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="online-status" checked>
+                                <label for="online-status">Yes</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Profile Visibility</div>
+                            <select class="setting-select">
+                                <option>Public</option>
+                                <option>Friends Only</option>
+                                <option>Private</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Account Language</div>
+                            <select class="setting-select">
+                                <option>English</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                                <option>German</option>
+                                <option>Chinese</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Privacy & Security -->
+                <div class="settings-section">
+                    <h3>🔐 Privacy & Security</h3>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <div class="setting-label">Display My Earnings Publicly</div>
+                            <select class="setting-select">
+                                <option>Yes</option>
+                                <option>Friends Only</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Display My Friends' Usernames</div>
+                            <select class="setting-select">
+                                <option>Full</option>
+                                <option>Nicknames Only</option>
+                                <option>Hidden</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Display In-Game Screenshots</div>
+                            <select class="setting-select">
+                                <option>Public</option>
+                                <option>Friends</option>
+                                <option>Private</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Allow In-Game Screen Recordings</div>
+                            <select class="setting-select">
+                                <option>Public</option>
+                                <option>Friends</option>
+                                <option>Private</option>
+                                <option>Disabled</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Show My NFTs on Profile</div>
+                            <select class="setting-select">
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>Friends Only</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Two-Factor Authentication</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="two-factor">
+                                <label for="two-factor">On</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Change Password</div>
+                            <button class="settings-btn">Change Password</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Recovery Email</div>
+                            <input type="email" class="setting-input" value="user@example.com">
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Linked Accounts</div>
+                            <button class="settings-btn">Manage Accounts</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Blocked Users List</div>
+                            <button class="settings-btn">View Blocked Users</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Allow Anonymous Usage Stats</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="usage-stats" checked>
+                                <label for="usage-stats">Yes</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Chat Filtering</div>
+                            <select class="setting-select">
+                                <option>Moderate</option>
+                                <option>Strict</option>
+                                <option>Off</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Clear Chat History</div>
+                            <button class="settings-btn">Clear History</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gameplay Preferences -->
+                <div class="settings-section">
+                    <h3>🎮 Gameplay Preferences</h3>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <div class="setting-label">Auto-Equip Best Gear</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="auto-equip" checked>
+                                <label for="auto-equip">On</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Controller Vibration</div>
+                            <div class="setting-toggle">
+                                <input type="checkbox" id="controller-vibration" checked>
+                                <label for="controller-vibration">On</label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Difficulty Preset</div>
+                            <select class="setting-select">
+                                <option>Casual</option>
+                                <option>Normal</option>
+                                <option>Competitive</option>
+                                <option>Custom</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Default Game Mode</div>
+                            <select class="setting-select">
+                                <option>Single</option>
+                                <option>Multiplayer</option>
+                                <option>Campaign</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Chat Bubble Speed</div>
+                            <select class="setting-select">
+                                <option>Fast</option>
+                                <option>Normal</option>
+                                <option>Slow</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Skip Cutscenes</div>
+                            <select class="setting-select">
+                                <option>Always</option>
+                                <option>Once</option>
+                                <option>Never</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Cursor Style</div>
+                            <select class="setting-select">
+                                <option>Default</option>
+                                <option>Glove</option>
+                                <option>Laser</option>
+                                <option>Hidden</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Mini-Map Zoom</div>
+                            <select class="setting-select">
+                                <option>Manual</option>
+                                <option>Auto</option>
+                                <option>Slider</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- System & Account -->
+                <div class="settings-section">
+                    <h3>🖥️ System & Account</h3>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <div class="setting-label">Logout</div>
+                            <button class="settings-btn cancel">Logout</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Delete Account</div>
+                            <button class="settings-btn cancel">Delete Account</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Save Data Backup</div>
+                            <button class="settings-btn">Backup Data</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Session Info</div>
+                            <button class="settings-btn">View Session</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Clear Cache</div>
+                            <button class="settings-btn">Clear Cache</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Report a Bug</div>
+                            <button class="settings-btn">Report Bug</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">App Version</div>
+                            <div class="setting-input" value="v1.2.5" readonly>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-actions">
+                    <button class="settings-btn" id="save-settings-btn">Save Changes</button>
+                    <button class="settings-btn cancel" id="cancel-settings-btn">Cancel</button>
+                </div>
             </div>
-            <div class="game-card" draggable="true" data-name="Escape Prison" data-uses="33" data-color="#114B5F">
-                <div class="game-icon">🚪</div>
-                <h3 style="color: #ffffff;">Escape Prison</h3>
-                <p style="color: #e0e0e0;">A classic choice-based adventure game with multiple endings.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Rock Paper Scissors" data-uses="48" data-color="#F45B69">
-                <div class="game-icon">✂️</div>
-                <h3 style="color: #ffffff;">Rock Paper Scissors</h3>
-                <p style="color: #e0e0e0;">Classic timed card game. Best of 5 rounds wins!</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Get On Top" data-uses="41" data-color="#2EC4B6">
-                <div class="game-icon">🤼</div>
-                <h3 style="color: #ffffff;">Get On Top</h3>
-                <p style="color: #e0e0e0;">Physics duel! 2 vs 2 wrestling match with crazy physics.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Hangman" data-uses="36" data-color="#E71D36">
-                <div class="game-icon">🪢</div>
-                <h3 style="color: #ffffff;">Hangman</h3>
-                <p style="color: #e0e0e0;">Classic word guessing! You can beat the creator of...</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Header Hustle" data-uses="44" data-color="#FF9F1C">
-                <div class="game-icon">⚽</div>
-                <h3 style="color: #ffffff;">Header Hustle</h3>
-                <p style="color: #e0e0e0;">1v1 soccer header with power-ups & bumping. Fast & skill-based.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Puzzles" data-uses="31" data-color="#2EC4B6">
-                <div class="game-icon">🧩</div>
-                <h3 style="color: #ffffff;">Puzzles</h3>
-                <p style="color: #e0e0e0;">Assemble this image puzzle against the clock!</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Lunar Lander: Horizon" data-uses="27" data-color="#011627">
-                <div class="game-icon">🚀</div>
-                <h3 style="color: #ffffff;">Lunar Lander: Horizon</h3>
-                <p style="color: #e0e0e0;">Side-scrolling landing! Timed rewards, leaderboard mode.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Math Works" data-uses="22" data-color="#41EAD4">
-                <div class="game-icon">🔢</div>
-                <h3 style="color: #ffffff;">Math Works</h3>
-                <p style="color: #e0e0e0;">5-player math battle!</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Memory Match" data-uses="39" data-color="#FB5607">
-                <div class="game-icon">🧠</div>
-                <h3 style="color: #ffffff;">Memory Match</h3>
-                <p style="color: #e0e0e0;">Test your memory skills!</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Mini Basketball" data-uses="35" data-color="#FF006E">
-                <div class="game-icon">🏀</div>
-                <h3 style="color: #ffffff;">Mini Basketball</h3>
-                <p style="color: #e0e0e0;">Shoot some hoops! Simple physics-based arcade.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="One in a Million" data-uses="30" data-color="#8338EC">
-                <div class="game-icon">🔍</div>
-                <h3 style="color: #ffffff;">One in a Million</h3>
-                <p style="color: #e0e0e0;">Competitive Where's Waldo? 2-player, 10 seconds each.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Platform Jump" data-uses="37" data-color="#3A86FF">
-                <div class="game-icon">🦘</div>
-                <h3 style="color: #ffffff;">Platform Jump</h3>
-                <p style="color: #e0e0e0;">4-player ledge-jump sprint! Push others off to survive.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Pixel Python Arena" data-uses="43" data-color="#06FFA5">
-                <div class="game-icon">🐍</div>
-                <h3 style="color: #ffffff;">Pixel Python Arena</h3>
-                <p style="color: #e0e0e0;">Full-screen snake battle! WASD/click to control.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="QuizKnows" data-uses="40" data-color="#FF4365">
-                <div class="game-icon">❓</div>
-                <h3 style="color: #ffffff;">QuizKnows</h3>
-                <p style="color: #e0e0e0;">Trivia showdown! Battle 5–12 players. Fast answers win.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Sea Square" data-uses="26" data-color="#00F5FF">
-                <div class="game-icon">🟦</div>
-                <h3 style="color: #ffffff;">Sea Square</h3>
-                <p style="color: #e0e0e0;">Match-3 puzzle with betting & competitive themes. 1v1 or 3+.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Snakes & Ladders – Gamble" data-uses="34" data-color="#9D4EDD">
-                <div class="game-icon">🎲</div>
-                <h3 style="color: #ffffff;">Snakes & Ladders – Gamble</h3>
-                <p style="color: #e0e0e0;">Classic board game with betting. 2–6 players.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Stickman Fight" data-uses="46" data-color="#F72585">
-                <div class="game-icon">🤺</div>
-                <h3 style="color: #ffffff;">Stickman Fight</h3>
-                <p style="color: #e0e0e0;">Epic stickman battle!</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Stickman Racer" data-uses="32" data-color="#7209B7">
-                <div class="game-icon">🏁</div>
-                <h3 style="color: #ffffff;">Stickman Racer</h3>
-                <p style="color: #e0e0e0;">Fast mad track obstacle game!</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="Wolverine" data-uses="28" data-color="#560BAD">
-                <div class="game-icon">🐺</div>
-                <h3 style="color: #ffffff;">Wolverine</h3>
-                <p style="color: #e0e0e0;">Speed deduction! Identify roles, eliminate enemies.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-            <div class="game-card" draggable="true" data-name="WordWeaver" data-uses="25" data-color="#B5179E">
-                <div class="game-icon">📝</div>
-                <h3 style="color: #ffffff;">WordWeaver</h3>
-                <p style="color: #e0e0e0;">Fast word dueling battle! 2 players. Up to 12 prompts.</p>
-                <button class="play-now-btn">Play Now</button>
-            </div>
-        </section>
-        <!-- Lobby Button -->
-        <button class="lobby-button">Enter Lobby</button>
-    </main>
+        </div>
+    </div>
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
@@ -629,6 +1550,10 @@
                         <li><a href="#">Tournaments</a></li>
                         <li><a href="#">Registration</a></li>
                         <li><a href="#">Prizes</a></li>
+                        <li><a href="#">Awards</a></li>
+                        <li><a href="#">Player of the Month</a></li>
+                        <li><a href="#">Hall of Fame</a></li>
+                        <li><a href="#">Credits & Credibility</a></li>
                     </ul>
                 </div>
                 
@@ -638,6 +1563,7 @@
                         <li><a href="#">Terms of Service</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
                     </ul>
                 </div>
                 
@@ -647,6 +1573,8 @@
                         <li><a href="#">Contact Us</a></li>
                         <li><a href="#">Help Center</a></li>
                         <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Report a Bug</a></li>
+                        <li><a href="#">Feature Request</a></li>
                     </ul>
                 </div>
                 
@@ -678,735 +1606,478 @@
             </div>
         </div>
     </footer>
-    <!-- Floating Action Buttons -->
-    <div id="profile-btn" class="floating-btn">👤</div>
-    <div id="coins-btn" class="floating-btn">💰</div>
-    <div id="chatbot-btn" class="floating-btn">💬</div>
-    <div id="slots-btn" class="floating-btn">🎰</div>
     
-    <!-- Coins Dropdown -->
-    <div id="coins-dropdown" class="coins-dropdown">
-        <a href="#" id="purchase-fiat">Purchase with Fiat</a>
-        <a href="#" id="purchase-crypto">Purchase with Crypto</a>
-        <a href="#" id="earn-friends">Earn by Sharing with Friends</a>
-        <a href="#" id="daily-login">Daily Login Calendar</a>
-        <a href="#" id="daily-dice">Daily Dice Roll</a>
-        <a href="#" id="watch-ads">Watch Advertisement Videos</a>
-    </div>
-    
-    <!-- Mini Slots Game -->
-    <div class="mini-slots" id="mini-slots">
-        <div class="slots-header">
-            <div class="slots-title">Mini Slots</div>
-            <button class="slots-close" id="slots-close">✕</button>
-        </div>
-        <div class="slots-display" id="slots-display">
-            <div class="slot-reel" id="reel1">🍒</div>
-            <div class="slot-reel" id="reel2">🍋</div>
-            <div class="slot-reel" id="reel3">🍊</div>
-        </div>
-        <div class="slots-controls">
-            <select class="slots-dropdown" id="bet-amount">
-                <option value="10">Bet: 10</option>
-                <option value="25">Bet: 25</option>
-                <option value="50">Bet: 50</option>
-                <option value="100">Bet: 100</option>
-                <option value="1000">Bet: 1000</option>
-            </select>
-            <select class="slots-dropdown" id="reel-count">
-                <option value="3">3 Reels</option>
-                <option value="4">4 Reels</option>
-                <option value="5">5 Reels</option>
-                <option value="6">6 Reels</option>
-            </select>
-        </div>
-        <div class="slots-info">
-            <div class="slots-bet">Bet: <span id="bet-display">10</span></div>
-            <div class="slots-win">Win: <span id="win-display">0</span></div>
-        </div>
-        <div class="slots-button-container">
-            <div class="slots-lever" id="slots-lever" title="Pull Lever"></div>
-            <button class="slots-spin-button" id="slots-spin-btn">SPIN</button>
-        </div>
-    </div>
-    
-    <!-- Lobby Modal -->
-    <div class="lobby-modal" id="lobby-modal">
-        <div class="lobby-header">
-            <h2 class="lobby-title">🏢 Poptropica Headquarters Lobby</h2>
-            <button class="lobby-close" id="lobby-close">✕</button>
-        </div>
-        <div class="lobby-content">
-            <div class="lobby-building">
-                <div class="lobby-floor">
-                    <div class="lobby-floor-header">
-                        <div class="lobby-floor-number">Floor 1</div>
-                        <div class="lobby-floor-name">Main Entrance</div>
-                    </div>
-                    <div class="lobby-floor-requirements">Requirement: Level 1</div>
-                    <div class="lobby-floor-description">
-                        Welcome to the Poptropica Headquarters! This is the main entrance where all players begin their journey. Meet other players, join events, and access basic games.
-                    </div>
-                    <div class="lobby-floor-access">
-                        <button class="lobby-floor-btn">Enter Floor</button>
-                    </div>
-                </div>
-                
-                <div class="lobby-floor">
-                    <div class="lobby-floor-header">
-                        <div class="lobby-floor-number">Floor 2</div>
-                        <div class="lobby-floor-name">Game Arcade</div>
-                    </div>
-                    <div class="lobby-floor-requirements">Requirement: Level 5</div>
-                    <div class="lobby-floor-description">
-                        The Game Arcade features classic and modern games. Compete in tournaments, earn achievements, and climb the leaderboards.
-                    </div>
-                    <div class="lobby-floor-access">
-                        <button class="lobby-floor-btn">Enter Floor</button>
-                    </div>
-                </div>
-                
-                <div class="lobby-floor">
-                    <div class="lobby-floor-header">
-                        <div class="lobby-floor-number">Floor 3</div>
-                        <div class="lobby-floor-name">VIP Lounge</div>
-                    </div>
-                    <div class="lobby-floor-requirements">Requirement: Level 10</div>
-                    <div class="lobby-floor-description">
-                        The exclusive VIP Lounge for premium members. Access special games, receive bonuses, and enjoy premium features.
-                    </div>
-                    <div class="lobby-floor-access">
-                        <button class="lobby-floor-btn">Enter Floor</button>
-                    </div>
-                </div>
-                
-                <div class="lobby-floor">
-                    <div class="lobby-floor-header">
-                        <div class="lobby-floor-number">Floor 4</div>
-                        <div class="lobby-floor-name">Tournament Arena</div>
-                    </div>
-                    <div class="lobby-floor-requirements">Requirement: Level 15</div>
-                    <div class="lobby-floor-description">
-                        The Tournament Arena hosts competitive events. Join daily, weekly, and monthly tournaments with huge prize pools.
-                    </div>
-                    <div class="lobby-floor-access">
-                        <button class="lobby-floor-btn">Enter Floor</button>
-                    </div>
-                </div>
-                
-                <div class="lobby-floor">
-                    <div class="lobby-floor-header">
-                        <div class="lobby-floor-number">Floor 5</div>
-                        <div class="lobby-floor-name">Developer's Floor</div>
-                    </div>
-                    <div class="lobby-floor-requirements">Requirement: Level 25</div>
-                    <div class="lobby-floor-description">
-                        The exclusive Developer's Floor where you can test new games, provide feedback, and interact with the development team.
-                    </div>
-                    <div class="lobby-floor-access">
-                        <button class="lobby-floor-btn">Enter Floor</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Profile Page -->
-    <div class="profile-page" id="profile-page">
-        <div class="profile-header">
-            <button class="profile-back-btn" id="profile-back-btn">
-                <span>←</span> Back
-            </button>
-            <button class="profile-settings-btn">⚙️</button>
-        </div>
-        
-        <div class="profile-avatar-container">
-            <div class="profile-avatar-large">👤</div>
-            <div class="profile-avatar-edit">✏️</div>
-            <h2>Player123</h2>
-            <div class="profile-social">
-                <div class="profile-social-item">
-                    <span>👥</span>
-                    <span>24 Friends</span>
-                </div>
-                <div class="profile-social-item">
-                    <span>🏆</span>
-                    <span>15 Achievements</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="profile-section">
-            <div class="profile-dropdown">
-                <button class="profile-dropdown-btn">Friends ▼</button>
-                <div class="profile-dropdown-content">
-                    <a href="#" class="profile-dropdown-item" data-view="friends">Friends (24)</a>
-                    <a href="#" class="profile-dropdown-item" data-view="followers">Followers (56)</a>
-                    <a href="#" class="profile-dropdown-item" data-view="following">Following (32)</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="profile-list-container" id="profile-list-container">
-            <!-- Friends/Followers/Following will be loaded here -->
-        </div>
-        
-        <div class="profile-shortcuts">
-            <div class="profile-shortcut">
-                <span>💰</span>
-                <span>Coins</span>
-            </div>
-            <div class="profile-shortcut">
-                <span>🎁</span>
-                <span>Rewards</span>
-            </div>
-            <div class="profile-shortcut">
-                <span>📊</span>
-                <span>Stats</span>
-            </div>
-            <div class="profile-shortcut">
-                <span>🛒</span>
-                <span>Shop</span>
-            </div>
-        </div>
-        
-        <div class="profile-character">
-            <div class="character-image">🦸</div>
-            <div class="character-slots">
-                <div class="character-slot">⚔️</div>
-                <div class="character-slot">🛡️</div>
-                <div class="character-slot">💍</div>
-            </div>
-        </div>
-        
-        <div class="profile-tabs">
-            <button class="profile-tab active" data-tab="stats">Stats</button>
-            <button class="profile-tab" data-tab="inventory">Inventory</button>
-            <button class="profile-tab" data-tab="campaigns">Campaigns</button>
-            <button class="profile-tab" data-tab="cashout">Cashout</button>
-            <button class="profile-tab" data-tab="customization">Customization</button>
-            <button class="profile-tab" data-tab="settings">Settings</button>
-        </div>
-        
-        <div class="profile-tab-content active" id="stats-tab">
-            <div class="stats-panel">
-                <h3 class="stats-title">Player Statistics</h3>
-                <table class="stats-table">
-                    <tr>
-                        <th>Games Played</th>
-                        <td>42</td>
-                    </tr>
-                    <tr>
-                        <th>Games Won</th>
-                        <td>18</td>
-                    </tr>
-                    <tr>
-                        <th>Win Rate</th>
-                        <td>42.9%</td>
-                    </tr>
-                    <tr>
-                        <th>Favorite Game</th>
-                        <td>Castle Siege</td>
-                    </tr>
-                    <tr>
-                        <th>Time Played</th>
-                        <td>36 hours</td>
-                    </tr>
-                </table>
-                <div class="xp-progress">
-                    <div class="xp-progress-bar"></div>
-                </div>
-                <p>680 / 1000 XP to Level 2</p>
-            </div>
-        </div>
-        
-        <div class="profile-tab-content" id="inventory-tab">
-            <div class="inventory-grid">
-                <div class="inventory-item">
-                    <div class="inventory-icon">🎮</div>
-                    <div class="inventory-name">Game Pass</div>
-                    <div class="inventory-desc">7 days</div>
-                </div>
-                <div class="inventory-item">
-                    <div class="inventory-icon">💎</div>
-                    <div class="inventory-name">Gems</div>
-                    <div class="inventory-desc">x25</div>
-                </div>
-                <div class="inventory-item">
-                    <div class="inventory-icon">🎟️</div>
-                    <div class="inventory-name">Ticket</div>
-                    <div class="inventory-desc">Tournament</div>
-                </div>
-                <div class="inventory-item">
-                    <div class="inventory-icon">🎁</div>
-                    <div class="inventory-name">Mystery Box</div>
-                    <div class="inventory-desc">x3</div>
-                </div>
-                <div class="inventory-item">
-                    <div class="inventory-icon">🏆</div>
-                    <div class="inventory-name">Trophy</div>
-                    <div class="inventory-desc">Bronze</div>
-                </div>
-                <div class="inventory-item">
-                    <div class="inventory-icon">👕</div>
-                    <div class="inventory-name">Skin</div>
-                    <div class="inventory-desc">Warrior</div>
-                </div>
-                <div class="inventory-item">
-                    <div class="inventory-icon">🎨</div>
-                    <div class="inventory-name">Avatar Frame</div>
-                    <div class="inventory-desc">Golden</div>
-                </div>
-                <div class="inventory-item">
-                    <div class="inventory-icon">⚡</div>
-                    <div class="inventory-name">Power-up</div>
-                    <div class="inventory-desc">x5</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="profile-tab-content" id="campaigns-tab">
-            <div class="campaign-list">
-                <div class="campaign-item completed">
-                    <div>
-                        <h4>New Player Journey</h4>
-                        <p>Complete the introduction to earn rewards</p>
-                    </div>
-                    <div class="campaign-status completed">Completed</div>
-                </div>
-                <div class="campaign-item in-progress">
-                    <div>
-                        <h4>Weekly Challenge</h4>
-                        <p>Play 10 games this week</p>
-                    </div>
-                    <div class="campaign-status in-progress">In Progress</div>
-                </div>
-                <div class="campaign-item locked">
-                    <div>
-                        <h4>Master Tournament</h4>
-                        <p>Win 5 tournaments in a row</p>
-                    </div>
-                    <div class="campaign-status locked">Locked</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="profile-tab-content" id="cashout-tab">
-            <div class="cashout-panel">
-                <div class="balance-display">
-                    <div class="balance-amount">$125.50</div>
-                    <p>Available Balance</p>
-                </div>
-                <button class="withdraw-button">Withdraw Funds</button>
-                <h3>Transaction History</h3>
-                <div class="transactions-list">
-                    <div class="transaction-item">
-                        <div class="transaction-date">2023-06-15</div>
-                        <div class="transaction-desc">Tournament Win</div>
-                        <div class="transaction-amount positive">+$25.00</div>
-                    </div>
-                    <div class="transaction-item">
-                        <div class="transaction-date">2023-06-10</div>
-                        <div class="transaction-desc">Withdrawal</div>
-                        <div class="transaction-amount negative">-$50.00</div>
-                    </div>
-                    <div class="transaction-item">
-                        <div class="transaction-date">2023-06-05</div>
-                        <div class="transaction-desc">Daily Bonus</div>
-                        <div class="transaction-amount positive">+$5.00</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="profile-tab-content" id="customization-tab">
-            <div class="customization-container">
-                <h3>Character Customization</h3>
-                <p>Personalize your character without changing body composition</p>
-                
-                <div class="customization-preview">
-                    <div class="character-model" id="character-model">🦸</div>
-                </div>
-                
-                <div class="customization-options">
-                    <div class="customization-category">
-                        <h4>Hair</h4>
-                        <div class="customization-items">
-                            <div class="customization-item" data-type="hair" data-value="spiky">Spiky</div>
-                            <div class="customization-item" data-type="hair" data-value="slicked">Slicked Back</div>
-                            <div class="customization-item" data-type="hair" data-value="long">Long</div>
-                            <div class="customization-item" data-type="hair" data-value="curly">Curly</div>
-                        </div>
-                        <div class="color-picker">
-                            <label>Hair Color:</label>
-                            <input type="color" id="hair-color" value="#000000">
-                        </div>
-                    </div>
-                    
-                    <div class="customization-category">
-                        <h4>Eyes</h4>
-                        <div class="customization-items">
-                            <div class="customization-item" data-type="eyes" data-value="round">Round</div>
-                            <div class="customization-item" data-type="eyes" data-value="slanted">Slanted</div>
-                            <div class="customization-item" data-type="eyes" data-value="wide">Wide</div>
-                            <div class="customization-item" data-type="eyes" data-value="sleepy">Sleepy</div>
-                        </div>
-                        <div class="color-picker">
-                            <label>Eye Color:</label>
-                            <input type="color" id="eye-color" value="#000000">
-                        </div>
-                    </div>
-                    
-                    <div class="customization-category">
-                        <h4>Outfit</h4>
-                        <div class="customization-items">
-                            <div class="customization-item" data-type="outfit" data-value="casual">Casual</div>
-                            <div class="customization-item" data-type="outfit" data-value="formal">Formal</div>
-                            <div class="customization-item" data-type="outfit" data-value="sport">Sport</div>
-                            <div class="customization-item" data-type="outfit" data-value="armor">Armor</div>
-                        </div>
-                        <div class="color-picker">
-                            <label>Outfit Color:</label>
-                            <input type="color" id="outfit-color" value="#000000">
-                        </div>
-                    </div>
-                    
-                    <div class="customization-category">
-                        <h4>Accessories</h4>
-                        <div class="customization-items">
-                            <div class="customization-item" data-type="accessory" data-value="hat">Hat</div>
-                            <div class="customization-item" data-type="accessory" data-value="glasses">Glasses</div>
-                            <div class="customization-item" data-type="accessory" data-value="mask">Mask</div>
-                            <div class="customization-item" data-type="accessory" data-value="none">None</div>
-                        </div>
-                    </div>
-                    
-                    <div class="customization-category">
-                        <h4>Effects</h4>
-                        <div class="customization-items">
-                            <div class="customization-item" data-type="effect" data-value="none">None</div>
-                            <div class="customization-item" data-type="effect" data-value="sparkles">Sparkles</div>
-                            <div class="customization-item" data-type="effect" data-value="smoke">Smoke Trail</div>
-                            <div class="customization-item" data-type="effect" data-value="fire">Fire Aura</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="customization-actions">
-                    <button id="save-customization-btn" class="profile-tab">Save Changes</button>
-                    <button id="reset-customization-btn" class="profile-tab">Reset to Default</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="profile-tab-content" id="settings-tab">
-            <div class="settings-section">
-                <h3>Privacy Settings</h3>
-                <div class="setting-item">
-                    <div class="setting-label">Public Earnings</div>
-                    <label class="switch">
-                        <input type="checkbox" id="public-earnings">
-                        <span class="slider round"></span>
-                    </label>
-                    <div class="setting-description">Allow others to see your earnings</div>
-                </div>
-            </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get game name from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameName = urlParams.get('game');
             
-            <div class="settings-section">
-                <h3>Notification Settings</h3>
-                <div class="setting-item">
-                    <div class="setting-label">Push Notifications</div>
-                    <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-                <div class="setting-item">
-                    <div class="setting-label">Email Notifications</div>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
+            if (gameName) {
+                document.getElementById('game-title').textContent = gameName;
+                document.getElementById('demo-game-title').textContent = gameName + ' Demo';
+            }
             
-            <div class="settings-section">
-                <h3>Display Settings</h3>
-                <div class="setting-item">
-                    <div class="setting-label">Brightness</div>
-                    <input type="range" class="setting-slider" min="0" max="100" value="75">
-                </div>
-                <div class="setting-item">
-                    <div class="setting-label">Color Theme</div>
-                    <select class="setting-select">
-                        <option>Default</option>
-                        <option>Dark</option>
-                        <option>Light</option>
-                        <option>High Contrast</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        
-        <div class="profile-footer">
-            <div class="level-display">
-                <div class="level-number">Level 1</div>
-                <div class="xp-text">680 / 1000 XP</div>
-            </div>
-            <div class="xp-progress">
-                <div class="xp-progress-bar"></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Chatbot Modal -->
-    <div class="chatbot-modal" id="chatbot-modal">
-        <div class="chatbot-header">
-            <div class="chatbot-title">Support Chat</div>
-            <button class="chatbot-close" id="chatbot-close">✕</button>
-        </div>
-        <div class="chatbot-messages" id="chatbot-messages">
-            <div class="chatbot-message bot">
-                Hello! I'm here to help you with any questions about Gambling Guys. How can I assist you today?
-            </div>
-        </div>
-        <div class="chatbot-attachments">
-            <button class="chatbot-attachment-btn" id="chatbot-screenshot">📷 Screenshot</button>
-            <button class="chatbot-attachment-btn" id="chatbot-file">📁 File</button>
-            <input type="file" id="file-input" class="file-input">
-        </div>
-        <div class="chatbot-input-container">
-            <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Type your message...">
-            <button class="chatbot-send" id="chatbot-send">➤</button>
-        </div>
-    </div>
-    
-    <!-- Coin Modals -->
-    <!-- Purchase with Fiat Modal -->
-    <div id="purchase-fiat-modal" class="coin-modal">
-        <div class="coin-modal-content">
-            <span class="close">&times;</span>
-            <h2>Purchase Coins with Fiat</h2>
-            <div class="coin-options">
-                <div class="coin-option">
-                    <h3>Starter Pack</h3>
-                    <div class="coin-amount">1,000 Coins</div>
-                    <div class="coin-price">$0.99</div>
-                    <button class="coin-buy-btn">Buy Now</button>
-                </div>
-                <div class="coin-option">
-                    <h3>Standard Pack</h3>
-                    <div class="coin-amount">5,000 Coins</div>
-                    <div class="coin-price">$4.99</div>
-                    <button class="coin-buy-btn">Buy Now</button>
-                </div>
-                <div class="coin-option">
-                    <h3>Premium Pack</h3>
-                    <div class="coin-amount">10,000 Coins</div>
-                    <div class="coin-price">$9.99</div>
-                    <button class="coin-buy-btn">Buy Now</button>
-                </div>
-                <div class="coin-option">
-                    <h3>Ultimate Pack</h3>
-                    <div class="coin-amount">50,000 Coins</div>
-                    <div class="coin-price">$39.99</div>
-                    <button class="coin-buy-btn">Buy Now</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Purchase with Crypto Modal -->
-    <div id="purchase-crypto-modal" class="coin-modal">
-        <div class="coin-modal-content">
-            <span class="close">&times;</span>
-            <h2>Purchase Coins with Crypto</h2>
-            <div class="coin-options">
-                <div class="coin-option">
-                    <h3>Bitcoin</h3>
-                    <div class="coin-amount">10,000 Coins</div>
-                    <div class="coin-price">0.0001 BTC</div>
-                    <button class="coin-buy-btn">Buy Now</button>
-                </div>
-                <div class="coin-option">
-                    <h3>Ethereum</h3>
-                    <div class="coin-amount">10,000 Coins</div>
-                    <div class="coin-price">0.001 ETH</div>
-                    <button class="coin-buy-btn">Buy Now</button>
-                </div>
-                <div class="coin-option">
-                    <h3>Litecoin</h3>
-                    <div class="coin-amount">10,000 Coins</div>
-                    <div class="coin-price">0.01 LTC</div>
-                    <button class="coin-buy-btn">Buy Now</button>
-                </div>
-                <div class="coin-option">
-                    <h3>Dogecoin</h3>
-                    <div class="coin-amount">10,000 Coins</div>
-                    <div class="coin-price">100 DOGE</div>
-                    <button class="coin-buy-btn">Buy Now</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Earn by Sharing with Friends Modal -->
-    <div id="earn-friends-modal" class="coin-modal">
-        <div class="coin-modal-content">
-            <span class="close">&times;</span>
-            <h2>Earn Coins by Sharing with Friends</h2>
-            <p>Share your referral link with friends and earn coins when they sign up and play!</p>
-            <div class="share-container">
-                <h3>Your Referral Link</h3>
-                <div class="share-link">https://gamblingguys.com/ref/Player123</div>
-                <button class="share-btn" id="copy-link-btn">Copy Link</button>
-                <button class="share-btn" id="share-facebook-btn">Share on Facebook</button>
-                <button class="share-btn" id="share-twitter-btn">Share on Twitter</button>
-            </div>
-            <div class="coin-options">
-                <div class="coin-option">
-                    <h3>Friend Signs Up</h3>
-                    <div class="coin-amount">100 Coins</div>
-                </div>
-                <div class="coin-option">
-                    <h3>Friend Plays 10 Games</h3>
-                    <div class="coin-amount">500 Coins</div>
-                </div>
-                <div class="coin-option">
-                    <h3>Friend Makes a Purchase</h3>
-                    <div class="coin-amount">1,000 Coins</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Daily Login Calendar Modal -->
-    <div id="daily-login-modal" class="coin-modal">
-        <div class="coin-modal-content">
-            <span class="close">&times;</span>
-            <h2>Daily Login Calendar</h2>
-            <div class="daily-reward-status" id="daily-login-status">Checking status...</div>
-            <p>Login every day to earn bonus coins! Consecutive logins earn bigger rewards.</p>
-            <div class="calendar" id="login-calendar">
-                <div class="calendar-header">Sun</div>
-                <div class="calendar-header">Mon</div>
-                <div class="calendar-header">Tue</div>
-                <div class="calendar-header">Wed</div>
-                <div class="calendar-header">Thu</div>
-                <div class="calendar-header">Fri</div>
-                <div class="calendar-header">Sat</div>
-                <!-- Calendar days will be generated by JavaScript -->
-            </div>
-            <button class="coin-buy-btn" id="claim-daily-login-btn">Claim Daily Reward</button>
-        </div>
-    </div>
-    
-    <!-- Daily Dice Roll Modal -->
-    <div id="daily-dice-modal" class="coin-modal">
-        <div class="coin-modal-content">
-            <span class="close">&times;</span>
-            <h2>Daily Dice Roll</h2>
-            <div class="daily-reward-status" id="daily-dice-status">Checking status...</div>
-            <p>Roll the dice once per day to earn bonus coins! Higher rolls earn more coins.</p>
-            <div class="dice-container">
-                <div class="dice" id="daily-dice">🎲</div>
-            </div>
-            <div class="dice-result" id="dice-result">Roll the dice!</div>
-            <div class="coin-options">
-                <div class="coin-option">
-                    <h3>Roll 1-2</h3>
-                    <div class="coin-amount">10 Coins</div>
-                </div>
-                <div class="coin-option">
-                    <h3>Roll 3-4</h3>
-                    <div class="coin-amount">25 Coins</div>
-                </div>
-                <div class="coin-option">
-                    <h3>Roll 5-6</h3>
-                    <div class="coin-amount">50 Coins</div>
-                </div>
-            </div>
-            <button class="coin-buy-btn" id="roll-dice-btn">Roll Dice</button>
-        </div>
-    </div>
-    
-    <!-- Watch Advertisement Videos Modal -->
-    <div id="watch-ads-modal" class="coin-modal">
-        <div class="coin-modal-content">
-            <span class="close">&times;</span>
-            <h2>Watch Advertisement Videos</h2>
-            <p>Watch short videos to earn bonus coins. You can watch up to 5 videos per day.</p>
-            <div class="ad-container">
-                <h3>Today's Videos Remaining</h3>
-                <div class="coin-amount" id="videos-remaining">5/5</div>
-                <p>Each video watched earns you 20 coins.</p>
-            </div>
-            <button class="coin-buy-btn" id="watch-video-btn">Watch Video</button>
-        </div>
-    </div>
-    
-    <!-- YouTube Subscription Modal -->
-    <div id="youtube-subscription-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Subscribe to Our YouTube Channel</h2>
-            <p>You need to subscribe to our YouTube channel to access multiplayer features.</p>
-            <div class="youtube-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <button id="confirm-subscription-btn" class="modal-button">I've Subscribed</button>
-        </div>
-    </div>
-    
-    <!-- User Profile Modal -->
-    <div id="user-profile-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="user-profile-name">User Profile</h2>
-            <div class="user-profile-container">
-                <div class="user-profile-avatar" id="user-profile-avatar">👤</div>
-                <div class="user-profile-info">
-                    <div class="user-profile-level" id="user-profile-level">Level 1</div>
-                    <div class="user-profile-xp" id="user-profile-xp">0 XP</div>
-                    <div class="user-earnings" id="user-earnings">Earnings: Private</div>
-                </div>
-            </div>
-            <div class="user-profile-stats">
-                <h3>Statistics</h3>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-value" id="user-games-played">0</div>
-                        <div class="stat-label">Games Played</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="user-games-won">0</div>
-                        <div class="stat-label">Games Won</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="user-win-rate">0%</div>
-                        <div class="stat-label">Win Rate</div>
-                    </div>
-                </div>
-            </div>
-            <div class="user-profile-items">
-                <h3>Items</h3>
-                <div class="items-grid" id="user-items-grid">
-                    <!-- Items will be loaded here -->
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Multiplayer Loading Screen -->
-    <div class="multiplayer-loading" id="multiplayer-loading" style="display: none;">
-        <h2>Connecting to Multiplayer...</h2>
-        <div class="loading-spinner"></div>
-        <div class="loading-progress">
-            <div class="loading-bar"></div>
-        </div>
-        <p id="loading-status">Finding players...</p>
-    </div>
-    
-    <script src="script.js"></script>
+            // Main menu button
+            document.getElementById('main-menu-btn').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+            
+            // Modal functionality
+            const modals = document.querySelectorAll('.modal');
+            const modalCloseBtns = document.querySelectorAll('.close');
+            
+            // Close modals
+            modalCloseBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Demo functionality
+            const demoContainer = document.getElementById('demo-container');
+            const demoClose = document.getElementById('demo-close');
+            const demoOption = document.getElementById('demo-option');
+            const startDemoBtn = document.getElementById('start-demo-btn');
+            const resetDemoBtn = document.getElementById('reset-demo-btn');
+            const demoStatus = document.getElementById('demo-status');
+            const ai1Score = document.getElementById('ai1-score');
+            const ai2Score = document.getElementById('ai2-score');
+            
+            let demoInterval;
+            let demoActive = false;
+            
+            demoOption.addEventListener('click', function() {
+                demoContainer.style.display = 'flex';
+            });
+            
+            demoClose.addEventListener('click', function() {
+                demoContainer.style.display = 'none';
+                stopDemo();
+            });
+            
+            startDemoBtn.addEventListener('click', function() {
+                if (!demoActive) {
+                    startDemo();
+                } else {
+                    stopDemo();
+                }
+            });
+            
+            resetDemoBtn.addEventListener('click', function() {
+                stopDemo();
+                ai1Score.textContent = '0';
+                ai2Score.textContent = '0';
+                demoStatus.textContent = 'Ready to start demo...';
+                startDemoBtn.textContent = 'Start Demo';
+            });
+            
+            function startDemo() {
+                demoActive = true;
+                startDemoBtn.textContent = 'Stop Demo';
+                demoStatus.textContent = 'Demo in progress...';
+                
+                let score1 = 0;
+                let score2 = 0;
+                
+                demoInterval = setInterval(() => {
+                    // Simulate AI moves and scoring
+                    const move1 = Math.floor(Math.random() * 3) + 1;
+                    const move2 = Math.floor(Math.random() * 3) + 1;
+                    
+                    if (move1 === 1) {
+                        score1 += 10;
+                    } else if (move1 === 2) {
+                        score1 += 25;
+                    } else {
+                        score1 += 50;
+                    }
+                    
+                    if (move2 === 1) {
+                        score2 += 10;
+                    } else if (move2 === 2) {
+                        score2 += 25;
+                    } else {
+                        score2 += 50;
+                    }
+                    
+                    ai1Score.textContent = score1;
+                    ai2Score.textContent = score2;
+                    
+                    // Check if demo should end
+                    if (score1 >= 100 || score2 >= 100) {
+                        stopDemo();
+                        
+                        if (score1 > score2) {
+                            demoStatus.textContent = 'Demo completed! AI Player 1 wins!';
+                        } else if (score2 > score1) {
+                            demoStatus.textContent = 'Demo completed! AI Player 2 wins!';
+                        } else {
+                            demoStatus.textContent = 'Demo completed! It\'s a tie!';
+                        }
+                    }
+                }, 1000);
+            }
+            
+            function stopDemo() {
+                demoActive = false;
+                clearInterval(demoInterval);
+                if (demoStatus.textContent === 'Demo in progress...') {
+                    demoStatus.textContent = 'Demo paused';
+                }
+                startDemoBtn.textContent = 'Start Demo';
+            }
+            
+            // Rules functionality
+            const rulesContainer = document.getElementById('rules-container');
+            const rulesClose = document.getElementById('rules-close');
+            const rulesOption = document.getElementById('rules-option');
+            
+            rulesOption.addEventListener('click', function() {
+                rulesContainer.style.display = 'flex';
+            });
+            
+            rulesClose.addEventListener('click', function() {
+                rulesContainer.style.display = 'none';
+            });
+            
+            // Update game rules based on game name
+            if (gameName) {
+                updateGameRules(gameName);
+            }
+            
+            function updateGameRules(gameName) {
+                const gameObjective = document.getElementById('game-objective');
+                const gameRules = document.getElementById('game-rules');
+                const gameScoring = document.getElementById('game-scoring');
+                const gameTips = document.getElementById('game-tips');
+                
+                // Update rules based on game name
+                switch(gameName) {
+                    case 'Blob Bots':
+                        gameObjective.textContent = 'Eat, grow, and dominate! Become the biggest blob on the battlefield.';
+                        gameRules.innerHTML = `
+                            <li>Move around the map to find food</li>
+                            <li>Eat food to grow in size</li>
+                            <li>Avoid larger blobs or they will eat you</li>
+                            <li>Split into smaller blobs to catch smaller enemies</li>
+                            <li>The last blob standing wins</li>
+                        `;
+                        gameScoring.innerHTML = `
+                            <li>Eating food: 1 point per unit</li>
+                            <li>Eating an enemy: 10 points per enemy size</li>
+                            <li>Survival time: 1 point per second</li>
+                        `;
+                        gameTips.innerHTML = `
+                            <li>Start by eating small food particles</li>
+                            <li>Hide in corners when you're small</li>
+                            <li>Use the split move strategically</li>
+                            <li>Team up with friends to take down larger enemies</li>
+                        `;
+                        break;
+                    case 'Castle Siege':
+                        gameObjective.textContent = 'Build your army and destroy your opponent\'s castle!';
+                        gameRules.innerHTML = `
+                            <li>Collect resources to build units</li>
+                            <li>Upgrade your castle and defenses</li>
+                            <li>Send units to attack the enemy castle</li>
+                            <li>Defend your castle from enemy attacks</li>
+                            <li>Destroy the enemy castle to win</li>
+                        `;
+                        gameScoring.innerHTML = `
+                            <li>Building units: 5 points per unit</li>
+                            <li>Destroying enemy units: 10 points per unit</li>
+                            <li>Destroying castle parts: 50 points per part</li>
+                        `;
+                        gameTips.innerHTML = `
+                            <li>Balance resource gathering and unit production</li>
+                            <li>Scout the enemy to see their strategy</li>
+                            <li>Upgrade your resource production early</li>
+                            <li>Use special abilities at key moments</li>
+                        `;
+                        break;
+                    case 'Rock Paper Scissors':
+                        gameObjective.textContent = 'Outguess your opponent in this classic game of chance!';
+                        gameRules.innerHTML = `
+                            <li>Each player chooses rock, paper, or scissors</li>
+                            <li>Rock beats scissors</li>
+                            <li>Scissors beats paper</li>
+                            <li>Paper beats rock</li>
+                            <li>Same choice results in a tie</li>
+                            <li>Best of 5 rounds wins the match</li>
+                        `;
+                        gameScoring.innerHTML = `
+                            <li>Winning a round: 1 point</li>
+                            <li>Winning a match: 5 bonus points</li>
+                            <li>Perfect match (no losses): 10 bonus points</li>
+                        `;
+                        gameTips.innerHTML = `
+                            <li>Try to randomize your choices</li>
+                            <li>Look for patterns in your opponent's play</li>
+                            <li>Don't be too predictable</li>
+                            <li>Psychological tactics can be effective</li>
+                        `;
+                        break;
+                    // Add more game rules as needed
+                    default:
+                        gameObjective.textContent = 'The objective of this game is to defeat your opponent by achieving the highest score.';
+                        gameRules.innerHTML = `
+                            <li>Each player takes turns making moves</li>
+                            <li>Points are awarded for successful actions</li>
+                            <li>The game ends when a player reaches the target score</li>
+                            <li>The player with the highest score wins</li>
+                        `;
+                        gameScoring.innerHTML = `
+                            <li>Basic move: 10 points</li>
+                            <li>Special move: 25 points</li>
+                            <li>Bonus action: 50 points</li>
+                        `;
+                        gameTips.innerHTML = `
+                            <li>Plan your moves ahead of time</li>
+                            <li>Watch your opponent's patterns</li>
+                            <li>Use special moves strategically</li>
+                            <li>Control the center of the board when possible</li>
+                        `;
+                }
+            }
+            
+            // Multiplayer lobby functionality
+            const multiplayerLobbyModal = document.getElementById('multiplayer-lobby-modal');
+            const multiplayerChat = document.getElementById('multiplayer-chat');
+            const multiplayerChatInput = document.getElementById('multiplayer-chat-input');
+            const multiplayerChatSend = document.getElementById('multiplayer-chat-send');
+            const profanityFilter = document.getElementById('profanity-filter');
+            const subscribeBtn = document.getElementById('subscribe-btn');
+            const subscribeModal = document.getElementById('subscribe-modal');
+            const confirmSubscribeBtn = document.getElementById('confirm-subscribe-btn');
+            
+            // Subscribe button functionality
+            subscribeBtn.addEventListener('click', function() {
+                subscribeModal.style.display = 'block';
+            });
+            
+            confirmSubscribeBtn.addEventListener('click', function() {
+                localStorage.setItem('youtubeSubscribed', 'true');
+                subscribeModal.style.display = 'none';
+                alert('Thank you for subscribing! You can now use multiplayer features.');
+            });
+            
+            // Multiplayer chat functionality
+            function sendMultiplayerMessage() {
+                const message = multiplayerChatInput.value.trim();
+                if (message === '') return;
+                
+                // Check if user is subscribed to YouTube channel
+                const isSubscribed = localStorage.getItem('youtubeSubscribed') === 'true';
+                
+                if (!isSubscribed) {
+                    alert('You need to subscribe to our YouTube channel to send messages!');
+                    return;
+                }
+                
+                // Apply profanity filter if enabled
+                let filteredMessage = message;
+                if (profanityFilter.checked) {
+                    // Simple profanity filter - replace bad words with *****
+                    const badWords = ['damn', 'shit', 'fuck', 'ass', 'bitch', 'crap', 'piss', 'bastard', 'dick'];
+                    badWords.forEach(word => {
+                        const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                        filteredMessage = filteredMessage.replace(regex, '*****');
+                    });
+                }
+                
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chat-message';
+                userMessage.textContent = `You: ${filteredMessage}`;
+                multiplayerChat.appendChild(userMessage);
+                
+                // Clear input
+                multiplayerChatInput.value = '';
+                
+                // Scroll to bottom
+                multiplayerChat.scrollTop = multiplayerChat.scrollHeight;
+            }
+            
+            multiplayerChatSend.addEventListener('click', sendMultiplayerMessage);
+            
+            multiplayerChatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMultiplayerMessage();
+                }
+            });
+            
+            // Tournaments functionality
+            const tournamentsModal = document.getElementById('tournaments-modal');
+            const tournamentsTabs = document.querySelectorAll('.tournaments-tab');
+            const tournamentsTabContents = document.querySelectorAll('.tournaments-tab-content');
+            const createTournamentBtn = document.querySelector('.create-tournament-btn');
+            const createTournamentModal = document.getElementById('create-tournament-modal');
+            const createTournamentSubmitBtn = document.querySelector('.create-tournament-submit-btn');
+            
+            document.getElementById('tournaments-option').addEventListener('click', function() {
+                tournamentsModal.style.display = 'block';
+            });
+            
+            // Tournaments tab functionality
+            tournamentsTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    tournamentsTabs.forEach(t => t.classList.remove('active'));
+                    tournamentsTabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Create tournament button
+            createTournamentBtn.addEventListener('click', function() {
+                createTournamentModal.style.display = 'block';
+            });
+            
+            // Create tournament form submission
+            createTournamentSubmitBtn.addEventListener('click', function() {
+                const tournamentName = document.getElementById('tournament-name').value;
+                const tournamentGame = document.getElementById('tournament-game').value;
+                const tournamentSize = document.getElementById('tournament-size').value;
+                const tournamentSignup = document.getElementById('tournament-signup').value;
+                const tournamentWins = document.getElementById('tournament-wins').value;
+                const tournamentMoveTime = document.getElementById('tournament-move-time').value;
+                
+                // Validate form
+                if (!tournamentName || !tournamentGame) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Check for profanity in tournament name
+                const badWords = ['damn', 'shit', 'fuck', 'ass', 'bitch', 'crap', 'piss', 'bastard', 'dick'];
+                let hasProfanity = false;
+                badWords.forEach(word => {
+                    const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                    if (regex.test(tournamentName)) {
+                        hasProfanity = true;
+                    }
+                });
+                
+                if (hasProfanity) {
+                    alert('Tournament name contains inappropriate language. Please choose a different name.');
+                    return;
+                }
+                
+                // Create tournament (in a real app, this would send data to the server)
+                alert(`Tournament "${tournamentName}" created successfully!`);
+                
+                // Close modals
+                createTournamentModal.style.display = 'none';
+                tournamentsModal.style.display = 'none';
+                
+                // Reset form
+                document.getElementById('tournament-name').value = '';
+                document.getElementById('tournament-game').value = '';
+                document.getElementById('tournament-size').value = '8';
+                document.getElementById('tournament-signup').value = '24';
+                document.getElementById('tournament-wins').value = '3';
+                document.getElementById('tournament-move-time').value = '30';
+            });
+            
+            // Profile Settings Modal
+            const profileSettingsModal = document.getElementById('profile-settings-modal');
+            const saveSettingsBtn = document.getElementById('save-settings-btn');
+            const cancelSettingsBtn = document.getElementById('cancel-settings-btn');
+            
+            // Open profile settings when settings tab is clicked in profile
+            document.addEventListener('click', function(e) {
+                if (e.target.matches('.profile-tab[data-tab="settings"]')) {
+                    profileSettingsModal.style.display = 'block';
+                }
+            });
+            
+            // Save settings
+            saveSettingsBtn.addEventListener('click', function() {
+                // In a real app, this would save all settings to the server
+                alert('Settings saved successfully!');
+                profileSettingsModal.style.display = 'none';
+            });
+            
+            // Cancel settings
+            cancelSettingsBtn.addEventListener('click', function() {
+                profileSettingsModal.style.display = 'none';
+            });
+            
+            // Language selector
+            const languageSelector = document.getElementById('language-selector');
+            
+            languageSelector.addEventListener('change', function() {
+                const selectedLanguage = this.value;
+                document.body.className = `lang-${selectedLanguage}`;
+                alert(`Language changed to ${this.options[this.selectedIndex].text}`);
+            });
+            
+            // Visitor counters animation
+            function animateCounter(counterId, targetValue) {
+                const counter = document.getElementById(counterId);
+                const digits = counter.querySelectorAll('.odometer-digit');
+                
+                // Convert target value to string and pad with zeros if needed
+                const targetString = targetValue.toString().padStart(digits.length, '0');
+                
+                // Animate each digit
+                digits.forEach((digit, index) => {
+                    const targetDigit = targetString[index];
+                    let currentDigit = 0;
+                    
+                    const interval = setInterval(() => {
+                        if (currentDigit < parseInt(targetDigit)) {
+                            currentDigit++;
+                            digit.textContent = currentDigit;
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 100);
+                });
+            }
+            
+            // Simulate visitor counter updates
+            setInterval(() => {
+                // Update online counter
+                const onlineCounter = document.getElementById('online-counter');
+                const onlineDigits = onlineCounter.querySelectorAll('.odometer-digit');
+                let onlineValue = '';
+                
+                onlineDigits.forEach(digit => {
+                    onlineValue += digit.textContent;
+                });
+                
+                const newOnlineValue = parseInt(onlineValue) + Math.floor(Math.random() * 10) - 3;
+                animateCounter('online-counter', Math.max(1000, newOnlineValue));
+                
+                // Update visitors counter
+                const visitorsCounter = document.getElementById('visitors-counter');
+                const visitorsDigits = visitorsCounter.querySelectorAll('.odometer-digit');
+                let visitorsValue = '';
+                
+                visitorsDigits.forEach(digit => {
+                    visitorsValue += digit.textContent;
+                });
+                
+                const newVisitorsValue = parseInt(visitorsValue) + Math.floor(Math.random() * 5);
+                animateCounter('visitors-counter', newVisitorsValue);
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
