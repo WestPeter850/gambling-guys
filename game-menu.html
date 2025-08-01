@@ -230,6 +230,250 @@
         .rules-section li {
             margin-bottom: 5px;
         }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            background-color: #1a1a2e;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #ffd700;
+        }
+        
+        /* Multiplayer Lobby Modal Styles */
+        .multiplayer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .youtube-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+        .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        .game-tips {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .game-tips h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .game-tips ul {
+            padding-left: 20px;
+        }
+        .game-tips li {
+            margin-bottom: 5px;
+        }
+        .chat-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .chat-container h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .chat-filter {
+            margin-bottom: 10px;
+        }
+        .chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .chat-message {
+            margin-bottom: 5px;
+        }
+        .chat-input-container {
+            display: flex;
+        }
+        .chat-input {
+            flex-grow: 1;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px 0 0 5px;
+            color: white;
+        }
+        .chat-send {
+            padding: 8px 15px;
+            background: #3498db;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Tournaments Modal Styles */
+        .tournaments-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tournaments-tab {
+            background: none;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .tournaments-tab.active {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+        }
+        .tournaments-tab-content {
+            display: none;
+        }
+        .tournaments-tab-content.active {
+            display: block;
+        }
+        .tournament-list {
+            margin-bottom: 20px;
+        }
+        .tournament-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .tournament-info h4 {
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+        .tournament-info p {
+            margin: 3px 0;
+            font-size: 0.9rem;
+        }
+        .join-tournament-btn {
+            background: linear-gradient(145deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .join-tournament-btn:hover {
+            background: linear-gradient(145deg, #27ae60, #1e8449);
+            transform: scale(1.05);
+        }
+        .tournament-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tournament-search {
+            flex-grow: 1;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+        .tournament-filter-select {
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+        .create-tournament-btn {
+            background: linear-gradient(145deg, #9b59b6, #8e44ad);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .create-tournament-btn:hover {
+            background: linear-gradient(145deg, #8e44ad, #7d3c98);
+            transform: scale(1.05);
+        }
+        
+        /* Create Tournament Modal Styles */
+        .create-tournament-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+        }
+        .create-tournament-submit-btn {
+            background: linear-gradient(145deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            align-self: center;
+        }
+        .create-tournament-submit-btn:hover {
+            background: linear-gradient(145deg, #27ae60, #1e8449);
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -333,6 +577,233 @@
         </div>
     </div>
     
+    <!-- Multiplayer Lobby Modal -->
+    <div id="multiplayer-lobby-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Multiplayer Lobby</h2>
+            <div class="multiplayer-container">
+                <div class="youtube-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="game-tips">
+                    <h3>Game Tips</h3>
+                    <ul>
+                        <li>Practice makes perfect - play against AI to improve your skills</li>
+                        <li>Watch your opponent's moves to predict their strategy</li>
+                        <li>Use power-ups wisely - they can turn the tide of battle</li>
+                        <li>Join tournaments for bigger rewards and recognition</li>
+                    </ul>
+                </div>
+                <div class="chat-container">
+                    <h3>Chat</h3>
+                    <div class="chat-filter">
+                        <label>
+                            <input type="checkbox" id="profanity-filter" checked>
+                            Profanity Filter
+                        </label>
+                    </div>
+                    <div class="chat-messages" id="multiplayer-chat">
+                        <div class="chat-message">Welcome to the multiplayer lobby!</div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-input" id="multiplayer-chat-input" placeholder="Type your message...">
+                        <button class="chat-send" id="multiplayer-chat-send">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tournaments Modal -->
+    <div id="tournaments-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tournaments</h2>
+            <div class="tournaments-tabs">
+                <button class="tournaments-tab active" data-tab="official">Official</button>
+                <button class="tournaments-tab" data-tab="unofficial">Unofficial</button>
+            </div>
+            <div class="tournaments-tab-content active" id="official-tab">
+                <h3>Official Tournaments</h3>
+                <p>Official tournaments happen twice a year per game and are double elimination.</p>
+                <div class="tournament-list">
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Blob Bots Championship</h4>
+                            <p>Starts in: 3 days</p>
+                            <p>Participants: 64/128</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Castle Siege Masters</h4>
+                            <p>Starts in: 10 days</p>
+                            <p>Participants: 32/64</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Classic War Elite</h4>
+                            <p>Starts in: 17 days</p>
+                            <p>Participants: 128/256</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Cosmic Jackpot Showdown</h4>
+                            <p>Starts in: 24 days</p>
+                            <p>Participants: 64/128</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Big Fish Battle Royale</h4>
+                            <p>Starts in: 31 days</p>
+                            <p>Participants: 256/512</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tournaments-tab-content" id="unofficial-tab">
+                <h3>Unofficial Tournaments</h3>
+                <p>Player-created tournaments with custom rules.</p>
+                <div class="tournament-filters">
+                    <input type="text" class="tournament-search" placeholder="Search tournaments...">
+                    <select class="tournament-filter-select">
+                        <option>All Games</option>
+                        <option>Blob Bots</option>
+                        <option>Castle Siege</option>
+                        <option>Classic War</option>
+                        <option>Cosmic Jackpot</option>
+                        <option>Big Fish</option>
+                    </select>
+                </div>
+                <div class="tournament-list">
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Weekend Warriors</h4>
+                            <p>Game: Classic War</p>
+                            <p>Creator: PlayerX</p>
+                            <p>Participants: 8/16</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Newbie Challenge</h4>
+                            <p>Game: Rock Paper Scissors</p>
+                            <p>Creator: NewPlayer</p>
+                            <p>Participants: 4/8</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Pro League</h4>
+                            <p>Game: Blob Bots</p>
+                            <p>Creator: ProGamer123</p>
+                            <p>Participants: 16/32</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Speed Runners</h4>
+                            <p>Game: Lunar Lander: Horizon</p>
+                            <p>Creator: SpeedDemon</p>
+                            <p>Participants: 8/16</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-info">
+                            <h4>Strategy Masters</h4>
+                            <p>Game: Castle Siege</p>
+                            <p>Creator: Tactician</p>
+                            <p>Participants: 32/64</p>
+                        </div>
+                        <button class="join-tournament-btn">Join</button>
+                    </div>
+                </div>
+                <button class="create-tournament-btn">Create Tournament</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Tournament Modal -->
+    <div id="create-tournament-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create Tournament</h2>
+            <div class="create-tournament-form">
+                <div class="form-group">
+                    <label for="tournament-name">Tournament Name (max 30 characters)</label>
+                    <input type="text" id="tournament-name" maxlength="30" required>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-game">Game</label>
+                    <select id="tournament-game" required>
+                        <option value="">Select a game</option>
+                        <option value="Blob Bots">Blob Bots</option>
+                        <option value="Castle Siege">Castle Siege</option>
+                        <option value="Classic War">Classic War</option>
+                        <option value="Cosmic Jackpot">Cosmic Jackpot</option>
+                        <option value="Big Fish">Big Fish</option>
+                        <option value="Escape Prison">Escape Prison</option>
+                        <option value="Rock Paper Scissors">Rock Paper Scissors</option>
+                        <option value="Get On Top">Get On Top</option>
+                        <option value="Hangman">Hangman</option>
+                        <option value="Header Hustle">Header Hustle</option>
+                        <option value="Puzzles">Puzzles</option>
+                        <option value="Lunar Lander: Horizon">Lunar Lander: Horizon</option>
+                        <option value="Math Works">Math Works</option>
+                        <option value="Memory Match">Memory Match</option>
+                        <option value="Mini Basketball">Mini Basketball</option>
+                        <option value="One in a Million">One in a Million</option>
+                        <option value="Platform Jump">Platform Jump</option>
+                        <option value="Pixel Python Arena">Pixel Python Arena</option>
+                        <option value="QuizKnows">QuizKnows</option>
+                        <option value="Sea Square">Sea Square</option>
+                        <option value="Snakes & Ladders – Gamble">Snakes & Ladders – Gamble</option>
+                        <option value="Stickman Fight">Stickman Fight</option>
+                        <option value="Stickman Racer">Stickman Racer</option>
+                        <option value="Wolverine">Wolverine</option>
+                        <option value="WordWeaver">WordWeaver</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-size">Tournament Size</label>
+                    <select id="tournament-size" required>
+                        <option value="8">8 Players</option>
+                        <option value="16">16 Players</option>
+                        <option value="32">32 Players</option>
+                        <option value="64">64 Players</option>
+                        <option value="128">128 Players</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-signup">Sign-up Period (hours)</label>
+                    <input type="number" id="tournament-signup" min="1" max="168" value="24" required>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-wins">Wins to Win</label>
+                    <input type="number" id="tournament-wins" min="1" max="10" value="3" required>
+                </div>
+                <div class="form-group">
+                    <label for="tournament-move-time">Move Time (seconds)</label>
+                    <input type="number" id="tournament-move-time" min="10" max="300" value="30" required>
+                </div>
+                <button class="create-tournament-submit-btn">Create Tournament</button>
+            </div>
+        </div>
+    </div>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Get game name from URL parameter
@@ -347,6 +818,26 @@
             // Main menu button
             document.getElementById('main-menu-btn').addEventListener('click', function() {
                 window.location.href = 'index.html';
+            });
+            
+            // Modal functionality
+            const modals = document.querySelectorAll('.modal');
+            const modalCloseBtns = document.querySelectorAll('.close');
+            
+            // Close modals
+            modalCloseBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
             });
             
             // Demo functionality
@@ -555,6 +1046,132 @@
                         `;
                 }
             }
+            
+            // Multiplayer lobby functionality
+            const multiplayerLobbyModal = document.getElementById('multiplayer-lobby-modal');
+            const multiplayerChat = document.getElementById('multiplayer-chat');
+            const multiplayerChatInput = document.getElementById('multiplayer-chat-input');
+            const multiplayerChatSend = document.getElementById('multiplayer-chat-send');
+            const profanityFilter = document.getElementById('profanity-filter');
+            
+            document.getElementById('multiplayer-option').addEventListener('click', function() {
+                multiplayerLobbyModal.style.display = 'block';
+            });
+            
+            // Multiplayer chat functionality
+            function sendMultiplayerMessage() {
+                const message = multiplayerChatInput.value.trim();
+                if (message === '') return;
+                
+                // Apply profanity filter if enabled
+                let filteredMessage = message;
+                if (profanityFilter.checked) {
+                    // Simple profanity filter - replace bad words with *****
+                    const badWords = ['damn', 'shit', 'fuck', 'ass', 'bitch', 'crap', 'piss', 'bastard', 'dick'];
+                    badWords.forEach(word => {
+                        const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                        filteredMessage = filteredMessage.replace(regex, '*****');
+                    });
+                }
+                
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chat-message';
+                userMessage.textContent = `You: ${filteredMessage}`;
+                multiplayerChat.appendChild(userMessage);
+                
+                // Clear input
+                multiplayerChatInput.value = '';
+                
+                // Scroll to bottom
+                multiplayerChat.scrollTop = multiplayerChat.scrollHeight;
+            }
+            
+            multiplayerChatSend.addEventListener('click', sendMultiplayerMessage);
+            
+            multiplayerChatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMultiplayerMessage();
+                }
+            });
+            
+            // Tournaments functionality
+            const tournamentsModal = document.getElementById('tournaments-modal');
+            const tournamentsTabs = document.querySelectorAll('.tournaments-tab');
+            const tournamentsTabContents = document.querySelectorAll('.tournaments-tab-content');
+            const createTournamentBtn = document.querySelector('.create-tournament-btn');
+            const createTournamentModal = document.getElementById('create-tournament-modal');
+            const createTournamentSubmitBtn = document.querySelector('.create-tournament-submit-btn');
+            
+            document.getElementById('tournaments-option').addEventListener('click', function() {
+                tournamentsModal.style.display = 'block';
+            });
+            
+            // Tournaments tab functionality
+            tournamentsTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    tournamentsTabs.forEach(t => t.classList.remove('active'));
+                    tournamentsTabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Create tournament button
+            createTournamentBtn.addEventListener('click', function() {
+                createTournamentModal.style.display = 'block';
+            });
+            
+            // Create tournament form submission
+            createTournamentSubmitBtn.addEventListener('click', function() {
+                const tournamentName = document.getElementById('tournament-name').value;
+                const tournamentGame = document.getElementById('tournament-game').value;
+                const tournamentSize = document.getElementById('tournament-size').value;
+                const tournamentSignup = document.getElementById('tournament-signup').value;
+                const tournamentWins = document.getElementById('tournament-wins').value;
+                const tournamentMoveTime = document.getElementById('tournament-move-time').value;
+                
+                // Validate form
+                if (!tournamentName || !tournamentGame) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Check for profanity in tournament name
+                const badWords = ['damn', 'shit', 'fuck', 'ass', 'bitch', 'crap', 'piss', 'bastard', 'dick'];
+                let hasProfanity = false;
+                badWords.forEach(word => {
+                    const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                    if (regex.test(tournamentName)) {
+                        hasProfanity = true;
+                    }
+                });
+                
+                if (hasProfanity) {
+                    alert('Tournament name contains inappropriate language. Please choose a different name.');
+                    return;
+                }
+                
+                // Create tournament (in a real app, this would send data to the server)
+                alert(`Tournament "${tournamentName}" created successfully!`);
+                
+                // Close modals
+                createTournamentModal.style.display = 'none';
+                tournamentsModal.style.display = 'none';
+                
+                // Reset form
+                document.getElementById('tournament-name').value = '';
+                document.getElementById('tournament-game').value = '';
+                document.getElementById('tournament-size').value = '8';
+                document.getElementById('tournament-signup').value = '24';
+                document.getElementById('tournament-wins').value = '3';
+                document.getElementById('tournament-move-time').value = '30';
+            });
         });
     </script>
 </body>
