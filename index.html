@@ -836,6 +836,21 @@
             </div>
         </div>
         
+        <div class="profile-section">
+            <div class="profile-dropdown">
+                <button class="profile-dropdown-btn">Friends ▼</button>
+                <div class="profile-dropdown-content">
+                    <a href="#" class="profile-dropdown-item" data-view="friends">Friends (24)</a>
+                    <a href="#" class="profile-dropdown-item" data-view="followers">Followers (56)</a>
+                    <a href="#" class="profile-dropdown-item" data-view="following">Following (32)</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-list-container" id="profile-list-container">
+            <!-- Friends/Followers/Following will be loaded here -->
+        </div>
+        
         <div class="profile-shortcuts">
             <div class="profile-shortcut">
                 <span>💰</span>
@@ -869,6 +884,8 @@
             <button class="profile-tab" data-tab="inventory">Inventory</button>
             <button class="profile-tab" data-tab="campaigns">Campaigns</button>
             <button class="profile-tab" data-tab="cashout">Cashout</button>
+            <button class="profile-tab" data-tab="customization">Customization</button>
+            <button class="profile-tab" data-tab="settings">Settings</button>
         </div>
         
         <div class="profile-tab-content active" id="stats-tab">
@@ -998,6 +1015,135 @@
                         <div class="transaction-desc">Daily Bonus</div>
                         <div class="transaction-amount positive">+$5.00</div>
                     </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-tab-content" id="customization-tab">
+            <div class="customization-container">
+                <h3>Character Customization</h3>
+                <p>Personalize your character without changing body composition</p>
+                
+                <div class="customization-preview">
+                    <div class="character-model" id="character-model">🦸</div>
+                </div>
+                
+                <div class="customization-options">
+                    <div class="customization-category">
+                        <h4>Hair</h4>
+                        <div class="customization-items">
+                            <div class="customization-item" data-type="hair" data-value="spiky">Spiky</div>
+                            <div class="customization-item" data-type="hair" data-value="slicked">Slicked Back</div>
+                            <div class="customization-item" data-type="hair" data-value="long">Long</div>
+                            <div class="customization-item" data-type="hair" data-value="curly">Curly</div>
+                        </div>
+                        <div class="color-picker">
+                            <label>Hair Color:</label>
+                            <input type="color" id="hair-color" value="#000000">
+                        </div>
+                    </div>
+                    
+                    <div class="customization-category">
+                        <h4>Eyes</h4>
+                        <div class="customization-items">
+                            <div class="customization-item" data-type="eyes" data-value="round">Round</div>
+                            <div class="customization-item" data-type="eyes" data-value="slanted">Slanted</div>
+                            <div class="customization-item" data-type="eyes" data-value="wide">Wide</div>
+                            <div class="customization-item" data-type="eyes" data-value="sleepy">Sleepy</div>
+                        </div>
+                        <div class="color-picker">
+                            <label>Eye Color:</label>
+                            <input type="color" id="eye-color" value="#000000">
+                        </div>
+                    </div>
+                    
+                    <div class="customization-category">
+                        <h4>Outfit</h4>
+                        <div class="customization-items">
+                            <div class="customization-item" data-type="outfit" data-value="casual">Casual</div>
+                            <div class="customization-item" data-type="outfit" data-value="formal">Formal</div>
+                            <div class="customization-item" data-type="outfit" data-value="sport">Sport</div>
+                            <div class="customization-item" data-type="outfit" data-value="armor">Armor</div>
+                        </div>
+                        <div class="color-picker">
+                            <label>Outfit Color:</label>
+                            <input type="color" id="outfit-color" value="#000000">
+                        </div>
+                    </div>
+                    
+                    <div class="customization-category">
+                        <h4>Accessories</h4>
+                        <div class="customization-items">
+                            <div class="customization-item" data-type="accessory" data-value="hat">Hat</div>
+                            <div class="customization-item" data-type="accessory" data-value="glasses">Glasses</div>
+                            <div class="customization-item" data-type="accessory" data-value="mask">Mask</div>
+                            <div class="customization-item" data-type="accessory" data-value="none">None</div>
+                        </div>
+                    </div>
+                    
+                    <div class="customization-category">
+                        <h4>Effects</h4>
+                        <div class="customization-items">
+                            <div class="customization-item" data-type="effect" data-value="none">None</div>
+                            <div class="customization-item" data-type="effect" data-value="sparkles">Sparkles</div>
+                            <div class="customization-item" data-type="effect" data-value="smoke">Smoke Trail</div>
+                            <div class="customization-item" data-type="effect" data-value="fire">Fire Aura</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="customization-actions">
+                    <button id="save-customization-btn" class="profile-tab">Save Changes</button>
+                    <button id="reset-customization-btn" class="profile-tab">Reset to Default</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-tab-content" id="settings-tab">
+            <div class="settings-section">
+                <h3>Privacy Settings</h3>
+                <div class="setting-item">
+                    <div class="setting-label">Public Earnings</div>
+                    <label class="switch">
+                        <input type="checkbox" id="public-earnings">
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="setting-description">Allow others to see your earnings</div>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>Notification Settings</h3>
+                <div class="setting-item">
+                    <div class="setting-label">Push Notifications</div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">Email Notifications</div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>Display Settings</h3>
+                <div class="setting-item">
+                    <div class="setting-label">Brightness</div>
+                    <input type="range" class="setting-slider" min="0" max="100" value="75">
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">Color Theme</div>
+                    <select class="setting-select">
+                        <option>Default</option>
+                        <option>Dark</option>
+                        <option>Light</option>
+                        <option>High Contrast</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -1198,7 +1344,69 @@
             <button class="coin-buy-btn" id="watch-video-btn">Watch Video</button>
         </div>
     </div>
-
+    
+    <!-- YouTube Subscription Modal -->
+    <div id="youtube-subscription-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subscribe to Our YouTube Channel</h2>
+            <p>You need to subscribe to our YouTube channel to access multiplayer features.</p>
+            <div class="youtube-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <button id="confirm-subscription-btn" class="modal-button">I've Subscribed</button>
+        </div>
+    </div>
+    
+    <!-- User Profile Modal -->
+    <div id="user-profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="user-profile-name">User Profile</h2>
+            <div class="user-profile-container">
+                <div class="user-profile-avatar" id="user-profile-avatar">👤</div>
+                <div class="user-profile-info">
+                    <div class="user-profile-level" id="user-profile-level">Level 1</div>
+                    <div class="user-profile-xp" id="user-profile-xp">0 XP</div>
+                    <div class="user-earnings" id="user-earnings">Earnings: Private</div>
+                </div>
+            </div>
+            <div class="user-profile-stats">
+                <h3>Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="user-games-played">0</div>
+                        <div class="stat-label">Games Played</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="user-games-won">0</div>
+                        <div class="stat-label">Games Won</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="user-win-rate">0%</div>
+                        <div class="stat-label">Win Rate</div>
+                    </div>
+                </div>
+            </div>
+            <div class="user-profile-items">
+                <h3>Items</h3>
+                <div class="items-grid" id="user-items-grid">
+                    <!-- Items will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Multiplayer Loading Screen -->
+    <div class="multiplayer-loading" id="multiplayer-loading" style="display: none;">
+        <h2>Connecting to Multiplayer...</h2>
+        <div class="loading-spinner"></div>
+        <div class="loading-progress">
+            <div class="loading-bar"></div>
+        </div>
+        <p id="loading-status">Finding players...</p>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
