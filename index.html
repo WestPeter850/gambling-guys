@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambling Guys</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="lang-en">
+    <!-- Header -->
+    <header>
+        <div class="title-container">
+            <h1 class="animated-title" id="animated-title">
+                <span style="color: #ff0000;" data-color="#ff0000">G</span>
+                <span style="color: #ff7f00;" data-color="#ff7f00">a</span>
+                <span style="color: #ffff00;" data-color="#ffff00">m</span>
+                <span style="color: #00ff00;" data-color="#00ff00">b</span>
+                <span style="color: #0000ff;" data-color="#0000ff">l</span>
+                <span style="color: #4b0082;" data-color="#4b0082">i</span>
+                <span style="color: #9400d3;" data-color="#9400d3">n</span>
+                <span style="color: #ff0000;" data-color="#ff0000">g</span>
+                <span style="color: #ff7f00;" data-color="#ff7f00"> </span>
+                <span style="color: #ffff00;" data-color="#ffff00">G</span>
+                <span style="color: #00ff00;" data-color="#00ff00">u</span>
+                <span style="color: #0000ff;" data-color="#0000ff">y</span>
+                <span style="color: #4b0082;" data-color="#4b0082">s</span>
+            </h1>
+        </div>
+    </header>
+    <!-- Navigation -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Games</a>
+        <a href="#">Tournaments</a>
+        <a href="#">Leaderboard</a>
+        <a href="#">Community</a>
+        <a href="#">Support</a>
+    </nav>
+    <!-- Main Content -->
+    <main>
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-avatar">👤</div>
+            <div class="profile-info">
+                <h2>Player123</h2>
+                <p>Level <span id="user-level">1</span> | <span id="user-xp">0</span> XP</p>
+            </div>
+            <div class="profile-stats">
+                <div class="stat">
+                    <div class="stat-value">1,250</div>
+                    <div class="stat-label">Points</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Games</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">15</div>
+                    <div class="stat-label">Achievements</div>
+                </div>
+            </div>
+        </section>
+        <!-- Game of the Week and Day Section -->
+        <section class="featured-games">
+            <div class="featured-game">
+                <div class="week-timer" id="week-timer">Next Week: Loading...</div>
+                <h2>Game of the Week</h2>
+                <img src="https://picsum.photos/seed/week31/400/180.jpg" alt="Game of the Week">
+                <h3>Olympic Games Glory</h3>
+                <p>International sports competition</p>
+                <button>Play Now</button>
+            </div>
+            <div class="featured-game">
+                <h2>Game of the Day</h2>
+                <img src="https://picsum.photos/seed/gameday/400/180.jpg" alt="Game of the Day">
+                <h3 id="game-of-day">Loading...</h3>
+                <p>Selected from our 5x5 grid</p>
+                <button>Play Now</button>
+            </div>
+        </section>
+        <!-- Weekly Rotation Horizontal Scroll -->
+        <section class="weekly-rotation">
+            <h2>🗓️ Full Weekly Game Rotation List (Weeks 1–52)</h2>
+            <div class="rotation-container">
+                <div class="rotation-item">
+                    <div class="week-number">Week 1</div>
+                    <div class="game-title">🎆 New Year's Eve Showdown</div>
+                    <div class="event-label">New Year's Week</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 2</div>
+                    <div class="game-title">⛷️ Winter Olympics Prep</div>
+                    <div class="event-label">Winter Sports Season</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 3</div>
+                    <div class="game-title">❄️ Snowball Syndicate</div>
+                    <div class="event-label">Peak Winter</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 4</div>
+                    <div class="game-title">🐿️ Groundhog Day Predictions</div>
+                    <div class="event-label">Groundhog Day</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 5</div>
+                    <div class="game-title">🏈 Super Bowl Spectacle</div>
+                    <div class="event-label">Super Bowl Week</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 6</div>
+                    <div class="game-title">💕 Pet Empire: Valentine Edition</div>
+                    <div class="event-label">Valentine's Week</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 7</div>
+                    <div class="game-title">☕ Espresso Wars</div>
+                    <div class="event-label">Winter X Games</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 8</div>
+                    <div class="game-title">🎪 Winter Carnival Chaos</div>
+                    <div class="event-label">Winter Festivals</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 9</div>
+                    <div class="game-title">🏛️ US Presidents Day Politics</div>
+                    <div class="event-label">President's Day</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 10</div>
+                    <div class="game-title">🏀 March Madness: Bracket Brawl</div>
+                    <div class="event-label">March Madness Begins</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 11</div>
+                    <div class="game-title">⚾ Spring Training Stadium</div>
+                    <div class="event-label">Spring Training</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 12</div>
+                    <div class="game-title">🍀 St. Patrick's Pub Empire</div>
+                    <div class="event-label">St. Patrick's Day</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 13</div>
+                    <div class="game-title">🐰 Bunny Run: Easter Sprint</div>
+                    <div class="event-label">Easter Preparation</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 14</div>
+                    <div class="game-title">🌊 Underwater Empire</div>
+                    <div class="event-label">Tsunami Awareness Month</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 15</div>
+                    <div class="game-title">🏌️ Masters Golf Tournament</div>
+                    <div class="event-label">Masters Tournament</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 16</div>
+                    <div class="game-title">📝 Tax Season Survival</div>
+                    <div class="event-label">Tax Deadline Week</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 17</div>
+                    <div class="game-title">🏗️ Spring Builders Fest</div>
+                    <div class="event-label">Spring Construction</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 18</div>
+                    <div class="game-title">🌍 Earth Day Eco Empire</div>
+                    <div class="event-label">Earth Day</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 19</div>
+                    <div class="game-title">🐎 Derby Day Racing</div>
+                    <div class="event-label">Kentucky Derby</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 20</div>
+                    <div class="game-title">👩‍👧‍👦 Mother's Day Marketplace</div>
+                    <div class="event-label">Mother's Day</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 21</div>
+                    <div class="game-title">🏎️ Indy 500 Racing Empire</div>
+                    <div class="event-label">Indianapolis 500</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 22</div>
+                    <div class="game-title">🇺🇸 Memorial Day BBQ Bash</div>
+                    <div class="event-label">Memorial Day</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 23</div>
+                    <div class="game-title">🏖️ Beach Blitz</div>
+                    <div class="event-label">Beach Season Begins</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 24</div>
+                    <div class="game-title">🏃 Summer Sports Rush</div>
+                    <div class="event-label">Summer Sports Season</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 25</div>
+                    <div class="game-title">👨‍👧‍👦 Father's Day Workshop</div>
+                    <div class="event-label">Father's Day</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 26</div>
+                    <div class="game-title">🎓 Graduation Ceremony Central</div>
+                    <div class="event-label">Graduation Season</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 27</div>
+                    <div class="game-title">🎆 Independence Day Fireworks</div>
+                    <div class="event-label">4th of July</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 28</div>
+                    <div class="game-title">⛺ Summer Camp Adventures</div>
+                    <div class="event-label">Summer Camp Season</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 29</div>
+                    <div class="game-title">🚗 Car Passing</div>
+                    <div class="event-label">Summer Road Trips</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 30</div>
+                    <div class="game-title">🎡 State Fair Carnival</div>
+                    <div class="event-label">State Fair Season</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 31</div>
+                    <div class="game-title">🏅 Olympic Games Glory</div>
+                    <div class="event-label">Summer Olympics (off-year)</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 32</div>
+                    <div class="game-title">📚 Back to School Brawl</div>
+                    <div class="event-label">Back to School</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 33</div>
+                    <div class="game-title">🛠️ Labor Day Weekend Rush</div>
+                    <div class="event-label">Labor Day</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 34</div>
+                    <div class="game-title">🏈 Football Season Kickoff</div>
+                    <div class="event-label">NFL Season Begins</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 35</div>
+                    <div class="game-title">🌕 Harvest Moon Festival</div>
+                    <div class="event-label">Harvest Season</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 36</div>
+                    <div class="game-title">🍺 Oktoberfest Brewery</div>
+                    <div class="event-label">Oktoberfest</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 37</div>
+                    <div class="game-title">🎃 Halloween Horror Empire</div>
+                    <div class="event-label">Halloween Preparation</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 38</div>
+                    <div class="game-title">⚾ World Series Baseball</div>
+                    <div class="event-label">World Series</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 39</div>
+                    <div class="game-title">🦃 Thanksgiving Turkey Tycoon</div>
+                    <div class="event-label">Thanksgiving Prep</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 40</div>
+                    <div class="game-title">🛍️ Black Friday Shopping Spree</div>
+                    <div class="event-label">Black Friday</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 41</div>
+                    <div class="game-title">💻 Cyber Monday Tech Empire</div>
+                    <div class="event-label">Cyber Monday</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 42</div>
+                    <div class="game-title">🎄 Holiday Decoration Dynasty</div>
+                    <div class="event-label">Holiday Season Begins</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 43</div>
+                    <div class="game-title">⛄ Winter Wonderland Workshop</div>
+                    <div class="event-label">Holiday Shopping</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 44</div>
+                    <div class="game-title">🎅 Santa's Toy Factory</div>
+                    <div class="event-label">Christmas Week</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 45</div>
+                    <div class="game-title">🗣️ Trash Talk Rumble</div>
+                    <div class="event-label">Anti-Bullying Week</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 46</div>
+                    <div class="game-title">❄️ Winter Storm Survival</div>
+                    <div class="event-label">Winter Weather</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 47</div>
+                    <div class="game-title">✈️ Holiday Travel Chaos</div>
+                    <div class="event-label">Holiday Travel</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 48</div>
+                    <div class="game-title">💪 New Year Resolution Gym</div>
+                    <div class="event-label">New Year Prep</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 49</div>
+                    <div class="game-title">🌙 Winter Solstice Celebration</div>
+                    <div class="event-label">Winter Solstice</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 50</div>
+                    <div class="game-title">💰 Year-End Financial Empire</div>
+                    <div class="event-label">Year-End Business</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 51</div>
+                    <div class="game-title">🎄 Christmas Eve Magic</div>
+                    <div class="event-label">Christmas Eve</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+                <div class="rotation-item">
+                    <div class="week-number">Week 52</div>
+                    <div class="game-title">🎊 New Year's Resolution Reset</div>
+                    <div class="event-label">New Year's Eve</div>
+                    <button class="play-now-btn">Play Now</button>
+                </div>
+            </div>
+        </section>
+        <!-- Action Buttons -->
+        <section class="action-buttons">
+            <div class="action-button" id="default-btn">Default</div>
+            <div class="action-button" id="name-btn">Name</div>
+            <div class="action-button" id="use-btn">Use</div>
+            <div class="action-button" id="color-btn">Color</div>
+        </section>
+        <!-- 5x5 Game Grid with new games -->
+        <section class="game-grid" id="game-grid">
+            <div class="game-card" draggable="true" data-name="Blob Bots" data-uses="42" data-color="#FF6B6B">
+                <div class="game-icon">🤖</div>
+                <h3 style="color: #ffffff;">Blob Bots</h3>
+                <p style="color: #e0e0e0;">Eat, grow, dominate. Battle other players in this quick-play blob game.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Castle Siege" data-uses="38" data-color="#4ECDC4">
+                <div class="game-icon">🏰</div>
+                <h3 style="color: #ffffff;">Castle Siege</h3>
+                <p style="color: #e0e0e0;">4-player RTS battle! Build your army and destroy towers!</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Classic War" data-uses="55" data-color="#FFD166">
+                <div class="game-icon">⚔️</div>
+                <h3 style="color: #ffffff;">Classic War</h3>
+                <p style="color: #e0e0e0;">Pure luck card battle! Flip cards to beat your opponent.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Cosmic Jackpot" data-uses="67" data-color="#6A0572">
+                <div class="game-icon">🎰</div>
+                <h3 style="color: #ffffff;">Cosmic Jackpot</h3>
+                <p style="color: #e0e0e0;">Spin for massive rewards! Hit the mega stack jackpot.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Big Fish" data-uses="29" data-color="#1A936F">
+                <div class="game-icon">🐟</div>
+                <h3 style="color: #ffffff;">Big Fish</h3>
+                <p style="color: #e0e0e0;">Eat to grow. Become the biggest fish in the ocean to win!</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Escape Prison" data-uses="33" data-color="#114B5F">
+                <div class="game-icon">🚪</div>
+                <h3 style="color: #ffffff;">Escape Prison</h3>
+                <p style="color: #e0e0e0;">A classic choice-based adventure game with multiple endings.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Rock Paper Scissors" data-uses="48" data-color="#F45B69">
+                <div class="game-icon">✂️</div>
+                <h3 style="color: #ffffff;">Rock Paper Scissors</h3>
+                <p style="color: #e0e0e0;">Classic timed card game. Best of 5 rounds wins!</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Get On Top" data-uses="41" data-color="#2EC4B6">
+                <div class="game-icon">🤼</div>
+                <h3 style="color: #ffffff;">Get On Top</h3>
+                <p style="color: #e0e0e0;">Physics duel! 2 vs 2 wrestling match with crazy physics.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Hangman" data-uses="36" data-color="#E71D36">
+                <div class="game-icon">🪢</div>
+                <h3 style="color: #ffffff;">Hangman</h3>
+                <p style="color: #e0e0e0;">Classic word guessing! You can beat the creator of...</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Header Hustle" data-uses="44" data-color="#FF9F1C">
+                <div class="game-icon">⚽</div>
+                <h3 style="color: #ffffff;">Header Hustle</h3>
+                <p style="color: #e0e0e0;">1v1 soccer header with power-ups & bumping. Fast & skill-based.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Puzzles" data-uses="31" data-color="#2EC4B6">
+                <div class="game-icon">🧩</div>
+                <h3 style="color: #ffffff;">Puzzles</h3>
+                <p style="color: #e0e0e0;">Assemble this image puzzle against the clock!</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Lunar Lander: Horizon" data-uses="27" data-color="#011627">
+                <div class="game-icon">🚀</div>
+                <h3 style="color: #ffffff;">Lunar Lander: Horizon</h3>
+                <p style="color: #e0e0e0;">Side-scrolling landing! Timed rewards, leaderboard mode.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Math Works" data-uses="22" data-color="#41EAD4">
+                <div class="game-icon">🔢</div>
+                <h3 style="color: #ffffff;">Math Works</h3>
+                <p style="color: #e0e0e0;">5-player math battle!</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Memory Match" data-uses="39" data-color="#FB5607">
+                <div class="game-icon">🧠</div>
+                <h3 style="color: #ffffff;">Memory Match</h3>
+                <p style="color: #e0e0e0;">Test your memory skills!</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Mini Basketball" data-uses="35" data-color="#FF006E">
+                <div class="game-icon">🏀</div>
+                <h3 style="color: #ffffff;">Mini Basketball</h3>
+                <p style="color: #e0e0e0;">Shoot some hoops! Simple physics-based arcade.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="One in a Million" data-uses="30" data-color="#8338EC">
+                <div class="game-icon">🔍</div>
+                <h3 style="color: #ffffff;">One in a Million</h3>
+                <p style="color: #e0e0e0;">Competitive Where's Waldo? 2-player, 10 seconds each.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Platform Jump" data-uses="37" data-color="#3A86FF">
+                <div class="game-icon">🦘</div>
+                <h3 style="color: #ffffff;">Platform Jump</h3>
+                <p style="color: #e0e0e0;">4-player ledge-jump sprint! Push others off to survive.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Pixel Python Arena" data-uses="43" data-color="#06FFA5">
+                <div class="game-icon">🐍</div>
+                <h3 style="color: #ffffff;">Pixel Python Arena</h3>
+                <p style="color: #e0e0e0;">Full-screen snake battle! WASD/click to control.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="QuizKnows" data-uses="40" data-color="#FF4365">
+                <div class="game-icon">❓</div>
+                <h3 style="color: #ffffff;">QuizKnows</h3>
+                <p style="color: #e0e0e0;">Trivia showdown! Battle 5–12 players. Fast answers win.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Sea Square" data-uses="26" data-color="#00F5FF">
+                <div class="game-icon">🟦</div>
+                <h3 style="color: #ffffff;">Sea Square</h3>
+                <p style="color: #e0e0e0;">Match-3 puzzle with betting & competitive themes. 1v1 or 3+.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Snakes & Ladders – Gamble" data-uses="34" data-color="#9D4EDD">
+                <div class="game-icon">🎲</div>
+                <h3 style="color: #ffffff;">Snakes & Ladders – Gamble</h3>
+                <p style="color: #e0e0e0;">Classic board game with betting. 2–6 players.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Stickman Fight" data-uses="46" data-color="#F72585">
+                <div class="game-icon">🤺</div>
+                <h3 style="color: #ffffff;">Stickman Fight</h3>
+                <p style="color: #e0e0e0;">Epic stickman battle!</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Stickman Racer" data-uses="32" data-color="#7209B7">
+                <div class="game-icon">🏁</div>
+                <h3 style="color: #ffffff;">Stickman Racer</h3>
+                <p style="color: #e0e0e0;">Fast mad track obstacle game!</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="Wolverine" data-uses="28" data-color="#560BAD">
+                <div class="game-icon">🐺</div>
+                <h3 style="color: #ffffff;">Wolverine</h3>
+                <p style="color: #e0e0e0;">Speed deduction! Identify roles, eliminate enemies.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+            <div class="game-card" draggable="true" data-name="WordWeaver" data-uses="25" data-color="#B5179E">
+                <div class="game-icon">📝</div>
+                <h3 style="color: #ffffff;">WordWeaver</h3>
+                <p style="color: #e0e0e0;">Fast word dueling battle! 2 players. Up to 12 prompts.</p>
+                <button class="play-now-btn">Play Now</button>
+            </div>
+        </section>
+        <!-- Lobby Button -->
+        <button class="lobby-button">Enter Lobby</button>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <select class="language-dropdown" id="language-selector">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="zh">Chinese</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ar">Arabic</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="bn">Bengali</option>
+                    <option value="ru">Russian</option>
+                    <option value="ja">Japanese</option>
+                    <option value="pa">Punjabi</option>
+                </select>
+            </div>
+            
+            <!-- Visitor Counters - Stacked vertically -->
+            <div class="visitor-counters">
+                <div class="counter-container">
+                    <div class="counter-label">ONLINE NOW</div>
+                    <div class="odometer-counter" id="online-counter">
+                        <div class="odometer-digit">1</div>
+                        <div class="odometer-digit">2</div>
+                        <div class="odometer-digit">5</div>
+                        <div class="odometer-digit">4</div>
+                    </div>
+                </div>
+                
+                <div class="counter-container">
+                    <div class="counter-label">ALL TIME VISITORS</div>
+                    <div class="odometer-counter" id="visitors-counter">
+                        <div class="odometer-digit">2</div>
+                        <div class="odometer-digit">4</div>
+                        <div class="odometer-digit">7</div>
+                        <div class="odometer-digit">8</div>
+                        <div class="odometer-digit">3</div>
+                        <div class="odometer-digit">9</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Content Columns - 2 rows of 3 columns -->
+            <div class="footer-content">
+                <div class="footer-column accessibility">
+                    <h3>ACCESSIBILITY</h3>
+                    <ul>
+                        <li><a href="#">Accessibility Options</a></li>
+                        <li><a href="#">Suggestions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column company">
+                    <h3>COMPANY</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column competitions">
+                    <h3>COMPETITIONS</h3>
+                    <ul>
+                        <li><a href="#">Tournaments</a></li>
+                        <li><a href="#">Registration</a></li>
+                        <li><a href="#">Prizes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column legal">
+                    <h3>LEGAL</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column support">
+                    <h3>SUPPORT</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column social">
+                    <h3>SOCIAL MEDIA</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-snapchat-ghost"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile App Download -->
+            <div class="mobile-app">
+                <h3>Download Mobile App</h3>
+                <div class="app-buttons">
+                    <a href="#" class="app-button ios">
+                        <i>🍎</i>
+                        iOS App
+                    </a>
+                    <a href="#" class="app-button android">
+                        <i>🤖</i>
+                        Android App
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Floating Action Buttons -->
+    <div id="profile-btn" class="floating-btn">👤</div>
+    <div id="coins-btn" class="floating-btn">💰</div>
+    <div id="chatbot-btn" class="floating-btn">💬</div>
+    <div id="slots-btn" class="floating-btn">🎰</div>
+    
+    <!-- Coins Dropdown -->
+    <div id="coins-dropdown" class="coins-dropdown">
+        <a href="#" id="purchase-fiat">Purchase with Fiat</a>
+        <a href="#" id="purchase-crypto">Purchase with Crypto</a>
+        <a href="#" id="earn-friends">Earn by Sharing with Friends</a>
+        <a href="#" id="daily-login">Daily Login Calendar</a>
+        <a href="#" id="daily-dice">Daily Dice Roll</a>
+        <a href="#" id="watch-ads">Watch Advertisement Videos</a>
+    </div>
+    
+    <!-- Mini Slots Game -->
+    <div class="mini-slots" id="mini-slots">
+        <div class="slots-header">
+            <div class="slots-title">Mini Slots</div>
+            <button class="slots-close" id="slots-close">✕</button>
+        </div>
+        <div class="slots-display" id="slots-display">
+            <div class="slot-reel" id="reel1">🍒</div>
+            <div class="slot-reel" id="reel2">🍋</div>
+            <div class="slot-reel" id="reel3">🍊</div>
+        </div>
+        <div class="slots-controls">
+            <select class="slots-dropdown" id="bet-amount">
+                <option value="10">Bet: 10</option>
+                <option value="25">Bet: 25</option>
+                <option value="50">Bet: 50</option>
+                <option value="100">Bet: 100</option>
+                <option value="1000">Bet: 1000</option>
+            </select>
+            <select class="slots-dropdown" id="reel-count">
+                <option value="3">3 Reels</option>
+                <option value="4">4 Reels</option>
+                <option value="5">5 Reels</option>
+                <option value="6">6 Reels</option>
+            </select>
+        </div>
+        <div class="slots-info">
+            <div class="slots-bet">Bet: <span id="bet-display">10</span></div>
+            <div class="slots-win">Win: <span id="win-display">0</span></div>
+        </div>
+        <div class="slots-button-container">
+            <div class="slots-lever" id="slots-lever" title="Pull Lever"></div>
+            <button class="slots-spin-button" id="slots-spin-btn">SPIN</button>
+        </div>
+    </div>
+    
+    <!-- Lobby Modal -->
+    <div class="lobby-modal" id="lobby-modal">
+        <div class="lobby-header">
+            <h2 class="lobby-title">🏢 Poptropica Headquarters Lobby</h2>
+            <button class="lobby-close" id="lobby-close">✕</button>
+        </div>
+        <div class="lobby-content">
+            <div class="lobby-building">
+                <div class="lobby-floor">
+                    <div class="lobby-floor-header">
+                        <div class="lobby-floor-number">Floor 1</div>
+                        <div class="lobby-floor-name">Main Entrance</div>
+                    </div>
+                    <div class="lobby-floor-requirements">Requirement: Level 1</div>
+                    <div class="lobby-floor-description">
+                        Welcome to the Poptropica Headquarters! This is the main entrance where all players begin their journey. Meet other players, join events, and access basic games.
+                    </div>
+                    <div class="lobby-floor-access">
+                        <button class="lobby-floor-btn">Enter Floor</button>
+                    </div>
+                </div>
+                
+                <div class="lobby-floor">
+                    <div class="lobby-floor-header">
+                        <div class="lobby-floor-number">Floor 2</div>
+                        <div class="lobby-floor-name">Game Arcade</div>
+                    </div>
+                    <div class="lobby-floor-requirements">Requirement: Level 5</div>
+                    <div class="lobby-floor-description">
+                        The Game Arcade features classic and modern games. Compete in tournaments, earn achievements, and climb the leaderboards.
+                    </div>
+                    <div class="lobby-floor-access">
+                        <button class="lobby-floor-btn">Enter Floor</button>
+                    </div>
+                </div>
+                
+                <div class="lobby-floor">
+                    <div class="lobby-floor-header">
+                        <div class="lobby-floor-number">Floor 3</div>
+                        <div class="lobby-floor-name">VIP Lounge</div>
+                    </div>
+                    <div class="lobby-floor-requirements">Requirement: Level 10</div>
+                    <div class="lobby-floor-description">
+                        The exclusive VIP Lounge for premium members. Access special games, receive bonuses, and enjoy premium features.
+                    </div>
+                    <div class="lobby-floor-access">
+                        <button class="lobby-floor-btn">Enter Floor</button>
+                    </div>
+                </div>
+                
+                <div class="lobby-floor">
+                    <div class="lobby-floor-header">
+                        <div class="lobby-floor-number">Floor 4</div>
+                        <div class="lobby-floor-name">Tournament Arena</div>
+                    </div>
+                    <div class="lobby-floor-requirements">Requirement: Level 15</div>
+                    <div class="lobby-floor-description">
+                        The Tournament Arena hosts competitive events. Join daily, weekly, and monthly tournaments with huge prize pools.
+                    </div>
+                    <div class="lobby-floor-access">
+                        <button class="lobby-floor-btn">Enter Floor</button>
+                    </div>
+                </div>
+                
+                <div class="lobby-floor">
+                    <div class="lobby-floor-header">
+                        <div class="lobby-floor-number">Floor 5</div>
+                        <div class="lobby-floor-name">Developer's Floor</div>
+                    </div>
+                    <div class="lobby-floor-requirements">Requirement: Level 25</div>
+                    <div class="lobby-floor-description">
+                        The exclusive Developer's Floor where you can test new games, provide feedback, and interact with the development team.
+                    </div>
+                    <div class="lobby-floor-access">
+                        <button class="lobby-floor-btn">Enter Floor</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Profile Page -->
+    <div class="profile-page" id="profile-page">
+        <div class="profile-header">
+            <button class="profile-back-btn" id="profile-back-btn">
+                <span>←</span> Back
+            </button>
+            <button class="profile-settings-btn">⚙️</button>
+        </div>
+        
+        <div class="profile-avatar-container">
+            <div class="profile-avatar-large">👤</div>
+            <div class="profile-avatar-edit">✏️</div>
+            <h2>Player123</h2>
+            <div class="profile-social">
+                <div class="profile-social-item">
+                    <span>👥</span>
+                    <span>24 Friends</span>
+                </div>
+                <div class="profile-social-item">
+                    <span>🏆</span>
+                    <span>15 Achievements</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-shortcuts">
+            <div class="profile-shortcut">
+                <span>💰</span>
+                <span>Coins</span>
+            </div>
+            <div class="profile-shortcut">
+                <span>🎁</span>
+                <span>Rewards</span>
+            </div>
+            <div class="profile-shortcut">
+                <span>📊</span>
+                <span>Stats</span>
+            </div>
+            <div class="profile-shortcut">
+                <span>🛒</span>
+                <span>Shop</span>
+            </div>
+        </div>
+        
+        <div class="profile-character">
+            <div class="character-image">🦸</div>
+            <div class="character-slots">
+                <div class="character-slot">⚔️</div>
+                <div class="character-slot">🛡️</div>
+                <div class="character-slot">💍</div>
+            </div>
+        </div>
+        
+        <div class="profile-tabs">
+            <button class="profile-tab active" data-tab="stats">Stats</button>
+            <button class="profile-tab" data-tab="inventory">Inventory</button>
+            <button class="profile-tab" data-tab="campaigns">Campaigns</button>
+            <button class="profile-tab" data-tab="cashout">Cashout</button>
+        </div>
+        
+        <div class="profile-tab-content active" id="stats-tab">
+            <div class="stats-panel">
+                <h3 class="stats-title">Player Statistics</h3>
+                <table class="stats-table">
+                    <tr>
+                        <th>Games Played</th>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <th>Games Won</th>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <th>Win Rate</th>
+                        <td>42.9%</td>
+                    </tr>
+                    <tr>
+                        <th>Favorite Game</th>
+                        <td>Castle Siege</td>
+                    </tr>
+                    <tr>
+                        <th>Time Played</th>
+                        <td>36 hours</td>
+                    </tr>
+                </table>
+                <div class="xp-progress">
+                    <div class="xp-progress-bar"></div>
+                </div>
+                <p>680 / 1000 XP to Level 2</p>
+            </div>
+        </div>
+        
+        <div class="profile-tab-content" id="inventory-tab">
+            <div class="inventory-grid">
+                <div class="inventory-item">
+                    <div class="inventory-icon">🎮</div>
+                    <div class="inventory-name">Game Pass</div>
+                    <div class="inventory-desc">7 days</div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-icon">💎</div>
+                    <div class="inventory-name">Gems</div>
+                    <div class="inventory-desc">x25</div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-icon">🎟️</div>
+                    <div class="inventory-name">Ticket</div>
+                    <div class="inventory-desc">Tournament</div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-icon">🎁</div>
+                    <div class="inventory-name">Mystery Box</div>
+                    <div class="inventory-desc">x3</div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-icon">🏆</div>
+                    <div class="inventory-name">Trophy</div>
+                    <div class="inventory-desc">Bronze</div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-icon">👕</div>
+                    <div class="inventory-name">Skin</div>
+                    <div class="inventory-desc">Warrior</div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-icon">🎨</div>
+                    <div class="inventory-name">Avatar Frame</div>
+                    <div class="inventory-desc">Golden</div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-icon">⚡</div>
+                    <div class="inventory-name">Power-up</div>
+                    <div class="inventory-desc">x5</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-tab-content" id="campaigns-tab">
+            <div class="campaign-list">
+                <div class="campaign-item completed">
+                    <div>
+                        <h4>New Player Journey</h4>
+                        <p>Complete the introduction to earn rewards</p>
+                    </div>
+                    <div class="campaign-status completed">Completed</div>
+                </div>
+                <div class="campaign-item in-progress">
+                    <div>
+                        <h4>Weekly Challenge</h4>
+                        <p>Play 10 games this week</p>
+                    </div>
+                    <div class="campaign-status in-progress">In Progress</div>
+                </div>
+                <div class="campaign-item locked">
+                    <div>
+                        <h4>Master Tournament</h4>
+                        <p>Win 5 tournaments in a row</p>
+                    </div>
+                    <div class="campaign-status locked">Locked</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-tab-content" id="cashout-tab">
+            <div class="cashout-panel">
+                <div class="balance-display">
+                    <div class="balance-amount">$125.50</div>
+                    <p>Available Balance</p>
+                </div>
+                <button class="withdraw-button">Withdraw Funds</button>
+                <h3>Transaction History</h3>
+                <div class="transactions-list">
+                    <div class="transaction-item">
+                        <div class="transaction-date">2023-06-15</div>
+                        <div class="transaction-desc">Tournament Win</div>
+                        <div class="transaction-amount positive">+$25.00</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-date">2023-06-10</div>
+                        <div class="transaction-desc">Withdrawal</div>
+                        <div class="transaction-amount negative">-$50.00</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-date">2023-06-05</div>
+                        <div class="transaction-desc">Daily Bonus</div>
+                        <div class="transaction-amount positive">+$5.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-footer">
+            <div class="level-display">
+                <div class="level-number">Level 1</div>
+                <div class="xp-text">680 / 1000 XP</div>
+            </div>
+            <div class="xp-progress">
+                <div class="xp-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chatbot Modal -->
+    <div class="chatbot-modal" id="chatbot-modal">
+        <div class="chatbot-header">
+            <div class="chatbot-title">Support Chat</div>
+            <button class="chatbot-close" id="chatbot-close">✕</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="chatbot-message bot">
+                Hello! I'm here to help you with any questions about Gambling Guys. How can I assist you today?
+            </div>
+        </div>
+        <div class="chatbot-attachments">
+            <button class="chatbot-attachment-btn" id="chatbot-screenshot">📷 Screenshot</button>
+            <button class="chatbot-attachment-btn" id="chatbot-file">📁 File</button>
+            <input type="file" id="file-input" class="file-input">
+        </div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Type your message...">
+            <button class="chatbot-send" id="chatbot-send">➤</button>
+        </div>
+    </div>
+    
+    <!-- Coin Modals -->
+    <!-- Purchase with Fiat Modal -->
+    <div id="purchase-fiat-modal" class="coin-modal">
+        <div class="coin-modal-content">
+            <span class="close">&times;</span>
+            <h2>Purchase Coins with Fiat</h2>
+            <div class="coin-options">
+                <div class="coin-option">
+                    <h3>Starter Pack</h3>
+                    <div class="coin-amount">1,000 Coins</div>
+                    <div class="coin-price">$0.99</div>
+                    <button class="coin-buy-btn">Buy Now</button>
+                </div>
+                <div class="coin-option">
+                    <h3>Standard Pack</h3>
+                    <div class="coin-amount">5,000 Coins</div>
+                    <div class="coin-price">$4.99</div>
+                    <button class="coin-buy-btn">Buy Now</button>
+                </div>
+                <div class="coin-option">
+                    <h3>Premium Pack</h3>
+                    <div class="coin-amount">10,000 Coins</div>
+                    <div class="coin-price">$9.99</div>
+                    <button class="coin-buy-btn">Buy Now</button>
+                </div>
+                <div class="coin-option">
+                    <h3>Ultimate Pack</h3>
+                    <div class="coin-amount">50,000 Coins</div>
+                    <div class="coin-price">$39.99</div>
+                    <button class="coin-buy-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Purchase with Crypto Modal -->
+    <div id="purchase-crypto-modal" class="coin-modal">
+        <div class="coin-modal-content">
+            <span class="close">&times;</span>
+            <h2>Purchase Coins with Crypto</h2>
+            <div class="coin-options">
+                <div class="coin-option">
+                    <h3>Bitcoin</h3>
+                    <div class="coin-amount">10,000 Coins</div>
+                    <div class="coin-price">0.0001 BTC</div>
+                    <button class="coin-buy-btn">Buy Now</button>
+                </div>
+                <div class="coin-option">
+                    <h3>Ethereum</h3>
+                    <div class="coin-amount">10,000 Coins</div>
+                    <div class="coin-price">0.001 ETH</div>
+                    <button class="coin-buy-btn">Buy Now</button>
+                </div>
+                <div class="coin-option">
+                    <h3>Litecoin</h3>
+                    <div class="coin-amount">10,000 Coins</div>
+                    <div class="coin-price">0.01 LTC</div>
+                    <button class="coin-buy-btn">Buy Now</button>
+                </div>
+                <div class="coin-option">
+                    <h3>Dogecoin</h3>
+                    <div class="coin-amount">10,000 Coins</div>
+                    <div class="coin-price">100 DOGE</div>
+                    <button class="coin-buy-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Earn by Sharing with Friends Modal -->
+    <div id="earn-friends-modal" class="coin-modal">
+        <div class="coin-modal-content">
+            <span class="close">&times;</span>
+            <h2>Earn Coins by Sharing with Friends</h2>
+            <p>Share your referral link with friends and earn coins when they sign up and play!</p>
+            <div class="share-container">
+                <h3>Your Referral Link</h3>
+                <div class="share-link">https://gamblingguys.com/ref/Player123</div>
+                <button class="share-btn" id="copy-link-btn">Copy Link</button>
+                <button class="share-btn" id="share-facebook-btn">Share on Facebook</button>
+                <button class="share-btn" id="share-twitter-btn">Share on Twitter</button>
+            </div>
+            <div class="coin-options">
+                <div class="coin-option">
+                    <h3>Friend Signs Up</h3>
+                    <div class="coin-amount">100 Coins</div>
+                </div>
+                <div class="coin-option">
+                    <h3>Friend Plays 10 Games</h3>
+                    <div class="coin-amount">500 Coins</div>
+                </div>
+                <div class="coin-option">
+                    <h3>Friend Makes a Purchase</h3>
+                    <div class="coin-amount">1,000 Coins</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Daily Login Calendar Modal -->
+    <div id="daily-login-modal" class="coin-modal">
+        <div class="coin-modal-content">
+            <span class="close">&times;</span>
+            <h2>Daily Login Calendar</h2>
+            <div class="daily-reward-status" id="daily-login-status">Checking status...</div>
+            <p>Login every day to earn bonus coins! Consecutive logins earn bigger rewards.</p>
+            <div class="calendar" id="login-calendar">
+                <div class="calendar-header">Sun</div>
+                <div class="calendar-header">Mon</div>
+                <div class="calendar-header">Tue</div>
+                <div class="calendar-header">Wed</div>
+                <div class="calendar-header">Thu</div>
+                <div class="calendar-header">Fri</div>
+                <div class="calendar-header">Sat</div>
+                <!-- Calendar days will be generated by JavaScript -->
+            </div>
+            <button class="coin-buy-btn" id="claim-daily-login-btn">Claim Daily Reward</button>
+        </div>
+    </div>
+    
+    <!-- Daily Dice Roll Modal -->
+    <div id="daily-dice-modal" class="coin-modal">
+        <div class="coin-modal-content">
+            <span class="close">&times;</span>
+            <h2>Daily Dice Roll</h2>
+            <div class="daily-reward-status" id="daily-dice-status">Checking status...</div>
+            <p>Roll the dice once per day to earn bonus coins! Higher rolls earn more coins.</p>
+            <div class="dice-container">
+                <div class="dice" id="daily-dice">🎲</div>
+            </div>
+            <div class="dice-result" id="dice-result">Roll the dice!</div>
+            <div class="coin-options">
+                <div class="coin-option">
+                    <h3>Roll 1-2</h3>
+                    <div class="coin-amount">10 Coins</div>
+                </div>
+                <div class="coin-option">
+                    <h3>Roll 3-4</h3>
+                    <div class="coin-amount">25 Coins</div>
+                </div>
+                <div class="coin-option">
+                    <h3>Roll 5-6</h3>
+                    <div class="coin-amount">50 Coins</div>
+                </div>
+            </div>
+            <button class="coin-buy-btn" id="roll-dice-btn">Roll Dice</button>
+        </div>
+    </div>
+    
+    <!-- Watch Advertisement Videos Modal -->
+    <div id="watch-ads-modal" class="coin-modal">
+        <div class="coin-modal-content">
+            <span class="close">&times;</span>
+            <h2>Watch Advertisement Videos</h2>
+            <p>Watch short videos to earn bonus coins. You can watch up to 5 videos per day.</p>
+            <div class="ad-container">
+                <h3>Today's Videos Remaining</h3>
+                <div class="coin-amount" id="videos-remaining">5/5</div>
+                <p>Each video watched earns you 20 coins.</p>
+            </div>
+            <button class="coin-buy-btn" id="watch-video-btn">Watch Video</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
