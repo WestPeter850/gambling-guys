@@ -566,7 +566,6 @@
         
         <button class="main-menu-btn" id="main-menu-btn">Main Menu</button>
     </div>
-
     <!-- Rules Guide Modal -->
     <div id="rules-guide-modal" class="modal">
         <div class="modal-content">
@@ -1083,6 +1082,14 @@
                 const message = multiplayerChatInput.value.trim();
                 if (message === '') return;
                 
+                // Check if user is subscribed to YouTube channel
+                const isSubscribed = localStorage.getItem('youtubeSubscribed') === 'true';
+                
+                if (!isSubscribed) {
+                    alert('You need to subscribe to our YouTube channel to send messages!');
+                    return;
+                }
+                
                 // Apply profanity filter if enabled
                 let filteredMessage = message;
                 if (profanityFilter.checked) {
@@ -1171,18 +1178,6 @@
                 document.getElementById('tournament-wins').value = '3';
                 document.getElementById('tournament-move-time').value = '30';
             });
-            
-            // Add multiplayer and tournaments buttons to the game menu
-            // This is to ensure these buttons work when clicked from the game menu
-            if (window.location.pathname.includes('game-menu.html')) {
-                document.getElementById('multiplayer-option').addEventListener('click', function() {
-                    document.getElementById('multiplayer-lobby-modal').style.display = 'block';
-                });
-                
-                document.getElementById('tournaments-option').addEventListener('click', function() {
-                    document.getElementById('tournaments-modal').style.display = 'block';
-                });
-            }
         });
     </script>
 </body>
