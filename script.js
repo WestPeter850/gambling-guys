@@ -3,12 +3,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const titleSpans = document.querySelectorAll('.animated-title span');
     let animationInterval = null;
     let isAnimating = false;
+    let animationDirection = 1; // 1 for forward, -1 for backward
+    let animationProgress = 0;
+    let animationCompleted = false;
+    let animationTimeout = null;
+    
+    // Extract all colors from the letters
+    const letterColors = Array.from(titleSpans).map(span => span.getAttribute('data-color'));
     
     titleSpans.forEach((span, index) => {
         span.addEventListener('click', function() {
             if (isAnimating) {
                 // Stop animation
                 clearInterval(animationInterval);
+                clearTimeout(animationTimeout);
                 isAnimating = false;
                 
                 // Reset all spans to their original colors
@@ -18,10 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Start animation
                 isAnimating = true;
-                
-                // Get the colors for the gradient
-                const startColor = titleSpans[0].getAttribute('data-color');
-                const endColor = titleSpans[titleSpans.length - 1].getAttribute('data-color');
+                animationDirection = 1;
+                animationProgress = 0;
+                animationCompleted = false;
                 
                 // Convert hex to RGB
                 function hexToRgb(hex) {
@@ -33,45 +40,103 @@ document.addEventListener('DOMContentLoaded', function() {
                     } : null;
                 }
                 
-                const startRgb = hexToRgb(startColor);
-                const endRgb = hexToRgb(endColor);
-                
-                let direction = 1; // 1 for forward, -1 for backward
-                let progress = 0;
+                const rgbColors = letterColors.map(color => hexToRgb(color));
                 
                 animationInterval = setInterval(() => {
-                    progress += 0.02 * direction;
+                    animationProgress += 0.02 * animationDirection;
                     
-                    if (progress >= 1) {
-                        progress = 1;
-                        direction = -1; // Change direction
-                    } else if (progress <= 0) {
-                        progress = 0;
-                        direction = 1; // Change direction
+                    if (animationProgress >= 1) {
+                        animationProgress = 1;
+                        animationDirection = -1; // Change direction
+                    } else if (animationProgress <= 0) {
+                        animationProgress = 0;
+                        animationDirection = 1; // Change direction
                     }
                     
                     // Update each span's color
                     titleSpans.forEach((s, i) => {
-                        const spanProgress = (i / (titleSpans.length - 1)) * progress;
+                        // Calculate which color to use based on progress
+                        let colorIndex;
                         
-                        if (direction === 1) {
-                            // Forward: darker to lighter
-                            const r = Math.round(startRgb.r + (endRgb.r - startRgb.r) * spanProgress);
-                            const g = Math.round(startRgb.g + (endRgb.g - startRgb.g) * spanProgress);
-                            const b = Math.round(startRgb.b + (endRgb.b - startRgb.b) * spanProgress);
-                            s.style.color = `rgb(${r}, ${g}, ${b})`;
+                        if (animationDirection === 1) {
+                            // Forward: from first to last
+                            colorIndex = Math.floor(animationProgress * letterColors.length);
                         } else {
-                            // Backward: lighter to darker
-                            const r = Math.round(endRgb.r + (startRgb.r - endRgb.r) * spanProgress);
-                            const g = Math.round(endRgb.g + (startRgb.g - endRgb.g) * spanProgress);
-                            const b = Math.round(endRgb.b + (startRgb.b - endRgb.b) * spanProgress);
-                            s.style.color = `rgb(${r}, ${g}, ${b})`;
+                            // Backward: from last to first
+                            colorIndex = letterColors.length - 1 - Math.floor(animationProgress * letterColors.length);
                         }
+                        
+                        // Ensure colorIndex is within bounds
+                        colorIndex = Math.max(0, Math.min(colorIndex, letterColors.length - 1));
+                        
+                        // Apply the color
+                        s.style.color = letterColors[colorIndex];
                     });
+                    
+                    // Check if animation completed a full cycle
+                    if (animationProgress === 0 && animationDirection === 1) {
+                        if (!animationCompleted) {
+                            animationCompleted = true;
+                            
+                            // Flash all colors 3 times
+                            let flashCount = 0;
+                            let flashIndex = 0;
+                            
+                            clearInterval(animationInterval);
+                            
+                            const flashInterval = setInterval(() => {
+                                // Flash each color
+                                titleSpans.forEach(s => {
+                                    s.style.color = letterColors[flashIndex];
+                                });
+                                
+                                flashIndex++;
+                                
+                                if (flashIndex >= letterColors.length) {
+                                    flashIndex = 0;
+                                    flashCount++;
+                                    
+                                    if (flashCount >= 3) {
+                                        clearInterval(flashInterval);
+                                        
+                                        // Reset to original colors
+                                        titleSpans.forEach(s => {
+                                            s.style.color = s.getAttribute('data-color');
+                                        });
+                                        
+                                        // Give reward and show modal
+                                        const coinsRewarded = parseInt(localStorage.getItem('coinsRewarded') || '0');
+                                        if (coinsRewarded === 0) {
+                                            localStorage.setItem('coinsRewarded', '1');
+                                            showModal('congrats-modal');
+                                        }
+                                        
+                                        isAnimating = false;
+                                    }
+                                }
+                            }, 100);
+                        }
+                    }
                 }, 50);
             }
         });
     });
+    
+    // Function to show modal
+    function showModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'block';
+        }
+    }
+    
+    // Function to hide modal
+    function hideModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    }
     
     // Set random game of the day
     const games = [
@@ -137,13 +202,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Coins dropdown functionality
+    // Coins dropdown functionality - Fixed to attach to the button
     const coinsBtn = document.getElementById('coins-btn');
     const coinsDropdown = document.getElementById('coins-dropdown');
+    
+    // Position the dropdown relative to the coins button
+    function positionCoinsDropdown() {
+        const rect = coinsBtn.getBoundingClientRect();
+        coinsDropdown.style.position = 'fixed';
+        coinsDropdown.style.top = `${rect.bottom + 5}px`;
+        coinsDropdown.style.right = `${window.innerWidth - rect.right}px`;
+    }
+    
+    // Initial positioning
+    positionCoinsDropdown();
+    
+    // Reposition on window resize
+    window.addEventListener('resize', positionCoinsDropdown);
     
     coinsBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         coinsDropdown.style.display = coinsDropdown.style.display === 'block' ? 'none' : 'block';
+        positionCoinsDropdown();
     });
     
     // Close dropdown when clicking elsewhere
@@ -957,6 +1037,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Reset consecutive days
             localStorage.setItem('consecutiveDays', '0');
+            
+            // Reset coins rewarded
+            localStorage.removeItem('coinsRewarded');
             
             console.log('Daily rewards reset at 12:00 AM UTC');
         }
