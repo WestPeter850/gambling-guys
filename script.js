@@ -130,14 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Function to hide modal
-    function hideModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.style.display = 'none';
-        }
-    }
-    
     // Set random game of the day
     const games = [
         "Blob Bots", "Castle Siege", "Classic War", "Cosmic Jackpot", "Big Fish",
@@ -201,6 +193,316 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(`${tabId}-tab`).classList.add('active');
         });
     });
+    
+    // Profile dropdown functionality
+    const profileDropdownBtn = document.querySelector('.profile-dropdown-btn');
+    const profileDropdownContent = document.querySelector('.profile-dropdown-content');
+    const profileListContainer = document.getElementById('profile-list-container');
+    
+    // Toggle dropdown
+    profileDropdownBtn.addEventListener('click', function() {
+        profileDropdownContent.style.display = 
+            profileDropdownContent.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!profileDropdownBtn.contains(event.target) && 
+            !profileDropdownContent.contains(event.target)) {
+            profileDropdownContent.style.display = 'none';
+        }
+    });
+    
+    // Handle dropdown item clicks
+    const dropdownItems = document.querySelectorAll('.profile-dropdown-item');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const view = this.getAttribute('data-view');
+            loadProfileList(view);
+            profileDropdownContent.style.display = 'none';
+        });
+    });
+    
+    // Load profile list based on selected view
+    function loadProfileList(view) {
+        profileListContainer.innerHTML = '';
+        
+        // Sample data - in a real app, this would come from a server
+        const profiles = {
+            friends: [
+                { id: 1, name: 'GamerPro', status: 'Online', avatar: '👤' },
+                { id: 2, name: 'PlayerOne', status: 'Offline', avatar: '👤' },
+                { id: 3, name: 'GameMaster', status: 'Online', avatar: '👤' }
+            ],
+            followers: [
+                { id: 4, name: 'Fan123', status: 'Online', avatar: '👤' },
+                { id: 5, name: 'FollowerX', status: 'Offline', avatar: '👤' },
+                { id: 6, name: 'AdmirerY', status: 'Online', avatar: '👤' }
+            ],
+            following: [
+                { id: 7, name: 'InfluencerZ', status: 'Online', avatar: '👤' },
+                { id: 8, name: 'StreamKing', status: 'Offline', avatar: '👤' },
+                { id: 9, name: 'ProGamer', status: 'Online', avatar: '👤' }
+            ]
+        };
+        
+        const list = profiles[view] || [];
+        
+        list.forEach(profile => {
+            const item = document.createElement('div');
+            item.className = 'profile-list-item';
+            item.setAttribute('data-user-id', profile.id);
+            item.innerHTML = `
+                <div class="profile-list-avatar">${profile.avatar}</div>
+                <div class="profile-list-info">
+                    <div class="profile-list-name">${profile.name}</div>
+                    <div class="profile-list-status">${profile.status}</div>
+                </div>
+            `;
+            
+            item.addEventListener('click', function() {
+                viewUserProfile(profile.id);
+            });
+            
+            profileListContainer.appendChild(item);
+        });
+    }
+    
+    // View user profile
+    function viewUserProfile(userId) {
+        // In a real app, this would fetch user data from a server
+        const userData = {
+            id: userId,
+            name: 'User' + userId,
+            level: Math.floor(Math.random() * 50) + 1,
+            xp: Math.floor(Math.random() * 10000),
+            gamesPlayed: Math.floor(Math.random() * 100),
+            gamesWon: Math.floor(Math.random() * 50),
+            earnings: Math.floor(Math.random() * 10000),
+            publicEarnings: Math.random() > 0.5, // Randomly set if earnings are public
+            items: [
+                { name: 'Golden Sword', type: 'weapon' },
+                { name: 'Dragon Shield', type: 'armor' },
+                { name: 'Speed Boots', type: 'footwear' }
+            ]
+        };
+        
+        // Create profile modal
+        const profileModal = document.getElementById('user-profile-modal');
+        
+        // Check if earnings should be displayed
+        const earningsDisplay = userData.publicEarnings ? 
+            `<div class="user-earnings">Earnings: ${userData.earnings} coins</div>` : 
+            '<div class="user-earnings">Earnings: Private</div>';
+        
+        // Update modal content
+        document.getElementById('user-profile-name').textContent = userData.name + "'s Profile";
+        document.getElementById('user-profile-level').textContent = 'Level ' + userData.level;
+        document.getElementById('user-profile-xp').textContent = userData.xp + ' XP';
+        document.getElementById('user-earnings').innerHTML = earningsDisplay;
+        document.getElementById('user-games-played').textContent = userData.gamesPlayed;
+        document.getElementById('user-games-won').textContent = userData.gamesWon;
+        document.getElementById('user-win-rate').textContent = Math.round(userData.gamesWon / userData.gamesPlayed * 100) + '%';
+        
+        // Update items grid
+        const itemsGrid = document.getElementById('user-items-grid');
+        itemsGrid.innerHTML = '';
+        userData.items.forEach(item => {
+            const itemCard = document.createElement('div');
+            itemCard.className = 'item-card';
+            itemCard.innerHTML = `
+                <div class="item-icon">🎮</div>
+                <div class="item-name">${item.name}</div>
+                <div class="item-type">${item.type}</div>
+            `;
+            itemsGrid.appendChild(itemCard);
+        });
+        
+        // Show modal
+        profileModal.style.display = 'block';
+    }
+    
+    // Handle user profile modal close
+    const userProfileModal = document.getElementById('user-profile-modal');
+    const userProfileClose = userProfileModal.querySelector('.close');
+    
+    userProfileClose.addEventListener('click', function() {
+        userProfileModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === userProfileModal) {
+            userProfileModal.style.display = 'none';
+        }
+    });
+    
+    // Load friends by default
+    loadProfileList('friends');
+    
+    // Handle earnings privacy setting
+    const publicEarningsCheckbox = document.getElementById('public-earnings');
+    
+    // Load saved setting
+    const publicEarnings = localStorage.getItem('publicEarnings') === 'true';
+    if (publicEarningsCheckbox) {
+        publicEarningsCheckbox.checked = publicEarnings;
+    }
+    
+    // Save setting when changed
+    if (publicEarningsCheckbox) {
+        publicEarningsCheckbox.addEventListener('change', function() {
+            localStorage.setItem('publicEarnings', this.checked);
+        });
+    }
+    
+    // Character customization functionality
+    const customizationTab = document.querySelector('.profile-tab[data-tab="customization"]');
+    if (customizationTab) {
+        // Handle customization item selection
+        const customizationItems = document.querySelectorAll('.customization-item');
+        customizationItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const type = this.getAttribute('data-type');
+                const value = this.getAttribute('data-value');
+                
+                // Remove selected class from all items of the same type
+                document.querySelectorAll(`.customization-item[data-type="${type}"]`).forEach(i => {
+                    i.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked item
+                this.classList.add('selected');
+                
+                // Update character model (in a real app, this would update the 3D model)
+                updateCharacterModel(type, value);
+            });
+        });
+        
+        // Handle color pickers
+        const colorPickers = document.querySelectorAll('.color-picker input[type="color"]');
+        colorPickers.forEach(picker => {
+            picker.addEventListener('change', function() {
+                const type = this.id.replace('-color', '');
+                const color = this.value;
+                
+                // Update character model with new color
+                updateCharacterColor(type, color);
+            });
+        });
+        
+        // Handle save button
+        const saveCustomizationBtn = document.getElementById('save-customization-btn');
+        if (saveCustomizationBtn) {
+            saveCustomizationBtn.addEventListener('click', function() {
+                // Collect all customization options
+                const customization = {
+                    hair: document.querySelector('.customization-item[data-type="hair"].selected')?.getAttribute('data-value') || 'default',
+                    hairColor: document.getElementById('hair-color').value,
+                    eyes: document.querySelector('.customization-item[data-type="eyes"].selected')?.getAttribute('data-value') || 'default',
+                    eyeColor: document.getElementById('eye-color').value,
+                    outfit: document.querySelector('.customization-item[data-type="outfit"].selected')?.getAttribute('data-value') || 'default',
+                    outfitColor: document.getElementById('outfit-color').value,
+                    accessory: document.querySelector('.customization-item[data-type="accessory"].selected')?.getAttribute('data-value') || 'none',
+                    effect: document.querySelector('.customization-item[data-type="effect"].selected')?.getAttribute('data-value') || 'none'
+                };
+                
+                // Save to localStorage (in a real app, this would be saved to a server)
+                localStorage.setItem('characterCustomization', JSON.stringify(customization));
+                
+                alert('Character customization saved successfully!');
+            });
+        }
+        
+        // Handle reset button
+        const resetCustomizationBtn = document.getElementById('reset-customization-btn');
+        if (resetCustomizationBtn) {
+            resetCustomizationBtn.addEventListener('click', function() {
+                // Reset all selections
+                document.querySelectorAll('.customization-item').forEach(item => {
+                    item.classList.remove('selected');
+                });
+                
+                // Reset color pickers
+                document.getElementById('hair-color').value = '#000000';
+                document.getElementById('eye-color').value = '#000000';
+                document.getElementById('outfit-color').value = '#000000';
+                
+                // Reset character model
+                updateCharacterModel('all', 'default');
+                
+                // Remove saved customization
+                localStorage.removeItem('characterCustomization');
+                
+                alert('Character customization reset to default!');
+            });
+        }
+        
+        // Load saved customization
+        function loadCustomization() {
+            const savedCustomization = localStorage.getItem('characterCustomization');
+            
+            if (savedCustomization) {
+                const customization = JSON.parse(savedCustomization);
+                
+                // Apply saved selections
+                Object.keys(customization).forEach(key => {
+                    if (key === 'hairColor' || key === 'eyeColor' || key === 'outfitColor') {
+                        document.getElementById(`${key}-color`).value = customization[key];
+                        updateCharacterColor(key.replace('Color', ''), customization[key]);
+                    } else {
+                        const item = document.querySelector(`.customization-item[data-type="${key}"][data-value="${customization[key]}"]`);
+                        if (item) {
+                            item.classList.add('selected');
+                            updateCharacterModel(key, customization[key]);
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Update character model (simplified for this example)
+        function updateCharacterModel(type, value) {
+            const characterModel = document.getElementById('character-model');
+            
+            // In a real app, this would update a 3D model
+            // For this example, we'll just change the emoji based on selections
+            if (type === 'outfit') {
+                switch(value) {
+                    case 'casual':
+                        characterModel.textContent = '🦸';
+                        break;
+                    case 'formal':
+                        characterModel.textContent = '🤵';
+                        break;
+                    case 'sport':
+                        characterModel.textContent = '🏃';
+                        break;
+                    case 'armor':
+                        characterModel.textContent = '⚔️';
+                        break;
+                    default:
+                        characterModel.textContent = '🦸';
+                }
+            }
+        }
+        
+        // Update character color (simplified for this example)
+        function updateCharacterColor(type, color) {
+            const characterModel = document.getElementById('character-model');
+            
+            // In a real app, this would update the color of specific parts of the 3D model
+            // For this example, we'll just add a colored border
+            characterModel.style.border = `5px solid ${color}`;
+            characterModel.style.borderRadius = '50%';
+        }
+        
+        // Load customization when tab is opened
+        customizationTab.addEventListener('click', function() {
+            loadCustomization();
+        });
+    }
     
     // Coins dropdown functionality - Fixed to attach to the button
     const coinsBtn = document.getElementById('coins-btn');
@@ -1047,4 +1349,214 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check every second if it's time to reset
     setInterval(checkDailyReset, 1000);
+    
+    // YouTube subscription check
+    function checkYouTubeSubscription() {
+        const isSubscribed = localStorage.getItem('youtubeSubscribed') === 'true';
+        
+        if (!isSubscribed) {
+            // Show subscription modal
+            const subscriptionModal = document.getElementById('youtube-subscription-modal');
+            
+            // Handle modal close
+            subscriptionModal.querySelector('.close').addEventListener('click', function() {
+                subscriptionModal.style.display = 'none';
+            });
+            
+            // Handle subscription confirmation
+            document.getElementById('confirm-subscription-btn').addEventListener('click', function() {
+                localStorage.setItem('youtubeSubscribed', 'true');
+                subscriptionModal.style.display = 'none';
+                alert('Thank you for subscribing! You can now use multiplayer features.');
+            });
+            
+            // Show modal
+            subscriptionModal.style.display = 'block';
+        }
+        
+        return isSubscribed;
+    }
+    
+    // Multiplayer loading screen
+    function showMultiplayerLoading() {
+        // Create loading screen
+        const loadingScreen = document.getElementById('multiplayer-loading');
+        loadingScreen.style.display = 'flex';
+        
+        // Simulate loading process
+        let progress = 0;
+        const loadingBar = loadingScreen.querySelector('.loading-bar');
+        const loadingStatus = loadingScreen.querySelector('#loading-status');
+        
+        const loadingInterval = setInterval(() => {
+            progress += 5;
+            loadingBar.style.width = `${progress}%`;
+            
+            if (progress < 30) {
+                loadingStatus.textContent = 'Connecting to server...';
+            } else if (progress < 60) {
+                loadingStatus.textContent = 'Finding players...';
+            } else if (progress < 90) {
+                loadingStatus.textContent = 'Initializing game...';
+            } else {
+                loadingStatus.textContent = 'Almost ready...';
+            }
+            
+            if (progress >= 100) {
+                clearInterval(loadingInterval);
+                
+                // Hide loading screen and show multiplayer lobby
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    document.getElementById('multiplayer-lobby-modal').style.display = 'block';
+                }, 500);
+            }
+        }, 200);
+    }
+    
+    // Update multiplayer option to show loading screen
+    document.getElementById('multiplayer-option').addEventListener('click', function() {
+        if (checkYouTubeSubscription()) {
+            showMultiplayerLoading();
+        }
+    });
+    
+    // Multiplayer lobby functionality
+    const multiplayerLobbyModal = document.getElementById('multiplayer-lobby-modal');
+    const multiplayerChat = document.getElementById('multiplayer-chat');
+    const multiplayerChatInput = document.getElementById('multiplayer-chat-input');
+    const multiplayerChatSend = document.getElementById('multiplayer-chat-send');
+    const profanityFilter = document.getElementById('profanity-filter');
+    
+    // Multiplayer chat functionality
+    function sendMultiplayerMessage() {
+        const message = multiplayerChatInput.value.trim();
+        if (message === '') return;
+        
+        // Check if user is subscribed to YouTube channel
+        const isSubscribed = localStorage.getItem('youtubeSubscribed') === 'true';
+        
+        if (!isSubscribed) {
+            alert('You need to subscribe to our YouTube channel to send messages!');
+            return;
+        }
+        
+        // Apply profanity filter if enabled
+        let filteredMessage = message;
+        if (profanityFilter.checked) {
+            // Simple profanity filter - replace bad words with *****
+            const badWords = ['damn', 'shit', 'fuck', 'ass', 'bitch', 'crap', 'piss', 'bastard', 'dick'];
+            badWords.forEach(word => {
+                const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                filteredMessage = filteredMessage.replace(regex, '*****');
+            });
+        }
+        
+        // Add user message
+        const userMessage = document.createElement('div');
+        userMessage.className = 'chat-message';
+        userMessage.textContent = `You: ${filteredMessage}`;
+        multiplayerChat.appendChild(userMessage);
+        
+        // Clear input
+        multiplayerChatInput.value = '';
+        
+        // Scroll to bottom
+        multiplayerChat.scrollTop = multiplayerChat.scrollHeight;
+    }
+    
+    if (multiplayerChatSend) {
+        multiplayerChatSend.addEventListener('click', sendMultiplayerMessage);
+    }
+    
+    if (multiplayerChatInput) {
+        multiplayerChatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMultiplayerMessage();
+            }
+        });
+    }
+    
+    // Tournaments functionality
+    const tournamentsModal = document.getElementById('tournaments-modal');
+    const createTournamentBtn = document.querySelector('.create-tournament-btn');
+    const createTournamentModal = document.getElementById('create-tournament-modal');
+    const createTournamentSubmitBtn = document.querySelector('.create-tournament-submit-btn');
+    
+    // Create tournament button
+    if (createTournamentBtn) {
+        createTournamentBtn.addEventListener('click', function() {
+            createTournamentModal.style.display = 'block';
+        });
+    }
+    
+    // Create tournament form submission
+    if (createTournamentSubmitBtn) {
+        createTournamentSubmitBtn.addEventListener('click', function() {
+            const tournamentName = document.getElementById('tournament-name').value;
+            const tournamentGame = document.getElementById('tournament-game').value;
+            const tournamentSize = document.getElementById('tournament-size').value;
+            const tournamentSignup = document.getElementById('tournament-signup').value;
+            const tournamentWins = document.getElementById('tournament-wins').value;
+            const tournamentMoveTime = document.getElementById('tournament-move-time').value;
+            
+            // Validate form
+            if (!tournamentName || !tournamentGame) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Check for profanity in tournament name
+            const badWords = ['damn', 'shit', 'fuck', 'ass', 'bitch', 'crap', 'piss', 'bastard', 'dick'];
+            let hasProfanity = false;
+            badWords.forEach(word => {
+                const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                if (regex.test(tournamentName)) {
+                    hasProfanity = true;
+                }
+            });
+            
+            if (hasProfanity) {
+                alert('Tournament name contains inappropriate language. Please choose a different name.');
+                return;
+            }
+            
+            // Create tournament (in a real app, this would send data to the server)
+            alert(`Tournament "${tournamentName}" created successfully!`);
+            
+            // Close modals
+            createTournamentModal.style.display = 'none';
+            tournamentsModal.style.display = 'none';
+            
+            // Reset form
+            document.getElementById('tournament-name').value = '';
+            document.getElementById('tournament-game').value = '';
+            document.getElementById('tournament-size').value = '8';
+            document.getElementById('tournament-signup').value = '24';
+            document.getElementById('tournament-wins').value = '3';
+            document.getElementById('tournament-move-time').value = '30';
+        });
+    }
+    
+    // Modal tabs functionality
+    const modalTabs = document.querySelectorAll('.modal-tab, .leaderboard-tab, .settings-tab, .tournaments-tab');
+    
+    modalTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            
+            // Find the parent modal and its tabs and contents
+            const parentModal = this.closest('.modal');
+            const parentTabs = parentModal.querySelectorAll('.modal-tab, .leaderboard-tab, .settings-tab, .tournaments-tab');
+            const parentContents = parentModal.querySelectorAll('.modal-tab-content, .leaderboard-tab-content, .settings-tab-content, .tournaments-tab-content');
+            
+            // Remove active class from all tabs and contents
+            parentTabs.forEach(t => t.classList.remove('active'));
+            parentContents.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            this.classList.add('active');
+            parentModal.querySelector(`#${tabId}-tab`).classList.add('active');
+        });
+    });
 });
