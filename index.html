@@ -564,20 +564,7 @@
     <footer class="footer">
         <div class="footer-container">
             <!-- Language Selector -->
-            <div class="language-selector">
-                <select class="language-dropdown" id="language-selector">
-                    <option value="en">English</option>
-                    <option value="es">Spanish</option>
-                    <option value="zh">Chinese</option>
-                    <option value="hi">Hindi</option>
-                    <option value="ar">Arabic</option>
-                    <option value="pt">Portuguese</option>
-                    <option value="bn">Bengali</option>
-                    <option value="ru">Russian</option>
-                    <option value="ja">Japanese</option>
-                    <option value="pa">Punjabi</option>
-                </select>
-            </div>
+
 
             <!-- Visitor Counters - Stacked vertically -->
             <div class="visitor-counters">
@@ -607,51 +594,60 @@
             <!-- Footer Content Columns - 2 rows of 3 columns -->
             <div class="footer-content">
                 <div class="footer-column accessibility">
-                    <h3>ACCESSIBILITY</h3>
+                    <h3 style="color: #20B2AA;">ACCESSIBILITY</h3>
                     <ul>
-                        <li><a href="#">Accessibility Options</a></li>
-                        <li><a href="#">Suggestions</a></li>
+                        <li><a href="#" id="accessibility-options-link">Accessibility Options</a></li>
+                        <li><a href="#" id="accessibility-suggestions-link">Suggestions</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column company">
-                    <h3>COMPANY</h3>
+                    <h3 style="color: #191970;">COMPANY</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Press Kit</a></li>
-                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#" id="terms-service-link">Terms of Service</a></li>
+                        <li><a href="#" id="privacy-policy-link">Privacy Policy</a></li>
+                        <li><a href="#" id="responsible-gaming-link">Responsible Gaming</a></li>
+                        <li><a href="#" id="aml-policy-link">AML Policy</a></li>
+                        <li><a href="#" id="fair-play-link">Fair Play</a></li>
+                        <li><a href="#" id="credits-link">Credits</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column competitions">
-                    <h3>COMPETITIONS</h3>
+                    <h3 style="color: #FFD700;">COMPETITIONS</h3>
                     <ul>
-                        <li><a href="#">Tournaments</a></li>
-                        <li><a href="#">Registration</a></li>
-                        <li><a href="#">Prizes</a></li>
+                        <li><a href="#" id="tournaments-link">Tournaments</a></li>
+                        <li><a href="#" id="registration-link">Registration</a></li>
+                        <li><a href="#" id="prizes-link">Prizes</a></li>
+                        <li><a href="#" id="player-month-link">Player of the Month</a></li>
+                        <li><a href="#" id="wall-fame-link">Wall of Fame</a></li>
+                        <li><a href="#" id="awards-achievements-link">Awards & Achievements</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column legal">
-                    <h3>LEGAL</h3>
+                    <h3 style="color: #8A2BE2;">LEGAL</h3>
                     <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#" id="legal-terms-link">Terms of Service</a></li>
+                        <li><a href="#" id="legal-privacy-link">Privacy Policy</a></li>
+                        <li><a href="#" id="cookie-policy-link">Cookie Policy</a></li>
+                        <li><a href="#" id="legal-responsible-gaming-link">Responsible Gaming</a></li>
+                        <li><a href="#" id="legal-aml-link">AML Policy</a></li>
+                        <li><a href="#" id="legal-fair-play-link">Fair Play</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column support">
-                    <h3>SUPPORT</h3>
+                    <h3 style="color: #FF8C00;">SUPPORT</h3>
                     <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#" id="contact-us-link">Contact Us</a></li>
+                        <li><a href="#" id="help-center-link">Help Center</a></li>
+                        <li><a href="#" id="faqs-link">FAQs</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column social">
-                    <h3>SOCIAL MEDIA</h3>
+                    <h3 style="color: #FF1493;">SOCIAL MEDIA</h3>
                     <div class="social-icons">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -660,6 +656,22 @@
                         <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <select class="language-dropdown" id="language-selector">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="zh">Chinese</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ar">Arabic</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="bn">Bengali</option>
+                    <option value="ru">Russian</option>
+                    <option value="ja">Japanese</option>
+                    <option value="pa">Punjabi</option>
+                </select>
             </div>
 
             <!-- Mobile App Download -->
@@ -883,9 +895,11 @@
             <button class="profile-tab active" data-tab="stats">Stats</button>
             <button class="profile-tab" data-tab="inventory">Inventory</button>
             <button class="profile-tab" data-tab="campaigns">Campaigns</button>
+            <button class="profile-tab" data-tab="settings">Settings</button>
+
             <button class="profile-tab" data-tab="cashout">Cashout</button>
             <button class="profile-tab" data-tab="customization">Customization</button>
-            <button class="profile-tab" data-tab="settings">Settings</button>
+
         </div>
 
         <div class="profile-tab-content active" id="stats-tab">
@@ -1099,54 +1113,7 @@
             </div>
         </div>
         
-        <div class="profile-tab-content" id="settings-tab">
-            <div class="settings-section">
-                <h3>Privacy Settings</h3>
-                <div class="setting-item">
-                    <div class="setting-label">Public Earnings</div>
-                    <label class="switch">
-                        <input type="checkbox" id="public-earnings">
-                        <span class="slider round"></span>
-                    </label>
-                    <div class="setting-description">Allow others to see your earnings</div>
-                </div>
-            </div>
-            
-            <div class="settings-section">
-                <h3>Notification Settings</h3>
-                <div class="setting-item">
-                    <div class="setting-label">Push Notifications</div>
-                    <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-                <div class="setting-item">
-                    <div class="setting-label">Email Notifications</div>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            
-            <div class="settings-section">
-                <h3>Display Settings</h3>
-                <div class="setting-item">
-                    <div class="setting-label">Brightness</div>
-                    <input type="range" class="setting-slider" min="0" max="100" value="75">
-                </div>
-                <div class="setting-item">
-                    <div class="setting-label">Color Theme</div>
-                    <select class="setting-select">
-                        <option>Default</option>
-                        <option>Dark</option>
-                        <option>Light</option>
-                        <option>High Contrast</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+
         
         <div class="profile-footer">
             <div class="level-display">
@@ -1408,6 +1375,854 @@
         <p id="loading-status">Finding players...</p>
     </div>
     
+    <!-- Footer Content Modals -->
+    
+    <!-- Accessibility Options Modal -->
+    <div id="accessibility-options-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Accessibility Options</h2>
+            <div class="modal-text">
+                <p><strong>Purpose:</strong> To ensure every user can comfortably access and use the site.</p>
+                <ul>
+                    <li>Adjustable contrast modes (light, dark, high‑contrast)</li>
+                    <li>Text size & font customization</li>
+                    <li>Keyboard-only navigation support</li>
+                    <li>Screen‑reader optimized structure (ARIA roles, landmarks)</li>
+                    <li>Skip‑to‑content, captions for videos, audio descriptions</li>
+                    <li>Compatibility with assistive technologies (e.g. NVDA, VoiceOver)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accessibility Suggestions Modal -->
+    <div id="accessibility-suggestions-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Accessibility Suggestions</h2>
+            <div class="modal-text">
+                <p><strong>Purpose:</strong> A user-driven feedback hub for continuous improvement.</p>
+                <ul>
+                    <li>Online feedback form to report accessibility issues</li>
+                    <li>Suggest new assistive features or improvements</li>
+                    <li>Commitment to reply within 5 business days</li>
+                    <li>Public accessibility roadmap (disclosure of upcoming fixes/features)</li>
+                    <li>Veterans' feedback section and testimonials</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="terms-service-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Terms of Service</h2>
+            <div class="modal-text">
+                <p><strong>Overview:</strong></p>
+                <ul>
+                    <li>Agreement outlining user eligibility, account registration, and website use</li>
+                    <li>Rules for deposits, wagers, gameplay, and prize distribution</li>
+                    <li>Content ownership, acceptable use, community standards</li>
+                    <li>Disclaimers of warranties, liabilities, and release terms</li>
+                    <li>Account suspension, termination, and appeals</li>
+                    <li>Governing law & dispute resolution via arbitration or courts</li>
+                    <li>Effective date and amendment procedures</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-policy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Privacy Policy</h2>
+            <div class="modal-text">
+                <p><strong>Coverage:</strong></p>
+                <ul>
+                    <li>Types of information collected: personal, transactional, behavioral</li>
+                    <li>Collection channels: registration forms, cookies, third-party tracking</li>
+                    <li>Use of data: service operations, analytics, marketing, compliance</li>
+                    <li>Data sharing with partners, affiliates, and legal authorities</li>
+                    <li>User rights: access, correction, deletion, opt‑out</li>
+                    <li>Data retention periods, security measures</li>
+                    <li>Contact info: data protection officer and complaint channels</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsible Gaming Modal -->
+    <div id="responsible-gaming-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Responsible Gaming</h2>
+            <div class="modal-text">
+                <p><strong>Commitment:</strong></p>
+                <ul>
+                    <li>Tools: deposit limits, time alerts, self-exclusion, reality checks</li>
+                    <li>Education: Risk awareness guides, quizzes, age restriction reminders</li>
+                    <li>External resources: help hotlines, self-assessment partners, support groups</li>
+                    <li>Policy execution: monitoring, auditing, staff training</li>
+                    <li>Accountability: annual reports, third‑party certifications</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- AML Policy Modal -->
+    <div id="aml-policy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>AML Policy</h2>
+            <div class="modal-text">
+                <p><strong>Framework:</strong></p>
+                <ul>
+                    <li>Know Your Customer (KYC) & Customer Due Diligence (CDD) processes</li>
+                    <li>Risk‑based segmentation of users and transactions</li>
+                    <li>Transaction monitoring and suspicious activity reporting (SARs)</li>
+                    <li>Record keeping standards and data retention</li>
+                    <li>Independent audits & compliance reviews</li>
+                    <li>Staff training and senior officer responsibilities</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fair Play Modal -->
+    <div id="fair-play-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Fair Play</h2>
+            <div class="modal-text">
+                <p><strong>Assurance:</strong></p>
+                <ul>
+                    <li>RNG (Random Number Generator) certification and independent testing</li>
+                    <li>Fraud, match-fixing, collusion, and bonus abuse prevention</li>
+                    <li>Player behavior monitoring & anti-cheat tools</li>
+                    <li>Transparent payout and game fairness info</li>
+                    <li>Vendor/affiliate integrity commitments</li>
+                    <li>Ethics hotline and whistleblower protocols</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credits Modal -->
+    <div id="credits-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Credits</h2>
+            <div class="modal-text">
+                <p><strong>Development Team:</strong></p>
+                <ul>
+                    <li>Lead Developer: John Smith</li>
+                    <li>UI/UX Designer: Sarah Johnson</li>
+                    <li>Backend Developer: Mike Chen</li>
+                    <li>Game Designer: Emily Rodriguez</li>
+                    <li>Quality Assurance: David Kim</li>
+                </ul>
+                <p><strong>Special Thanks:</strong></p>
+                <ul>
+                    <li>Beta testers and community feedback</li>
+                    <li>Open source libraries and frameworks</li>
+                    <li>Graphics and sound assets contributors</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Policy Modal -->
+    <div id="cookie-policy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cookie Policy</h2>
+            <div class="modal-text">
+                <p><strong>Details:</strong></p>
+                <ul>
+                    <li>Cookie categories: necessary, functional, analytics, advertising</li>
+                    <li>Duration: session vs persistent</li>
+                    <li>Purpose: tracking behavior, optimizing performance, personalizing</li>
+                    <li>Consent mechanism and management interface</li>
+                    <li>Instructions on deleting or disabling cookies</li>
+                    <li>Third-party cookie disclosure</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Modal -->
+    <div id="contact-us-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Contact Us</h2>
+            <div class="modal-text">
+                <p><strong>Get in Touch:</strong></p>
+                <ul>
+                    <li>Email form, live chat, phone line support</li>
+                    <li>Operating hours, expected response times</li>
+                    <li>Tiered support channels (general, technical, regulatory)</li>
+                </ul>
+                <p><strong>Contact Information:</strong></p>
+                <ul>
+                    <li>Email: support@gamblingguys.com</li>
+                    <li>Phone: 1-800-GAMBLING</li>
+                    <li>Live Chat: Available 24/7</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Center Modal -->
+    <div id="help-center-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Help Center</h2>
+            <div class="modal-text">
+                <p><strong>Resources Available:</strong></p>
+                <ul>
+                    <li>Step-by-step articles (account setup, deposits, gameplay)</li>
+                    <li>Video tutorials (how to register, play, withdraw)</li>
+                    <li>Searchable knowledge base</li>
+                    <li>Troubleshooting guides and site status updates</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQs Modal -->
+    <div id="faqs-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Frequently Asked Questions</h2>
+            <div class="modal-text">
+                <p><strong>Common Topics:</strong></p>
+                <ul>
+                    <li>Account & verification questions</li>
+                    <li>Deposits, withdrawals & payment methods</li>
+                    <li>Wagering requirements, bonus rules</li>
+                    <li>Security, fraud prevention, account safety tips</li>
+                    <li>Regulatory compliance, licensing, responsible play</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tournaments Modal -->
+    <div id="tournaments-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tournaments</h2>
+            <div class="modal-text">
+                <p><strong>Tournament Information:</strong></p>
+                <ul>
+                    <li>Full tournament calendar (dates, games, entry rules)</li>
+                    <li>Format, team composition, bracket info</li>
+                    <li>Entry fees, eligibility and prize pools</li>
+                    <li>Leaderboard snapshots and live results</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registration-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Registration</h2>
+            <div class="modal-text">
+                <p><strong>Registration Process:</strong></p>
+                <ul>
+                    <li>Step-by-step registration process</li>
+                    <li>Eligibility criteria (age, location, account status)</li>
+                    <li>Verification requirements</li>
+                    <li>Team creation or solo entry guidelines</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prizes Modal -->
+    <div id="prizes-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Prizes</h2>
+            <div class="modal-text">
+                <p><strong>Prize Information:</strong></p>
+                <ul>
+                    <li>Breakdown of prize tiers</li>
+                    <li>Distribution schedule and payout methods</li>
+                    <li>Terms & eligibility again reiterated</li>
+                    <li>Tax responsibilities and disclaimers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player of the Month Modal -->
+    <div id="player-month-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Player of the Month</h2>
+            <div class="modal-text">
+                <p><strong>Monthly Recognition:</strong></p>
+                <ul>
+                    <li>Monthly spotlight on a top-performing player</li>
+                    <li>Featured stats and exclusive interview content</li>
+                    <li>Special bonus rewards or themed perks</li>
+                </ul>
+                <p><strong>Current Player of the Month:</strong></p>
+                <p>🏆 <strong>GamerPro2024</strong> - Outstanding performance with 95% win rate and exceptional sportsmanship!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wall of Fame Modal -->
+    <div id="wall-fame-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Wall of Fame</h2>
+            <div class="modal-text">
+                <p><strong>Hall of Champions:</strong></p>
+                <ul>
+                    <li>Permanent showcase of all-time top players or champions</li>
+                    <li>Photos, bios, performance highlights, memorable achievements</li>
+                </ul>
+                <p><strong>Featured Champions:</strong></p>
+                <ul>
+                    <li>🥇 <strong>LegendaryPlayer</strong> - First Grand Champion (2023)</li>
+                    <li>🥈 <strong>SkillMaster</strong> - Tournament King (2023)</li>
+                    <li>🥉 <strong>GameChanger</strong> - Innovation Award Winner (2023)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Awards & Achievements Modal -->
+    <div id="awards-achievements-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Awards & Achievements</h2>
+            <div class="modal-text">
+                <p><strong>Achievement System:</strong></p>
+                <ul>
+                    <li>Ongoing in-site awards: "Most Improved," "Fair Play," "High Roller," etc.</li>
+                    <li>Criteria for earning badges or trophies</li>
+                    <li>How users can view their earned achievements</li>
+                </ul>
+                <p><strong>Available Achievements:</strong></p>
+                <ul>
+                    <li>🏆 First Win - Win your first game</li>
+                    <li>🔥 Streak Master - Win 10 games in a row</li>
+                    <li>🎯 Precision Player - Achieve 90% accuracy</li>
+                    <li>🤝 Team Player - Complete 50 multiplayer games</li>
+                    <li>💎 VIP Status - Reach level 25</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+        <div class="profile-tab-content" id="settings-tab">
+            <div class="settings-header">
+                <h2>Settings</h2>
+                <div class="settings-search-container">
+                    <input type="text" id="settings-search" placeholder="Search settings..." class="settings-search">
+                </div>
+            </div>
+
+            <div class="settings-tabs">
+                <button class="settings-tab-btn active" data-tab="visual">🎨 Visual</button>
+                <button class="settings-tab-btn" data-tab="audio">🔊 Audio</button>
+                <button class="settings-tab-btn" data-tab="profile">👤 Profile</button>
+                <button class="settings-tab-btn" data-tab="privacy">🔐 Privacy</button>
+                <button class="settings-tab-btn" data-tab="gameplay">🎮 Gameplay</button>
+                <button class="settings-tab-btn" data-tab="system">🖥️ System</button>
+            </div>
+
+            <!-- 🎨 1. Visual Settings -->
+            <div class="settings-tab-content active" id="visual-settings">
+                <div class="settings-section">
+                    <h3>🎨 Visual Settings</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">Theme / Color Scheme</div>
+                        <select class="setting-select" id="theme-scheme">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="classic">Classic</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        <div class="setting-tooltip">Choose your preferred color theme</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">UI Scale</div>
+                        <input type="range" class="setting-slider" min="50" max="150" value="100" id="ui-scale">
+                        <span class="slider-value">100%</span>
+                        <div class="setting-tooltip">Adjust interface size</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Text Size</div>
+                        <select class="setting-select" id="text-size">
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                        <div class="setting-tooltip">Adjust text size for readability</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Font Style</div>
+                        <select class="setting-select" id="font-style">
+                            <option value="default">Default</option>
+                            <option value="rounded">Rounded</option>
+                            <option value="mono">Mono</option>
+                            <option value="retro">Retro</option>
+                        </select>
+                        <div class="setting-tooltip">Choose your preferred font style</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Animation Speed</div>
+                        <select class="setting-select" id="animation-speed">
+                            <option value="off">Off</option>
+                            <option value="low">Low</option>
+                            <option value="normal">Normal</option>
+                            <option value="high">High</option>
+                        </select>
+                        <div class="setting-tooltip">Control animation speed</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Motion Effects</div>
+                        <label class="switch">
+                            <input type="checkbox" checked id="motion-effects">
+                            <span class="slider round"></span>
+                        </label>
+                        <div class="setting-tooltip">Enable motion effects (accessibility)</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Background Visuals</div>
+                        <select class="setting-select" id="background-visuals">
+                            <option value="static">Static</option>
+                            <option value="subtle">Subtle Animated</option>
+                            <option value="dynamic">Fully Dynamic</option>
+                        </select>
+                        <div class="setting-tooltip">Choose background animation level</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Character Outline Glow</div>
+                        <label class="switch">
+                            <input type="checkbox" checked id="character-glow">
+                            <span class="slider round"></span>
+                        </label>
+                        <div class="setting-tooltip">Enable character outline glow effect</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Menu & Map Transparency</div>
+                        <input type="range" class="setting-slider" min="0" max="100" value="80" id="transparency">
+                        <span class="slider-value">80%</span>
+                        <div class="setting-tooltip">Adjust menu and map transparency</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🔊 2. Audio Settings -->
+            <div class="settings-tab-content" id="audio-settings">
+                <div class="settings-section">
+                    <h3>🔊 Audio Settings</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">Master Volume</div>
+                        <input type="range" class="setting-slider" min="0" max="100" value="75" id="master-volume">
+                        <span class="slider-value">75</span>
+                        <div class="setting-tooltip">Control overall audio volume</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Music Volume</div>
+                        <input type="range" class="setting-slider" min="0" max="100" value="60" id="music-volume">
+                        <span class="slider-value">60</span>
+                        <div class="setting-tooltip">Control background music volume</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">SFX Volume</div>
+                        <input type="range" class="setting-slider" min="0" max="100" value="80" id="sfx-volume">
+                        <span class="slider-value">80</span>
+                        <div class="setting-tooltip">Control sound effects volume</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Voice Chat Volume</div>
+                        <input type="range" class="setting-slider" min="0" max="100" value="70" id="voice-volume">
+                        <span class="slider-value">70</span>
+                        <div class="setting-tooltip">Control voice chat volume</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Mute All</div>
+                        <label class="switch">
+                            <input type="checkbox" id="mute-all">
+                            <span class="slider round"></span>
+                        </label>
+                        <div class="setting-tooltip">Mute all audio</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Ambient Sounds</div>
+                        <label class="switch">
+                            <input type="checkbox" checked id="ambient-sounds">
+                            <span class="slider round"></span>
+                        </label>
+                        <div class="setting-tooltip">Enable ambient background sounds</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Notification Sounds</div>
+                        <label class="switch">
+                            <input type="checkbox" checked id="notification-sounds">
+                            <span class="slider round"></span>
+                        </label>
+                        <div class="setting-tooltip">Enable notification sounds</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Music Style</div>
+                        <select class="setting-select" id="music-style">
+                            <option value="default">Default</option>
+                            <option value="lofi">Lo-fi</option>
+                            <option value="retro">Retro</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        <div class="setting-tooltip">Choose your preferred music style</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 👤 3. Profile Settings -->
+            <div class="settings-tab-content" id="profile-settings">
+                <div class="settings-section">
+                    <h3>👤 Profile Settings</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">Display Name</div>
+                        <input type="text" class="setting-input" placeholder="Enter display name" id="display-name">
+                        <div class="setting-tooltip">Editable anytime (any characters allowed)</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Username</div>
+                        <input type="text" class="setting-input" placeholder="Enter username" id="username">
+                        <div class="setting-tooltip">Editable once per 7 days (with cooldown)</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Profile Picture / Avatar</div>
+                        <button class="setting-button" id="upload-avatar">Upload or Choose Character</button>
+                        <div class="setting-tooltip">Upload or choose character look</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Pronouns</div>
+                        <select class="setting-select" id="pronouns">
+                            <option value="he/him">He/Him</option>
+                            <option value="she/her">She/Her</option>
+                            <option value="they/them">They/Them</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        <input type="text" class="setting-input" placeholder="Custom pronouns" id="custom-pronouns" style="display:none;">
+                        <div class="setting-tooltip">Dropdown + Custom Text Field</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Bio</div>
+                        <textarea class="setting-textarea" placeholder="Tell us about yourself (200 characters max)" maxlength="200" id="bio"></textarea>
+                        <div class="setting-tooltip">Up to 200 characters</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Friend Requests</div>
+                        <select class="setting-select" id="friend-requests">
+                            <option value="everyone">Everyone</option>
+                            <option value="friends-of-friends">Friends of Friends</option>
+                            <option value="no-one">No One</option>
+                        </select>
+                        <div class="setting-tooltip">Control who can send friend requests</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Show Online Status</div>
+                        <label class="switch">
+                            <input type="checkbox" checked id="online-status">
+                            <span class="slider round"></span>
+                        </label>
+                        <div class="setting-tooltip">Let others see when you're online</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Profile Visibility</div>
+                        <select class="setting-select" id="profile-visibility">
+                            <option value="public">Public</option>
+                            <option value="friends">Friends Only</option>
+                            <option value="private">Private</option>
+                        </select>
+                        <div class="setting-tooltip">Control who can view your profile</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Account Language</div>
+                        <select class="setting-select" id="account-language">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="zh">Chinese</option>
+                            <option value="hi">Hindi</option>
+                            <option value="ar">Arabic</option>
+                        </select>
+                        <div class="setting-tooltip">Choose your preferred language</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🔐 4. Privacy & Security -->
+            <div class="settings-tab-content" id="privacy-settings">
+                <div class="settings-section">
+                    <h3>🔐 Privacy & Security</h3>
+                    <h4>👁️ Display Privacy Settings</h4>
+                    <div class="setting-item">
+                        <div class="setting-label">Display My Earnings Publicly</div>
+                        <select class="setting-select" id="earnings-privacy">
+                            <option value="yes">Yes</option>
+                            <option value="friends">Friends Only</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div class="setting-tooltip">Control who can see your earnings</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Display My Friends' Usernames</div>
+                        <select class="setting-select" id="friends-display">
+                            <option value="full">Full</option>
+                            <option value="nicknames">Nicknames Only</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                        <div class="setting-tooltip">Control how friends' names are displayed</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Display In-Game Screenshots</div>
+                        <select class="setting-select" id="screenshots-privacy">
+                            <option value="public">Public</option>
+                            <option value="friends">Friends</option>
+                            <option value="private">Private</option>
+                        </select>
+                        <div class="setting-tooltip">Control who can see your screenshots</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Allow In-Game Screen Recordings</div>
+                        <select class="setting-select" id="recordings-privacy">
+                            <option value="public">Public</option>
+                            <option value="friends">Friends</option>
+                            <option value="private">Private</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+                        <div class="setting-tooltip">Control screen recording permissions</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Show My NFTs on Profile</div>
+                        <select class="setting-select" id="nfts-privacy">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="friends">Friends Only</option>
+                        </select>
+                        <div class="setting-tooltip">Control NFT visibility on profile</div>
+                    </div>
+                    
+                    <h4>🔒 Security & Account</h4>
+                    <div class="setting-item">
+                        <div class="setting-label">Two-Factor Authentication</div>
+                        <label class="switch">
+                            <input type="checkbox" id="two-factor">
+                            <span class="slider round"></span>
+                        </label>
+                        <button class="setting-button" id="setup-2fa">Setup</button>
+                        <div class="setting-tooltip">Add extra security to your account</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Change Password</div>
+                        <button class="setting-button" id="change-password">Change Password</button>
+                        <div class="setting-tooltip">Update your account password</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Recovery Email</div>
+                        <input type="email" class="setting-input" placeholder="Enter recovery email" id="recovery-email">
+                        <button class="setting-button" id="verify-email">Verify</button>
+                        <div class="setting-tooltip">Set recovery email for account security</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Linked Accounts</div>
+                        <div class="linked-accounts">
+                            <button class="setting-button" id="link-google">Google</button>
+                            <button class="setting-button" id="link-discord">Discord</button>
+                            <button class="setting-button" id="link-apple">Apple</button>
+                        </div>
+                        <div class="setting-tooltip">Link external accounts for easy login</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Blocked Users List</div>
+                        <button class="setting-button" id="view-blocked">View / Unblock</button>
+                        <div class="setting-tooltip">Manage blocked users</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Allow Anonymous Usage Stats</div>
+                        <label class="switch">
+                            <input type="checkbox" checked id="usage-stats">
+                            <span class="slider round"></span>
+                        </label>
+                        <div class="setting-tooltip">Help improve the service with anonymous data</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Chat Filtering</div>
+                        <select class="setting-select" id="chat-filtering">
+                            <option value="moderate">Moderate</option>
+                            <option value="strict">Strict</option>
+                            <option value="off">Off</option>
+                        </select>
+                        <div class="setting-tooltip">Control chat content filtering</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Clear Chat History</div>
+                        <button class="setting-button" id="clear-chat">Clear History</button>
+                        <div class="setting-tooltip">Clear chat history by thread or globally</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🎮 5. Gameplay Preferences -->
+            <div class="settings-tab-content" id="gameplay-settings">
+                <div class="settings-section">
+                    <h3>🎮 Gameplay Preferences</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">Auto-Equip Best Gear</div>
+                        <label class="switch">
+                            <input type="checkbox" checked id="auto-equip">
+                            <span class="slider round"></span>
+                        </label>
+                        <div class="setting-tooltip">Automatically equip better gear when found</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Controller Vibration</div>
+                        <label class="switch">
+                            <input type="checkbox" checked id="controller-vibration">
+                            <span class="slider round"></span>
+                        </label>
+                        <div class="setting-tooltip">Enable controller vibration feedback</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Difficulty Preset</div>
+                        <select class="setting-select" id="difficulty">
+                            <option value="casual">Casual</option>
+                            <option value="normal">Normal</option>
+                            <option value="competitive">Competitive</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        <div class="setting-tooltip">Choose your preferred difficulty level</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Default Game Mode</div>
+                        <select class="setting-select" id="default-mode">
+                            <option value="single">Single Player</option>
+                            <option value="multiplayer">Multiplayer</option>
+                            <option value="campaign">Campaign</option>
+                        </select>
+                        <div class="setting-tooltip">Set your preferred starting game mode</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Chat Bubble Speed</div>
+                        <select class="setting-select" id="chat-speed">
+                            <option value="fast">Fast</option>
+                            <option value="normal">Normal</option>
+                            <option value="slow">Slow</option>
+                        </select>
+                        <div class="setting-tooltip">Control chat bubble display speed</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Skip Cutscenes</div>
+                        <select class="setting-select" id="skip-cutscenes">
+                            <option value="always">Always</option>
+                            <option value="once">Once</option>
+                            <option value="never">Never</option>
+                        </select>
+                        <div class="setting-tooltip">Control cutscene skipping behavior</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Cursor Style</div>
+                        <select class="setting-select" id="cursor-style">
+                            <option value="default">Default</option>
+                            <option value="glove">Glove</option>
+                            <option value="laser">Laser</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                        <div class="setting-tooltip">Choose your preferred cursor style</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Mini-Map Zoom</div>
+                        <select class="setting-select" id="minimap-zoom">
+                            <option value="manual">Manual</option>
+                            <option value="auto">Auto</option>
+                            <option value="slider">Slider</option>
+                        </select>
+                        <div class="setting-tooltip">Control mini-map zoom behavior</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🖥️ 6. System & Account -->
+            <div class="settings-tab-content" id="system-settings">
+                <div class="settings-section">
+                    <h3>🖥️ System & Account</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">Logout</div>
+                        <button class="setting-button danger" id="logout-btn">Sign Out</button>
+                        <div class="setting-tooltip">Sign out of your account</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Delete Account</div>
+                        <button class="setting-button danger" id="delete-account">Delete Account</button>
+                        <div class="setting-tooltip">Permanently delete your account</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Save Data Backup</div>
+                        <div class="backup-options">
+                            <button class="setting-button" id="export-json">Export JSON</button>
+                            <button class="setting-button" id="cloud-save">Cloud Save</button>
+                            <button class="setting-button" id="import-data">Import</button>
+                        </div>
+                        <div class="setting-tooltip">Backup and restore your game data</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Session Info</div>
+                        <div class="session-info">
+                            <p>Device: Desktop Browser</p>
+                            <p>Login Time: 2 hours ago</p>
+                            <p>IP: 192.168.1.1</p>
+                            <p>Location: United States</p>
+                        </div>
+                        <div class="setting-tooltip">View current session information</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Clear Cache</div>
+                        <div class="cache-info">
+                            <span>Cache Size: 45.2 MB</span>
+                            <button class="setting-button" id="clear-cache">Clear</button>
+                        </div>
+                        <div class="setting-tooltip">Clear application cache to free up space</div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Report a Bug</div>
+                        <button class="setting-button" id="report-bug">Open Feedback Form</button>
+                        <div class="setting-tooltip">Report bugs or issues with the application</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-actions">
+                <button class="settings-action-btn reset" id="reset-settings-btn">🧼 Reset Section to Default</button>
+                <button class="settings-action-btn cancel" id="cancel-settings-btn">Cancel</button>
+                <button class="settings-action-btn save" id="save-settings-btn">💾 Save Changes</button>
+            </div>
+
+        </div>

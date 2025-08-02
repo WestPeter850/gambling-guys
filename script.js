@@ -1011,6 +1011,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     fileInput.addEventListener('change', function() {
         if (this.files.length > 0) {
+            const allowedTypes = ['image/png', 'image/jpeg', 'image/gif', 'video/mp4', 'video/webm'];
+            const fileType = this.files[0].type;
+
+            if (!allowedTypes.includes(fileType)) {
+                alert('Only in-game screenshots (PNG, JPG, GIF) or screen recordings (MP4, WebM) are allowed.');
+                this.value = ''; // Clear the input
+                return;
+            }
+
             const fileName = this.files[0].name;
             
             // Add user message about file
@@ -1560,3 +1569,263 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+    // YouTube Subscribe Button
+    const subscribeBtn = document.getElementById("subscribe-btn");
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener("click", function() {
+            window.open("https://www.youtube.com/@MrBeast?sub_confirmation=1", "_blank");
+        });
+    }
+
+
+
+
+    // Settings Modal Functionality
+    const settingsBtn = document.getElementById("settings-btn");
+    const settingsModal = document.getElementById("settings-modal");
+    const settingsCloseBtn = settingsModal.querySelector(".close-button");
+    const settingsTabs = document.querySelectorAll(".settings-tab-btn");
+    const settingsTabContents = document.querySelectorAll(".settings-tab-content");
+
+    settingsBtn.addEventListener("click", () => {
+        settingsModal.style.display = "block";
+    });
+
+    settingsCloseBtn.addEventListener("click", () => {
+        settingsModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target == settingsModal) {
+            settingsModal.style.display = "none";
+        }
+    });
+
+    settingsTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            const tabName = tab.dataset.tab;
+
+            settingsTabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            settingsTabContents.forEach(content => {
+                content.classList.remove("active");
+                if (content.id === `${tabName}-settings`) {
+                    content.classList.add("active");
+                }
+            });
+        });
+    });
+
+    // Visual Settings
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const themeSelect = document.getElementById('theme-select');
+    const fontSizeSlider = document.getElementById('font-size-slider');
+    const fontSizeValue = document.getElementById('font-size-value');
+    const animationsToggle = document.getElementById('animations-toggle');
+    const notificationsToggle = document.getElementById('notifications-toggle');
+
+    darkModeToggle.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode', darkModeToggle.checked);
+    });
+
+    themeSelect.addEventListener('change', () => {
+        document.body.className = themeSelect.value;
+    });
+
+    fontSizeSlider.addEventListener('input', () => {
+        const fontSize = `${fontSizeSlider.value}px`;
+        document.body.style.fontSize = fontSize;
+        fontSizeValue.textContent = fontSize;
+    });
+
+    // Audio Settings
+    const masterVolumeSlider = document.getElementById('master-volume-slider');
+    const masterVolumeValue = document.getElementById('master-volume-value');
+    const musicVolumeSlider = document.getElementById('music-volume-slider');
+    const musicVolumeValue = document.getElementById('music-volume-value');
+    const sfxVolumeSlider = document.getElementById('sfx-volume-slider');
+    const sfxVolumeValue = document.getElementById('sfx-volume-value');
+    const muteAllAudio = document.getElementById('mute-all-audio');
+
+    masterVolumeSlider.addEventListener('input', () => {
+        masterVolumeValue.textContent = `${masterVolumeSlider.value}%`;
+    });
+
+    musicVolumeSlider.addEventListener('input', () => {
+        musicVolumeValue.textContent = `${musicVolumeSlider.value}%`;
+    });
+
+    sfxVolumeSlider.addEventListener('input', () => {
+        sfxVolumeValue.textContent = `${sfxVolumeSlider.value}%`;
+    });
+
+    // Profile Settings
+    const saveProfileBtn = document.getElementById('save-profile-btn');
+    saveProfileBtn.addEventListener('click', () => {
+        alert('Profile saved!');
+    });
+
+    // Privacy & Security Settings
+    const viewBlockedUsersBtn = document.getElementById('view-blocked-users-btn');
+    viewBlockedUsersBtn.addEventListener('click', () => {
+        alert('Viewing blocked users...');
+    });
+
+    const changePasswordBtn = document.getElementById('change-password-btn');
+    changePasswordBtn.addEventListener('click', () => {
+        alert('Change password form would appear here.');
+    });
+
+    const twoFactorAuthBtn = document.getElementById('two-factor-auth-btn');
+    twoFactorAuthBtn.addEventListener('click', () => {
+        alert('Two-factor authentication settings would appear here.');
+    });
+
+    // System & Account Settings
+    const checkForUpdatesBtn = document.getElementById('check-for-updates-btn');
+    checkForUpdatesBtn.addEventListener('click', () => {
+        alert('Checking for updates...');
+    });
+
+    const clearCacheBtn = document.getElementById('clear-cache-btn');
+    clearCacheBtn.addEventListener('click', () => {
+        alert('Cache cleared!');
+    });
+
+    const exportDataBtn = document.getElementById('export-data-btn');
+    exportDataBtn.addEventListener('click', () => {
+        alert('Exporting data...');
+    });
+
+    const deleteAccountBtn = document.getElementById('delete-account-btn');
+    deleteAccountBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+            alert('Account deleted.');
+        }
+    });
+
+
+
+
+    // Settings Search Functionality
+    const settingsSearchInput = document.getElementById("settings-search");
+    settingsSearchInput.addEventListener("keyup", function() {
+        const searchTerm = this.value.toLowerCase();
+        settingsTabContents.forEach(content => {
+            const labels = content.querySelectorAll("label");
+            labels.forEach(label => {
+                const labelText = label.textContent.toLowerCase();
+                if (labelText.includes(searchTerm)) {
+                    label.style.display = "flex";
+                } else {
+                    label.style.display = "none";
+                }
+            });
+        });
+    });
+
+
+
+
+    // Settings Action Buttons
+    const resetSettingsBtn = document.getElementById("reset-settings-btn");
+    const saveSettingsBtn = document.getElementById("save-settings-btn");
+    const cancelSettingsBtn = document.getElementById("cancel-settings-btn");
+
+    resetSettingsBtn.addEventListener("click", () => {
+        // Implement reset logic here
+        alert("Settings reset to default!");
+    });
+
+    saveSettingsBtn.addEventListener("click", () => {
+        // Implement save logic here
+        alert("Settings saved!");
+        settingsModal.style.display = "none";
+    });
+
+    cancelSettingsBtn.addEventListener("click", () => {
+        // Implement cancel logic here (e.g., revert unsaved changes)
+        settingsModal.style.display = "none";
+    });
+
+
+
+
+    // Footer Modal Functionality
+    const footerLinks = [
+        'accessibility-options', 'accessibility-suggestions', 'terms-service', 'privacy-policy',
+        'responsible-gaming', 'aml-policy', 'fair-play', 'credits', 'cookie-policy',
+        'contact-us', 'help-center', 'faqs', 'tournaments', 'registration', 'prizes',
+        'player-month', 'wall-fame', 'awards-achievements'
+    ];
+
+    footerLinks.forEach(linkId => {
+        const link = document.getElementById(`${linkId}-link`);
+        const modal = document.getElementById(`${linkId}-modal`);
+        
+        if (link && modal) {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'block';
+            });
+
+            const closeBtn = modal.querySelector('.close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+            }
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+    });
+
+    // Handle duplicate legal links
+    const legalTermsLink = document.getElementById('legal-terms-link');
+    const legalPrivacyLink = document.getElementById('legal-privacy-link');
+    const legalResponsibleGamingLink = document.getElementById('legal-responsible-gaming-link');
+    const legalAmlLink = document.getElementById('legal-aml-link');
+    const legalFairPlayLink = document.getElementById('legal-fair-play-link');
+
+    if (legalTermsLink) {
+        legalTermsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('terms-service-modal').style.display = 'block';
+        });
+    }
+
+    if (legalPrivacyLink) {
+        legalPrivacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('privacy-policy-modal').style.display = 'block';
+        });
+    }
+
+    if (legalResponsibleGamingLink) {
+        legalResponsibleGamingLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('responsible-gaming-modal').style.display = 'block';
+        });
+    }
+
+    if (legalAmlLink) {
+        legalAmlLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('aml-policy-modal').style.display = 'block';
+        });
+    }
+
+    if (legalFairPlayLink) {
+        legalFairPlayLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('fair-play-modal').style.display = 'block';
+        });
+    }
+
